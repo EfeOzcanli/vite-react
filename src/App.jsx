@@ -522,7 +522,7 @@ const HomePage = () => {
               <div className="relative aspect-square rounded-[48px] bg-gradient-to-br from-zinc-900 to-zinc-950 border border-white/10 p-12 flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-emerald-500/10" />
                 <motion.div animate={{ rotateY: [0, 10, 0, -10, 0], rotateX: [0, -5, 0, 5, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} style={{ transformStyle: 'preserve-3d', perspective: 1000 }}>
-                  <div className="w-56 h-56 md:w-64 md:h-64 rounded-[40px] bg-black shadow-2xl border border-white/10 flex items-center justify-center overflow-hidden"><TrackrLogo className="w-28 h-28 md:w-36 md:h-36" /></div>
+                  <div className="w-56 h-56 md:w-64 md:h-64 rounded-[40px] bg-black shadow-2xl border border-white/10 flex items-center justify-center overflow-hidden"><img src="/icon_center.png" alt="Trackr" className="w-48 h-48 md:w-56 md:h-56 object-contain" /></div>
                 </motion.div>
               </div>
             </motion.div>
@@ -550,7 +550,7 @@ const TrackrPage = () => (
             </motion.div>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.8, rotateY: -15 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="relative">
-            <div className="relative"><div className="absolute inset-0 bg-gradient-to-br from-green-500/30 via-transparent to-emerald-500/30 rounded-[60px] blur-3xl" /><div className="relative aspect-[3/4] max-w-md mx-auto rounded-[60px] bg-gradient-to-br from-zinc-800 to-zinc-900 p-3 shadow-2xl border border-white/10"><div className="w-full h-full rounded-[52px] bg-black overflow-hidden flex items-center justify-center"><TrackrLogo className="w-32 h-32" /></div><div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full" /></div></div>
+            <div className="relative"><div className="absolute inset-0 bg-gradient-to-br from-green-500/30 via-transparent to-emerald-500/30 rounded-[60px] blur-3xl" /><div className="relative aspect-[3/4] max-w-md mx-auto rounded-[60px] bg-gradient-to-br from-zinc-800 to-zinc-900 p-3 shadow-2xl border border-white/10"><div className="w-full h-full rounded-[52px] bg-black overflow-hidden flex items-center justify-center"><img src="/icon_center.png" alt="Trackr" className="w-64 h-64 md:w-80 md:h-80 object-contain" /></div><div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full" /></div></div>
           </motion.div>
         </div>
       </div>
@@ -708,7 +708,7 @@ const ContactPage = () => {
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-xl text-zinc-400 mb-12">Have an app idea? Want to partner with us? We're always open to collaborations.</motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="space-y-6">
           <a href="tel:+17757700677" className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Phone size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">+1 (775) 770-0677</span><span className="text-zinc-500 text-sm">Mon to Fri, 9AM to 6PM PST</span></div></a>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Mail size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">{CONTACT_EMAIL}</span><span className="text-zinc-500 text-sm">We respond within 2 hours</span></div></a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Mail size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">{CONTACT_EMAIL}</span><span className="text-zinc-500 text-sm">We respond within 24-48 business hours</span></div></a>
           <div className="flex items-center gap-5 text-white group cursor-pointer"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><MapPin size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">Reno, Nevada</span><span className="text-zinc-500 text-sm">Serving users worldwide</span></div></div>
         </motion.div>
         
@@ -719,8 +719,8 @@ const ContactPage = () => {
             {[
               { icon: <Instagram size={20} />, label: 'Instagram', href: 'https://instagram.com/emkeapp' },
               { icon: <Linkedin size={20} />, label: 'LinkedIn', href: 'https://linkedin.com/company/emkeapp' },
-              { icon: <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>, label: 'TikTok', href: 'https://tiktok.com/@emkeapp' },
-              { icon: <MessageSquare size={20} />, label: 'Twitter/X', href: 'https://x.com/emkeapp' },
+              { icon: <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.56a8.18 8.18 0 0 0 4.77 1.52V6.69h-1.01z"/></svg>, label: 'TikTok', href: 'https://tiktok.com/@emkeapp' },
+              { icon: <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>, label: 'X', href: 'https://x.com/emkeapp' },
               { icon: <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>, label: 'Facebook', href: 'https://www.facebook.com/share/1B6dcYk5xv/?mibextid=wwXIfr' },
             ].map((social, i) => (
               <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-green-400 hover:bg-green-500/10 hover:border-green-500/30 transition-all" title={social.label}>{social.icon}</a>
@@ -734,7 +734,7 @@ const ContactPage = () => {
             <div className="text-center py-12">
               <div className="w-20 h-20 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} className="text-green-400" /></div>
               <h3 className="text-3xl font-black text-white mb-4">Message Sent!</h3>
-              <p className="text-zinc-400">Thank you! We'll get back to you within 2 hours.</p>
+              <p className="text-zinc-400">Thank you! We'll get back to you within 24-48 business hours.</p>
               <button onClick={() => setSubmitted(false)} className="mt-8 px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-zinc-400 hover:text-white transition-colors">Send Another</button>
             </div>
           ) : (
@@ -745,7 +745,7 @@ const ContactPage = () => {
             </div>
             <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Message</label><textarea rows={5} name="message" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all resize-none" placeholder="Tell us about your project or idea..." required /></div>
             <button type="submit" className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center">Send Message</button>
-            <p className="text-zinc-500 text-xs text-center">Your message goes directly to our team. We respond within 2 hours.</p>
+            <p className="text-zinc-500 text-xs text-center">Your message goes directly to our team. We respond within 24-48 business hours.</p>
           </form>
           )}
         </div></GlowingBorder>
