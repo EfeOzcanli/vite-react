@@ -301,10 +301,11 @@ const Footer = () => {
         <p className="text-zinc-600 text-sm">© 2026 EMKE Seismic Isolation LLC. All rights reserved.</p>
         <div className="flex gap-4">
           {[
-            { label: 'Instagram', href: 'https://instagram.com/emke_ecosystem' },
-            { label: 'LinkedIn', href: 'https://linkedin.com/company/emke' },
-            { label: 'TikTok', href: 'https://tiktok.com/@emke_ecosystem' },
-            { label: 'Twitter', href: 'https://x.com/emke_ecosystem' },
+            { label: 'Instagram', href: 'https://instagram.com/emkeapp' },
+            { label: 'LinkedIn', href: 'https://linkedin.com/company/emkeapp' },
+            { label: 'TikTok', href: 'https://tiktok.com/@emkeapp' },
+            { label: 'Twitter', href: 'https://x.com/emkeapp' },
+            { label: 'Facebook', href: 'https://www.facebook.com/share/1B6dcYk5xv/?mibextid=wwXIfr' },
           ].map((s, i) => (
             <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className="text-zinc-600 hover:text-green-400 cursor-pointer transition-colors text-sm">{s.label}</a>
           ))}
@@ -643,13 +644,13 @@ const VisionPage = () => (
     <section className="pt-40 pb-32 px-6"><div className="max-w-4xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}><h1 className="text-6xl md:text-8xl font-black text-white tracking-tight mb-8"><AnimatedText text="Our Vision." delay={0.2} /></h1><div className="h-px w-32 bg-gradient-to-r from-green-500 to-transparent mb-16" /></motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="space-y-12 text-xl text-zinc-400 leading-relaxed">
-        <p>At <span className="text-white font-bold">emke</span>, we believe technology should be an <span className="text-green-400">invisible partner</span> in your growth — never the distraction, always the foundation.</p>
+        <p>At <span className="text-white font-bold">emke</span>, we believe technology should be an <span className="text-green-400">invisible partner</span> in your growth. Never the distraction, always the foundation.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-8">
           {[
-            { title: 'Decade of Experience', desc: 'Built by athletes and engineers who understand what it takes to measure real progress.', icon: <Award size={24} className="text-green-400" /> },
-            { title: 'Minimalist Philosophy', desc: "If a feature doesn't directly help you improve, it doesn't belong in our apps.", icon: <Target size={24} className="text-green-400" /> },
-            { title: 'Privacy First', desc: 'Your data is yours. Photos stay on your device. We never sell your information.', icon: <Shield size={24} className="text-green-400" /> },
+            { title: 'Decade of Experience', desc: 'Built by athletes and engineers who actually understand what it takes to measure real progress.', icon: <Award size={24} className="text-green-400" /> },
+            { title: 'Minimalist Philosophy', desc: "If a feature doesn't directly help you improve, it has no place in our apps.", icon: <Target size={24} className="text-green-400" /> },
+            { title: 'Privacy First', desc: 'Your data belongs to you. Photos stay on your device, and we will never sell your information.', icon: <Shield size={24} className="text-green-400" /> },
             { title: 'Data Over Noise', desc: 'Clean, powerful analytics that tell you exactly where you stand and where you\'re going.', icon: <BarChart3 size={24} className="text-green-400" /> },
           ].map((item, i) => (
             <GlowingBorder key={i}><div className="p-10 rounded-[32px] bg-zinc-900/50 border border-white/5 h-full">
@@ -662,12 +663,12 @@ const VisionPage = () => (
 
         <div className="py-8">
           <h3 className="text-3xl font-black text-white mb-6">The Problem We Solve</h3>
-          <p>Fitness apps today are bloated with social features, gamification gimmicks, and data you don't need. They're designed to keep you scrolling, not to keep you lifting. We took a different approach — <span className="text-green-400">strip everything down to what actually matters</span>: your weight, your photos, your exercises, your progress.</p>
+          <p>Fitness apps today are bloated with social features, gamification gimmicks, and data you don't need. They're designed to keep you scrolling, not to keep you lifting. We took a different approach. <span className="text-green-400">Strip everything down to what actually matters</span>: your weight, your photos, your exercises, your progress.</p>
         </div>
 
         <div className="py-8">
           <h3 className="text-3xl font-black text-white mb-6">Where We're Going</h3>
-          <p>Trackr is just the beginning. We're building an ecosystem of minimalist performance tools — each one laser-focused on a single goal. No feature bloat. No unnecessary complexity. Just <span className="text-white font-semibold">clean, private, powerful</span> tools that help you become the best version of yourself.</p>
+          <p>Trackr is just the beginning. We're building an ecosystem of minimalist performance tools, each one laser-focused on a single goal. No feature bloat, no unnecessary complexity. Just <span className="text-white font-semibold">clean, private, powerful</span> tools that help you become the best version of yourself.</p>
         </div>
 
         <GlowingBorder><div className="p-10 rounded-[32px] bg-zinc-900/50 border border-white/5 text-center">
@@ -706,7 +707,7 @@ const ContactPage = () => {
         <h1 className="text-6xl md:text-7xl font-black text-white tracking-tight mb-8 leading-[0.95]"><AnimatedText text="Let's build together." delay={0.2} /></h1>
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-xl text-zinc-400 mb-12">Have an app idea? Want to partner with us? We're always open to collaborations.</motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="space-y-6">
-          <a href="tel:+17757700677" className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Phone size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">+1 (775) 770-0677</span><span className="text-zinc-500 text-sm">Mon–Fri 9AM–6PM PST</span></div></a>
+          <a href="tel:+17757700677" className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Phone size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">+1 (775) 770-0677</span><span className="text-zinc-500 text-sm">Mon to Fri, 9AM to 6PM PST</span></div></a>
           <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Mail size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">{CONTACT_EMAIL}</span><span className="text-zinc-500 text-sm">We respond within 2 hours</span></div></a>
           <div className="flex items-center gap-5 text-white group cursor-pointer"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><MapPin size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">Reno, Nevada</span><span className="text-zinc-500 text-sm">Serving users worldwide</span></div></div>
         </motion.div>
@@ -716,10 +717,11 @@ const ContactPage = () => {
           <h3 className="text-sm font-bold text-zinc-500 uppercase tracking-wider mb-4">Follow Us</h3>
           <div className="flex gap-3">
             {[
-              { icon: <Instagram size={20} />, label: 'Instagram', href: 'https://instagram.com/emke_ecosystem' },
-              { icon: <Linkedin size={20} />, label: 'LinkedIn', href: 'https://linkedin.com/company/emke' },
-              { icon: <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>, label: 'TikTok', href: 'https://tiktok.com/@emke_ecosystem' },
-              { icon: <MessageSquare size={20} />, label: 'Twitter/X', href: 'https://x.com/emke_ecosystem' },
+              { icon: <Instagram size={20} />, label: 'Instagram', href: 'https://instagram.com/emkeapp' },
+              { icon: <Linkedin size={20} />, label: 'LinkedIn', href: 'https://linkedin.com/company/emkeapp' },
+              { icon: <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>, label: 'TikTok', href: 'https://tiktok.com/@emkeapp' },
+              { icon: <MessageSquare size={20} />, label: 'Twitter/X', href: 'https://x.com/emkeapp' },
+              { icon: <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>, label: 'Facebook', href: 'https://www.facebook.com/share/1B6dcYk5xv/?mibextid=wwXIfr' },
             ].map((social, i) => (
               <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-green-400 hover:bg-green-500/10 hover:border-green-500/30 transition-all" title={social.label}>{social.icon}</a>
             ))}
@@ -742,7 +744,7 @@ const ContactPage = () => {
               <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Email</label><input type="email" name="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all" placeholder="john@example.com" required /></div>
             </div>
             <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Message</label><textarea rows={5} name="message" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all resize-none" placeholder="Tell us about your project or idea..." required /></div>
-            <button type="submit" className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center">Send Message — It's Free</button>
+            <button type="submit" className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center">Send Message</button>
             <p className="text-zinc-500 text-xs text-center">Your message goes directly to our team. We respond within 2 hours.</p>
           </form>
           )}
@@ -808,18 +810,18 @@ const PrivacyPage = () => (
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">1. Information We Collect</h3>
     <h4 className="text-green-400 font-semibold">Personal Information You Provide</h4>
     <ul className="list-disc pl-6 space-y-2">
-      <li>Account information: name, email address, and profile details</li>
-      <li>Fitness data: body weight entries, exercise logs, sets, reps, and personal records</li>
-      <li>Progress photos: stored locally on your device by default</li>
-      <li>Communication data: messages and feedback you send to us</li>
-      <li>Payment information: subscription details processed securely through Apple/Google</li>
+      <li>Your name, email address, and profile details</li>
+      <li>Body weight entries, exercise logs, sets, reps, and personal records</li>
+      <li>Progress photos (stored locally on your device by default)</li>
+      <li>Any messages or feedback you send to us</li>
+      <li>Subscription and payment details, processed securely through Apple or Google</li>
     </ul>
     <h4 className="text-green-400 font-semibold mt-4">Information Collected Automatically</h4>
     <ul className="list-disc pl-6 space-y-2">
-      <li>Device information: device model, operating system, unique device identifiers</li>
-      <li>Usage data: app features used, session duration, interaction patterns</li>
-      <li>Analytics data: crash reports, performance metrics (collected via anonymized analytics)</li>
-      <li>General location: country/region level only (we do not collect precise GPS location)</li>
+      <li>Device model, operating system, and unique device identifiers</li>
+      <li>Which features you use, session duration, and interaction patterns</li>
+      <li>Crash reports and performance metrics, collected anonymously</li>
+      <li>General location at the country or region level only. We do not collect precise GPS data</li>
     </ul></div>
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">2. How We Use Your Information</h3>
@@ -836,8 +838,8 @@ const PrivacyPage = () => (
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">3. Photo Storage & Privacy</h3>
     <ul className="list-disc pl-6 space-y-2">
-      <li><strong className="text-white">Default:</strong> All progress photos are stored locally on your device only</li>
-      <li><strong className="text-white">Premium Cloud Backup:</strong> If enabled, photos are encrypted and stored securely in the cloud</li>
+      <li><strong className="text-white">By default,</strong> all progress photos are stored locally on your device only</li>
+      <li><strong className="text-white">With Premium Cloud Backup,</strong> your photos are encrypted and stored securely in the cloud if you choose to enable it</li>
       <li>Photos are never shared with other users or third parties</li>
       <li>You can delete your photos at any time from the app</li>
       <li>Cloud-backed photos are permanently deleted within 30 days of account deletion</li>
@@ -846,9 +848,9 @@ const PrivacyPage = () => (
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">4. Data Sharing</h3>
     <p>We may share your information only in these limited circumstances:</p>
     <ul className="list-disc pl-6 space-y-2">
-      <li><strong className="text-white">Service Providers:</strong> Trusted third-party services that help us operate (e.g., cloud hosting, analytics). They are bound by confidentiality agreements.</li>
-      <li><strong className="text-white">Legal Requirements:</strong> When required by law, subpoena, or to protect our rights and user safety</li>
-      <li><strong className="text-white">Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets (you will be notified)</li>
+      <li><strong className="text-white">Service Providers</strong> that help us operate, such as cloud hosting and analytics partners. They are all bound by confidentiality agreements.</li>
+      <li><strong className="text-white">Legal requirements,</strong> when we are required by law, subpoena, or need to protect our rights and user safety</li>
+      <li><strong className="text-white">Business transfers</strong> in connection with a merger, acquisition, or sale of assets. You will always be notified</li>
     </ul></div>
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">5. Data Security</h3>
@@ -862,20 +864,20 @@ const PrivacyPage = () => (
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">6. Data Retention</h3>
     <ul className="list-disc pl-6 space-y-2">
-      <li>Account data: retained for the duration of your account plus 90 days after deletion</li>
-      <li>Fitness data: retained until you delete it or close your account</li>
-      <li>Analytics data: anonymized and retained for up to 24 months</li>
-      <li>Payment records: retained for 7 years for legal/tax compliance</li>
+      <li>Account data is kept for the duration of your account, plus 90 days after deletion</li>
+      <li>Fitness data stays until you delete it or close your account</li>
+      <li>Anonymized analytics are kept for up to 24 months</li>
+      <li>Payment records are kept for 7 years for legal and tax compliance</li>
     </ul></div>
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">7. Your Rights</h3>
     <p>Depending on your jurisdiction, you may have the right to:</p>
     <ul className="list-disc pl-6 space-y-2">
-      <li><strong className="text-white">Access:</strong> Request a copy of your personal data</li>
-      <li><strong className="text-white">Correction:</strong> Request correction of inaccurate data</li>
-      <li><strong className="text-white">Deletion:</strong> Request deletion of your data ("right to be forgotten")</li>
-      <li><strong className="text-white">Export:</strong> Export your fitness data in a standard format</li>
-      <li><strong className="text-white">Opt-out:</strong> Unsubscribe from marketing communications at any time</li>
+      <li><strong className="text-white">Access</strong> and request a copy of your personal data</li>
+      <li><strong className="text-white">Correct</strong> any inaccurate data we hold about you</li>
+      <li><strong className="text-white">Delete</strong> your data entirely (the "right to be forgotten")</li>
+      <li><strong className="text-white">Export</strong> your fitness data in a standard format</li>
+      <li><strong className="text-white">Opt out</strong> of marketing communications at any time</li>
     </ul>
     <p>To exercise these rights, contact us at <strong className="text-green-400">{CONTACT_EMAIL}</strong> or call <strong className="text-green-400">+1 (775) 770-0677</strong>.</p></div>
 
