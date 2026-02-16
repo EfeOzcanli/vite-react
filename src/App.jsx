@@ -4,7 +4,8 @@ import {
   Download, Mail, Smartphone, Zap, Shield, Globe, ArrowRight, Menu, X,
   CheckCircle2, MessageSquare, ShieldCheck, Scale, Activity, Star, Play,
   ChevronDown, Sparkles, Timer, Dumbbell, LineChart, Target, Camera,
-  TrendingUp, Award, Calendar, BarChart3, Image, Trophy, Flame
+  TrendingUp, Award, Calendar, BarChart3, Image, Trophy, Flame,
+  Phone, MapPin, Instagram, Linkedin, Users, Handshake, Eye, Heart
 } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useInView } from 'framer-motion';
 
@@ -284,16 +285,30 @@ const Footer = () => {
         </div>
         <div>
           <h4 className="text-white font-bold mb-6 text-sm">Platform</h4>
-          <ul className="space-y-3">{['Trackr App', 'Our Vision', 'Partner with us'].map((item, i) => <li key={i} onClick={() => navigate(['/trackr', '/vision', '/contact'][i])} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</li>)}</ul>
+          <ul className="space-y-3">{['Trackr App', 'Our Vision', 'Partner With Us'].map((item, i) => <li key={i} onClick={() => navigate(['/trackr', '/vision', '/contact'][i])} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</li>)}</ul>
         </div>
         <div>
           <h4 className="text-white font-bold mb-6 text-sm">Legal</h4>
           <ul className="space-y-3">{['Privacy Policy', 'Terms of Service'].map((item, i) => <li key={i} onClick={() => navigate(['/privacy', '/terms'][i])} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</li>)}</ul>
+          <h4 className="text-white font-bold mb-4 mt-8 text-sm">Contact</h4>
+          <ul className="space-y-2">
+            <li className="text-zinc-500 text-sm">+1 (775) 770-0677</li>
+            <li className="text-zinc-500 text-sm">{CONTACT_EMAIL}</li>
+          </ul>
         </div>
       </div>
       <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-zinc-600 text-sm">© 2026 EMKE Seismic Isolation LLC. All rights reserved.</p>
-        <div className="flex gap-6"><span className="text-zinc-600 hover:text-white cursor-pointer transition-colors">Twitter</span><span className="text-zinc-600 hover:text-white cursor-pointer transition-colors">Instagram</span></div>
+        <div className="flex gap-4">
+          {[
+            { label: 'Instagram', href: 'https://instagram.com/emke_ecosystem' },
+            { label: 'LinkedIn', href: 'https://linkedin.com/company/emke' },
+            { label: 'TikTok', href: 'https://tiktok.com/@emke_ecosystem' },
+            { label: 'Twitter', href: 'https://x.com/emke_ecosystem' },
+          ].map((s, i) => (
+            <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className="text-zinc-600 hover:text-green-400 cursor-pointer transition-colors text-sm">{s.label}</a>
+          ))}
+        </div>
       </div>
     </div>
   </footer>
@@ -628,13 +643,39 @@ const VisionPage = () => (
     <section className="pt-40 pb-32 px-6"><div className="max-w-4xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}><h1 className="text-6xl md:text-8xl font-black text-white tracking-tight mb-8"><AnimatedText text="Our Vision." delay={0.2} /></h1><div className="h-px w-32 bg-gradient-to-r from-green-500 to-transparent mb-16" /></motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="space-y-12 text-xl text-zinc-400 leading-relaxed">
-        <p>At <span className="text-white font-bold">emke</span>, technology is an <span className="text-green-400">invisible partner</span> in your growth.</p>
+        <p>At <span className="text-white font-bold">emke</span>, we believe technology should be an <span className="text-green-400">invisible partner</span> in your growth — never the distraction, always the foundation.</p>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-8">
-          {[{ title: 'Decade of Experience', desc: 'Athletes and engineers refining performance.' }, { title: 'Minimalist Philosophy', desc: "If it doesn't help, it doesn't belong." }].map((item, i) => (
-            <GlowingBorder key={i}><div className="p-10 rounded-[32px] bg-zinc-900/50 border border-white/5 h-full"><h4 className="text-white font-bold text-xl mb-4">{item.title}</h4><p className="text-zinc-500">{item.desc}</p></div></GlowingBorder>
+          {[
+            { title: 'Decade of Experience', desc: 'Built by athletes and engineers who understand what it takes to measure real progress.', icon: <Award size={24} className="text-green-400" /> },
+            { title: 'Minimalist Philosophy', desc: "If a feature doesn't directly help you improve, it doesn't belong in our apps.", icon: <Target size={24} className="text-green-400" /> },
+            { title: 'Privacy First', desc: 'Your data is yours. Photos stay on your device. We never sell your information.', icon: <Shield size={24} className="text-green-400" /> },
+            { title: 'Data Over Noise', desc: 'Clean, powerful analytics that tell you exactly where you stand and where you\'re going.', icon: <BarChart3 size={24} className="text-green-400" /> },
+          ].map((item, i) => (
+            <GlowingBorder key={i}><div className="p-10 rounded-[32px] bg-zinc-900/50 border border-white/5 h-full">
+              <div className="mb-4">{item.icon}</div>
+              <h4 className="text-white font-bold text-xl mb-4">{item.title}</h4>
+              <p className="text-zinc-500">{item.desc}</p>
+            </div></GlowingBorder>
           ))}
         </div>
-        <p>Building a <span className="text-white font-semibold">standard</span> for performance data. <span className="text-green-400">Clean, private, powerful.</span></p>
+
+        <div className="py-8">
+          <h3 className="text-3xl font-black text-white mb-6">The Problem We Solve</h3>
+          <p>Fitness apps today are bloated with social features, gamification gimmicks, and data you don't need. They're designed to keep you scrolling, not to keep you lifting. We took a different approach — <span className="text-green-400">strip everything down to what actually matters</span>: your weight, your photos, your exercises, your progress.</p>
+        </div>
+
+        <div className="py-8">
+          <h3 className="text-3xl font-black text-white mb-6">Where We're Going</h3>
+          <p>Trackr is just the beginning. We're building an ecosystem of minimalist performance tools — each one laser-focused on a single goal. No feature bloat. No unnecessary complexity. Just <span className="text-white font-semibold">clean, private, powerful</span> tools that help you become the best version of yourself.</p>
+        </div>
+
+        <GlowingBorder><div className="p-10 rounded-[32px] bg-zinc-900/50 border border-white/5 text-center">
+          <p className="text-2xl text-white font-bold mb-4">"Build tools that disappear into the background<br/>and let performance speak."</p>
+          <p className="text-zinc-500">— The EMKE Philosophy</p>
+        </div></GlowingBorder>
+
+        <p>Building a <span className="text-white font-semibold">new standard</span> for performance data. <span className="text-green-400">Clean. Private. Powerful.</span></p>
       </motion.div>
     </div></section>
   </div>
@@ -642,11 +683,20 @@ const VisionPage = () => (
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
   
-  const getMailtoLink = () => {
-    const subject = encodeURIComponent(`Contact from ${formData.name || 'Website Visitor'}`);
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-    return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/info@emke.app', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message }),
+      });
+      if (response.ok) { setSubmitted(true); setFormData({ name: '', email: '', message: '' }); }
+    } catch (err) {
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Contact from ${formData.name}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+    }
   };
 
   return (
@@ -654,23 +704,48 @@ const ContactPage = () => {
     <section className="pt-40 pb-32 px-6"><div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
       <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }}>
         <h1 className="text-6xl md:text-7xl font-black text-white tracking-tight mb-8 leading-[0.95]"><AnimatedText text="Let's build together." delay={0.2} /></h1>
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-xl text-zinc-400 mb-16">Have an app idea? We're always open to collaborations.</motion.p>
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-xl text-zinc-400 mb-12">Have an app idea? Want to partner with us? We're always open to collaborations.</motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="space-y-6">
-          <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Mail size={24} /></div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors">{CONTACT_EMAIL}</span></a>
-          <div className="flex items-center gap-5 text-white group cursor-pointer"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><MessageSquare size={24} /></div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors">@emke_ecosystem</span></div>
+          <a href="tel:+17757700677" className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Phone size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">+1 (775) 770-0677</span><span className="text-zinc-500 text-sm">Mon–Fri 9AM–6PM PST</span></div></a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Mail size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">{CONTACT_EMAIL}</span><span className="text-zinc-500 text-sm">We respond within 2 hours</span></div></a>
+          <div className="flex items-center gap-5 text-white group cursor-pointer"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><MapPin size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">Reno, Nevada</span><span className="text-zinc-500 text-sm">Serving users worldwide</span></div></div>
+        </motion.div>
+        
+        {/* Social Media */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="mt-12">
+          <h3 className="text-sm font-bold text-zinc-500 uppercase tracking-wider mb-4">Follow Us</h3>
+          <div className="flex gap-3">
+            {[
+              { icon: <Instagram size={20} />, label: 'Instagram', href: 'https://instagram.com/emke_ecosystem' },
+              { icon: <Linkedin size={20} />, label: 'LinkedIn', href: 'https://linkedin.com/company/emke' },
+              { icon: <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>, label: 'TikTok', href: 'https://tiktok.com/@emke_ecosystem' },
+              { icon: <MessageSquare size={20} />, label: 'Twitter/X', href: 'https://x.com/emke_ecosystem' },
+            ].map((social, i) => (
+              <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-green-400 hover:bg-green-500/10 hover:border-green-500/30 transition-all" title={social.label}>{social.icon}</a>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
       <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
         <GlowingBorder><div className="bg-zinc-900/50 backdrop-blur-xl p-10 md:p-14 rounded-[40px] border border-white/5">
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Name</label><input type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all" placeholder="John Doe" /></div>
-              <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Email</label><input type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all" placeholder="john@example.com" /></div>
+          {submitted ? (
+            <div className="text-center py-12">
+              <div className="w-20 h-20 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} className="text-green-400" /></div>
+              <h3 className="text-3xl font-black text-white mb-4">Message Sent!</h3>
+              <p className="text-zinc-400">Thank you! We'll get back to you within 2 hours.</p>
+              <button onClick={() => setSubmitted(false)} className="mt-8 px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-zinc-400 hover:text-white transition-colors">Send Another</button>
             </div>
-            <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Message</label><textarea rows={5} value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all resize-none" placeholder="Tell us about your project..." /></div>
-            <a href={getMailtoLink()} className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center">Send Message</a>
-            <p className="text-zinc-500 text-xs text-center">Opens your email app with the message ready to send</p>
-          </div>
+          ) : (
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Name</label><input type="text" name="name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all" placeholder="John Doe" required /></div>
+              <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Email</label><input type="email" name="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all" placeholder="john@example.com" required /></div>
+            </div>
+            <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Message</label><textarea rows={5} name="message" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all resize-none" placeholder="Tell us about your project or idea..." required /></div>
+            <button type="submit" className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center">Send Message — It's Free</button>
+            <p className="text-zinc-500 text-xs text-center">Your message goes directly to our team. We respond within 2 hours.</p>
+          </form>
+          )}
         </div></GlowingBorder>
       </motion.div>
     </div></section>
@@ -728,19 +803,184 @@ const LegalPage = ({ title, icon, children }) => (
 const PrivacyPage = () => (
   <LegalPage title="Privacy Policy" icon={<ShieldCheck size={36} />}>
     <p className="text-white font-semibold text-lg">EMKE Seismic Isolation LLC</p>
-    <p>This Privacy Policy explains how we collect, use, disclose, and protect your information.</p>
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">1. Information We Collect</h3><p>Name, email, fitness data. Photos stored locally on your device.</p></div>
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">2. How We Use Information</h3><p>To operate the Service and track your progress. <strong className="text-green-400">We do not sell your data.</strong></p></div>
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Contact</h3><p>📧 {CONTACT_EMAIL}</p></div>
+    <p>This Privacy Policy explains how EMKE Seismic Isolation LLC ("we", "us", "our") collects, uses, discloses, and protects your information when you use the Trackr mobile application and related services (the "Service"). By using the Service, you consent to the practices described in this policy.</p>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">1. Information We Collect</h3>
+    <h4 className="text-green-400 font-semibold">Personal Information You Provide</h4>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Account information: name, email address, and profile details</li>
+      <li>Fitness data: body weight entries, exercise logs, sets, reps, and personal records</li>
+      <li>Progress photos: stored locally on your device by default</li>
+      <li>Communication data: messages and feedback you send to us</li>
+      <li>Payment information: subscription details processed securely through Apple/Google</li>
+    </ul>
+    <h4 className="text-green-400 font-semibold mt-4">Information Collected Automatically</h4>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Device information: device model, operating system, unique device identifiers</li>
+      <li>Usage data: app features used, session duration, interaction patterns</li>
+      <li>Analytics data: crash reports, performance metrics (collected via anonymized analytics)</li>
+      <li>General location: country/region level only (we do not collect precise GPS location)</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">2. How We Use Your Information</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>To provide, maintain, and improve the Trackr app and its features</li>
+      <li>To track your fitness progress and generate your overall fitness score</li>
+      <li>To sync your data across devices (Premium users with cloud backup enabled)</li>
+      <li>To process subscriptions and manage your account</li>
+      <li>To communicate updates, new features, and support responses</li>
+      <li>To analyze usage patterns and improve app performance</li>
+      <li>To detect, prevent, and address technical issues or abuse</li>
+    </ul>
+    <GlowingBorder><div className="p-6 bg-zinc-900/50 rounded-3xl border border-white/5 mt-4"><p className="text-green-400 font-bold">We do not sell, rent, or trade your personal data to third parties. Ever.</p></div></GlowingBorder></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">3. Photo Storage & Privacy</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Default:</strong> All progress photos are stored locally on your device only</li>
+      <li><strong className="text-white">Premium Cloud Backup:</strong> If enabled, photos are encrypted and stored securely in the cloud</li>
+      <li>Photos are never shared with other users or third parties</li>
+      <li>You can delete your photos at any time from the app</li>
+      <li>Cloud-backed photos are permanently deleted within 30 days of account deletion</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">4. Data Sharing</h3>
+    <p>We may share your information only in these limited circumstances:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Service Providers:</strong> Trusted third-party services that help us operate (e.g., cloud hosting, analytics). They are bound by confidentiality agreements.</li>
+      <li><strong className="text-white">Legal Requirements:</strong> When required by law, subpoena, or to protect our rights and user safety</li>
+      <li><strong className="text-white">Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets (you will be notified)</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">5. Data Security</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>All data transmissions are encrypted using SSL/TLS protocols</li>
+      <li>Cloud-stored data is encrypted at rest using AES-256 encryption</li>
+      <li>Payment processing is handled securely by Apple App Store and Google Play Store</li>
+      <li>Regular security audits and vulnerability assessments</li>
+      <li>Access to user data is restricted to authorized personnel only</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">6. Data Retention</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Account data: retained for the duration of your account plus 90 days after deletion</li>
+      <li>Fitness data: retained until you delete it or close your account</li>
+      <li>Analytics data: anonymized and retained for up to 24 months</li>
+      <li>Payment records: retained for 7 years for legal/tax compliance</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">7. Your Rights</h3>
+    <p>Depending on your jurisdiction, you may have the right to:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Access:</strong> Request a copy of your personal data</li>
+      <li><strong className="text-white">Correction:</strong> Request correction of inaccurate data</li>
+      <li><strong className="text-white">Deletion:</strong> Request deletion of your data ("right to be forgotten")</li>
+      <li><strong className="text-white">Export:</strong> Export your fitness data in a standard format</li>
+      <li><strong className="text-white">Opt-out:</strong> Unsubscribe from marketing communications at any time</li>
+    </ul>
+    <p>To exercise these rights, contact us at <strong className="text-green-400">{CONTACT_EMAIL}</strong> or call <strong className="text-green-400">+1 (775) 770-0677</strong>.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">8. Children's Privacy</h3>
+    <p>Trackr is not intended for use by children under 13. We do not knowingly collect personal information from children. If we learn that we have collected data from a child under 13, we will promptly delete it.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">9. Third-Party Services</h3>
+    <p>Trackr may contain links to or integrations with third-party services (e.g., Apple Health, Google Fit). We are not responsible for the privacy practices of these external services. Please review their privacy policies.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">10. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time. We will notify you of material changes through the app or via email. Your continued use of Trackr after changes constitutes acceptance of the updated policy.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">11. Contact Us</h3>
+    <p>If you have questions about this Privacy Policy, contact us:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>📧 Email: {CONTACT_EMAIL}</li>
+      <li>📞 Phone: +1 (775) 770-0677</li>
+      <li>🌐 Website: emke.app</li>
+    </ul></div>
   </LegalPage>
 );
 
 const TermsPage = () => (
   <LegalPage title="Terms of Service" icon={<Scale size={36} />}>
     <p className="text-white font-semibold text-lg">EMKE Seismic Isolation LLC</p>
-    <p>By using the Service, you agree to these Terms.</p>
-    <GlowingBorder><div className="p-8 bg-zinc-900/50 rounded-3xl border border-white/5"><h3 className="text-green-400 text-lg font-bold mb-4">Health Disclaimer</h3><p className="text-zinc-300">Not a substitute for professional medical advice. Consult a healthcare professional before starting any exercise program.</p></div></GlowingBorder>
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Contact</h3><p>📧 {CONTACT_EMAIL}</p></div>
+    <p>Welcome to Trackr. These Terms of Service ("Terms") govern your access to and use of the Trackr mobile application and related services (the "Service") provided by EMKE Seismic Isolation LLC. By using the Service, you agree to be bound by these Terms.</p>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">1. Acceptance of Terms</h3>
+    <p>By downloading, installing, or using Trackr, you acknowledge that you have read, understood, and agree to these Terms. If you do not agree, you must not use the Service.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">2. Description of Service</h3>
+    <p>Trackr is a fitness tracking application that allows users to:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Record and track body weight with progress photos</li>
+      <li>Log exercises, sets, reps, and personal records</li>
+      <li>Monitor an overall fitness score based on consistency and progress</li>
+      <li>View analytics and trends over time</li>
+      <li>Access premium features through paid subscriptions</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">3. Account Registration</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>You must provide accurate and complete information when creating an account</li>
+      <li>You are responsible for maintaining the security of your account credentials</li>
+      <li>You must be at least 13 years of age to use the Service</li>
+      <li>One person may not maintain more than one account</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">4. Subscriptions & Payments</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Free features are available without a subscription</li>
+      <li>Premium features require a paid subscription (monthly or annual)</li>
+      <li>Subscriptions are billed through Apple App Store or Google Play Store</li>
+      <li>Subscriptions auto-renew unless cancelled at least 24 hours before the current period ends</li>
+      <li>You can manage subscriptions through your device's app store settings</li>
+      <li>Refunds are handled by Apple/Google per their respective refund policies</li>
+    </ul></div>
+
+    <GlowingBorder><div className="p-8 bg-zinc-900/50 rounded-3xl border border-white/5"><h3 className="text-green-400 text-lg font-bold mb-4">⚕️ Health Disclaimer</h3><p className="text-zinc-300">Trackr is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before starting any exercise program or making changes to your diet. The fitness scores, analytics, and recommendations provided are for informational purposes only and should not be relied upon as medical advice. If you experience any pain, discomfort, or health concerns during exercise, stop immediately and seek medical attention.</p></div></GlowingBorder>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">5. User Content</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>You retain ownership of all content you create (photos, data, logs)</li>
+      <li>You grant us a limited license to store and process your data to provide the Service</li>
+      <li>You are solely responsible for the content you upload</li>
+      <li>We reserve the right to remove content that violates these Terms</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">6. Prohibited Uses</h3>
+    <p>You agree not to:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Use the Service for any unlawful purpose</li>
+      <li>Attempt to reverse engineer, decompile, or hack the application</li>
+      <li>Upload malicious content or interfere with the Service's operation</li>
+      <li>Create accounts using false or misleading information</li>
+      <li>Share your account credentials with others</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">7. Intellectual Property</h3>
+    <p>All rights, title, and interest in the Trackr app, including its design, code, logos, and branding, are owned by EMKE Seismic Isolation LLC. You may not copy, modify, distribute, or create derivative works without our written consent.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">8. Limitation of Liability</h3>
+    <p>To the maximum extent permitted by law, EMKE Seismic Isolation LLC shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Service. Our total liability shall not exceed the amount you paid for the Service in the 12 months preceding the claim.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">9. Termination</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>You may delete your account at any time through the app settings</li>
+      <li>We may suspend or terminate your account for violation of these Terms</li>
+      <li>Upon termination, your right to use the Service ceases immediately</li>
+      <li>Data deletion follows our Privacy Policy retention schedule</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">10. Changes to Terms</h3>
+    <p>We reserve the right to modify these Terms at any time. Material changes will be communicated through the app or via email. Your continued use of the Service after changes constitutes acceptance.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">11. Governing Law</h3>
+    <p>These Terms are governed by and construed in accordance with the laws of the State of Nevada, United States. Any disputes will be resolved through binding arbitration in Reno, Nevada.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">12. Contact</h3>
+    <p>Questions about these Terms? Contact us:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>📧 Email: {CONTACT_EMAIL}</li>
+      <li>📞 Phone: +1 (775) 770-0677</li>
+      <li>🌐 Website: emke.app</li>
+    </ul></div>
   </LegalPage>
 );
 
