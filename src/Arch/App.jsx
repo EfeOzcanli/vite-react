@@ -5,7 +5,7 @@ import {
   CheckCircle2, MessageSquare, ShieldCheck, Scale, Activity, Star, Play,
   ChevronDown, Sparkles, Timer, Dumbbell, LineChart, Target, Camera,
   TrendingUp, Award, Calendar, BarChart3, Image, Trophy, Flame,
-  Phone, MapPin, Instagram, Linkedin, Users, Handshake, Eye, Heart, HelpCircle
+  Phone, MapPin, Instagram, Linkedin, Users, Handshake, Eye, Heart
 } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useInView } from 'framer-motion';
 
@@ -289,7 +289,7 @@ const Footer = () => {
         </div>
         <div>
           <h4 className="text-white font-bold mb-6 text-sm">Legal</h4>
-          <ul className="space-y-3">{['Privacy Policy', 'Terms of Service', 'Support'].map((item, i) => <li key={i} onClick={() => navigate(['/privacy', '/terms', '/support'][i])} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</li>)}</ul>
+          <ul className="space-y-3">{['Privacy Policy', 'Terms of Service'].map((item, i) => <li key={i} onClick={() => navigate(['/privacy', '/terms'][i])} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</li>)}</ul>
           <h4 className="text-white font-bold mb-4 mt-8 text-sm">Contact</h4>
           <ul className="space-y-2">
             <li className="text-zinc-500 text-sm">+1 (775) 770-0677</li>
@@ -986,105 +986,6 @@ const TermsPage = () => (
   </LegalPage>
 );
 
-const FAQItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="border border-white/10 rounded-2xl overflow-hidden">
-      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors">
-        <span className="text-white font-semibold pr-4">{question}</span>
-        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
-          <ChevronDown size={20} className="text-green-400 shrink-0" />
-        </motion.div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}>
-            <div className="px-5 pb-5 text-zinc-400 leading-relaxed">{answer}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-const SUPPORT_EMAIL = "support@emke.app";
-
-const SupportPage = () => {
-  const navigate = useNavigate();
-  return (
-  <div className="relative min-h-screen"><GridPattern />
-    <section className="pt-40 pb-32 px-6"><div className="max-w-4xl mx-auto">
-      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
-        <div className="flex items-center gap-4 mb-6"><div className="text-green-500"><HelpCircle size={36} /></div><h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">Support</h1></div>
-        <p className="text-zinc-400 text-lg mb-6">Trackr v1.0</p>
-      </motion.div>
-
-      {/* Contact info at top - Apple requirement */}
-      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-        <GlowingBorder><div className="p-8 bg-zinc-900/50 rounded-3xl border border-white/5 mb-12">
-          <h2 className="text-white text-xl font-bold mb-4">Need help? Reach out to us directly.</h2>
-          <a href={`mailto:${SUPPORT_EMAIL}`} className="inline-flex items-center gap-3 text-green-400 text-lg font-semibold hover:underline mb-3"><Mail size={20} />{SUPPORT_EMAIL}</a>
-          <p className="text-zinc-500">We typically respond within 24-48 hours.</p>
-        </div></GlowingBorder>
-      </motion.div>
-
-      {/* FAQ Section */}
-      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="space-y-12">
-
-        <div>
-          <h3 className="text-white text-lg font-bold mb-4">Getting Started</h3>
-          <div className="space-y-3">
-            <FAQItem question="How do I track my weight?" answer="Tap the '+' button on the home screen, enter your weight, and optionally add a photo. Your entry will appear on your timeline and charts immediately." />
-            <FAQItem question="How do I take progress photos?" answer="When adding a new entry, tap the camera icon to take a photo or choose one from your gallery. You can compare your photos side by side in the Timeline tab." />
-            <FAQItem question="How do I change the language?" answer="Go to Profile, then Language, and select your preferred language. Trackr is available in English, Spanish, Turkish, German, and French." />
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-white text-lg font-bold mb-4">Trackr Pro</h3>
-          <div className="space-y-3">
-            <FAQItem question="What is included in Trackr Pro?" answer="Trackr Pro includes unlimited progress photo storage, cloud backup with multi-device sync, advanced body measurement tracking, detailed analytics, and priority support." />
-            <FAQItem question="How do I cancel my subscription?" answer="Open Settings on your device, tap your name, then Subscriptions, then Trackr, then Cancel Subscription. You'll keep Pro access until the end of your billing period." />
-            <FAQItem question="Can I restore my purchases on a new device?" answer="Yes. Sign in with the same account you used to subscribe and your Pro status will be restored automatically. If it doesn't restore right away, go to Profile, then tap Restore Purchases." />
-            <FAQItem question="How does cloud backup work?" answer="Pro users can enable cloud backup in Profile, then Cloud Backup. Your data syncs automatically across all devices signed into the same account." />
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-white text-lg font-bold mb-4">Privacy & Account</h3>
-          <div className="space-y-3">
-            <FAQItem question="Is my data private?" answer="Yes. We never sell or share your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted with bank-level security." />
-            <FAQItem question="How do I delete my account?" answer="Go to Profile, then Delete Account. This permanently removes all your data from our servers. This action cannot be undone." />
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-white text-lg font-bold mb-4">Troubleshooting</h3>
-          <div className="space-y-3">
-            <FAQItem question="The app is not working properly. What should I do?" answer={<span>Try closing and reopening the app. If the issue persists, make sure you have the latest version installed. If you still need help, email us at <a href={`mailto:${SUPPORT_EMAIL}`} className="text-green-400 hover:underline">{SUPPORT_EMAIL}</a> with a description of the problem.</span>} />
-          </div>
-        </div>
-
-        {/* Bottom contact */}
-        <div className="pt-8 border-t border-white/10">
-          <h3 className="text-white text-lg font-bold mb-4">Still need help?</h3>
-          <p className="text-zinc-400 mb-4">If you couldn't find what you're looking for, we're happy to help.</p>
-          <div className="space-y-3">
-            <a href={`mailto:${SUPPORT_EMAIL}`} className="flex items-center gap-3 text-zinc-300 hover:text-green-400 transition-colors"><Mail size={18} />{SUPPORT_EMAIL}</a>
-            <a href="tel:+17757700677" className="flex items-center gap-3 text-zinc-300 hover:text-green-400 transition-colors"><Phone size={18} />+1 (775) 770-0677</a>
-          </div>
-          <p className="text-zinc-500 text-sm mt-4">We typically respond within 24-48 hours.</p>
-          <div className="flex gap-4 mt-8">
-            <span onClick={() => navigate('/privacy')} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors text-sm">Privacy Policy</span>
-            <span onClick={() => navigate('/terms')} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors text-sm">Terms of Service</span>
-          </div>
-        </div>
-      </motion.div>
-    </div></section>
-  </div>
-  );
-};
-
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [pathname]);
@@ -1109,7 +1010,6 @@ export default function EmkeWebsite() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
-              <Route path="/support" element={<SupportPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
           </motion.div>
