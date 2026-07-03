@@ -5,7 +5,7 @@ import {
   CheckCircle2, MessageSquare, ShieldCheck, Scale, Activity, Star, Play,
   ChevronDown, Sparkles, Timer, Dumbbell, LineChart, Target, Camera,
   TrendingUp, Award, Calendar, BarChart3, Image, Trophy, Flame,
-  Phone, MapPin, Instagram, Linkedin, Users, Handshake, Eye, Heart, HelpCircle
+  Phone, MapPin, Instagram, Linkedin, Users, Eye, Heart, HelpCircle
 } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useInView } from 'framer-motion';
 

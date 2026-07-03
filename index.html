@@ -6,9 +6,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EMKE - Track Your Evolution</title>
     <meta name="description" content="Trackr - The ultimate fitness tracking app. Record your weight with photos, track progress in every exercise, and discover your overall fitness score." />
+
+    <!-- Google Consent Mode v2: default denied in EEA + UK + CH, granted elsewhere -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500,
+        'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+      });
+      gtag('consent', 'default', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted'
+      });
+      // Restore a previous choice before GA loads
+      (function () {
+        var saved = localStorage.getItem('cookie_consent');
+        if (saved === 'accepted') {
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+          });
+        } else if (saved === 'denied') {
+          gtag('consent', 'update', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
+      })();
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SSSWVH6DVQ"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-SSSWVH6DVQ');
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Cookie consent banner (outside the React tree) -->
+    <style>
+      #cookie-banner {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 2147483647;
+        max-width: 460px;
+        margin: 0 auto;
+        padding: 18px 20px;
+        background: rgba(24, 24, 27, 0.97);
+        border: 1px solid rgba(63, 63, 70, 0.8);
+        border-radius: 14px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #d4d4d8;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      #cookie-banner p { margin: 0 0 12px; }
+      #cookie-banner a { color: #4ade80; text-decoration: underline; }
+      #cookie-banner .cb-actions { display: flex; gap: 10px; }
+      #cookie-banner button {
+        flex: 1;
+        padding: 9px 16px;
+        border-radius: 9px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: opacity 0.15s ease, transform 0.15s ease;
+        font-family: inherit;
+      }
+      #cookie-banner button:hover { opacity: 0.85; }
+      #cookie-banner button:active { transform: scale(0.98); }
+      #cookie-banner button:focus-visible { outline: 2px solid #4ade80; outline-offset: 2px; }
+      #cb-accept { background: #22c55e; color: #09090b; }
+      #cb-decline { background: transparent; color: #a1a1aa; border-color: rgba(63, 63, 70, 0.8) !important; }
+      @media (min-width: 640px) {
+        #cookie-banner { left: auto; right: 24px; bottom: 24px; margin: 0; }
+      }
+    </style>
+    <script>
+      (function () {
+        if (localStorage.getItem('cookie_consent')) return;
+
+        var banner = document.createElement('div');
+        banner.id = 'cookie-banner';
+        banner.setAttribute('role', 'dialog');
+        banner.setAttribute('aria-label', 'Cookie consent');
+        banner.innerHTML =
+          '<p>We use cookies for analytics to improve emke.app. See our <a href="/privacy">privacy policy</a>.</p>' +
+          '<div class="cb-actions">' +
+          '<button id="cb-decline" type="button">Decline</button>' +
+          '<button id="cb-accept" type="button">Accept</button>' +
+          '</div>';
+        document.body.appendChild(banner);
+
+        function choose(value, state) {
+          localStorage.setItem('cookie_consent', value);
+          gtag('consent', 'update', {
+            'analytics_storage': state,
+            'ad_storage': state,
+            'ad_user_data': state,
+            'ad_personalization': state
+          });
+          banner.remove();
+        }
+
+        document.getElementById('cb-accept').addEventListener('click', function () {
+          choose('accepted', 'granted');
+        });
+        document.getElementById('cb-decline').addEventListener('click', function () {
+          choose('denied', 'denied');
+        });
+      })();
+    </script>
   </body>
 </html>
