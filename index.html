@@ -4,8 +4,39 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/trackr-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EMKE - Track Your Evolution</title>
-    <meta name="description" content="Trackr - The ultimate fitness tracking app. Record your weight with photos, track progress in every exercise, and discover your overall fitness score." />
+    <title>EMKE — Track Your Evolution | Apps by EMKE, home of Trackr</title>
+    <meta name="description" content="EMKE builds apps for personal progress. Trackr, our first app, records weight with photos, tracks every exercise, and gives you an overall fitness score." />
+    <link rel="canonical" href="https://www.emke.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="EMKE — Track Your Evolution" />
+    <meta property="og:description" content="EMKE builds apps for personal progress. Trackr, our first app, records weight with photos, tracks every exercise, and gives you an overall fitness score." />
+    <meta property="og:image" content="https://www.emke.app/trackr-logo.png" />
+    <meta property="og:url" content="https://www.emke.app/" />
+    <meta property="og:site_name" content="EMKE" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="EMKE — Track Your Evolution" />
+    <meta name="twitter:description" content="EMKE builds apps for personal progress. Trackr, our first app, records weight with photos, tracks every exercise, and gives you an overall fitness score." />
+    <meta name="twitter:image" content="https://www.emke.app/trackr-logo.png" />
+
+    <!-- Keep canonical + og:url in sync with the current route (SPA) -->
+    <script>
+      (function () {
+        function syncCanonical() {
+          var path = location.pathname === '/' ? '/' : location.pathname.replace(/\/$/, '');
+          var url = 'https://www.emke.app' + path;
+          var link = document.querySelector('link[rel="canonical"]');
+          if (link) link.setAttribute('href', url);
+          var og = document.querySelector('meta[property="og:url"]');
+          if (og) og.setAttribute('content', url);
+        }
+        document.addEventListener('DOMContentLoaded', syncCanonical);
+        var push = history.pushState;
+        history.pushState = function () { push.apply(this, arguments); syncCanonical(); };
+        window.addEventListener('popstate', syncCanonical);
+      })();
+    </script>
 
     <!-- Google Consent Mode v2: default denied in EEA + UK + CH, granted elsewhere -->
     <script>
