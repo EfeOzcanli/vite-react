@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate, useLocation, useParams } from 'react-router-dom';
 import { 
   Download, Mail, Smartphone, Zap, Shield, Globe, ArrowRight, Menu, X,
   CheckCircle2, MessageSquare, ShieldCheck, Scale, Activity, Star, Play,
@@ -8,6 +8,7 @@ import {
   Phone, MapPin, Instagram, Linkedin, Users, Eye, Heart, HelpCircle
 } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useInView } from 'framer-motion';
+import { posts } from './blog/posts.jsx';
 
 const CONTACT_EMAIL = "info@emke.app";
 const EFFECTIVE_DATE = "01/30/2026";
@@ -230,7 +231,7 @@ const Navbar = () => {
   const location = useLocation();
   const activePage = location.pathname === '/' ? 'home' : location.pathname.slice(1);
   useEffect(() => scrollY.onChange(latest => setScrolled(latest > 50)), [scrollY]);
-  const navLinks = [{ name: 'Apps', id: 'apps', path: '/apps' }, { name: 'Vision', id: 'vision', path: '/vision' }, { name: 'Trackr', id: 'trackr', path: '/trackr' }];
+  const navLinks = [{ name: 'Apps', id: 'apps', path: '/apps' }, { name: 'Vision', id: 'vision', path: '/vision' }, { name: 'Trackr', id: 'trackr', path: '/trackr' }, ...(posts.length ? [{ name: 'Blog', id: 'blog', path: '/blog' }] : [])];
 
   return (
     <>
@@ -275,7 +276,7 @@ const Footer = () => {
     <div className="max-w-7xl mx-auto relative z-10">
       <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-24">
         <h2 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">Ready to evolve<span className="text-green-500">?</span></h2>
-        <p className="text-xl text-zinc-500 mb-10 max-w-xl mx-auto">Join thousands who track their progress with precision.</p>
+        <p className="text-xl text-zinc-500 mb-10 max-w-xl mx-auto">Start tracking your progress with precision.</p>
         <MagneticButton onClick={() => navigate('/trackr')} className="px-10 py-5 bg-green-500 text-black font-bold rounded-full text-lg hover:bg-green-400 transition-colors inline-flex items-center gap-3">Get Started <ArrowRight size={20} /></MagneticButton>
       </motion.div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -487,9 +488,9 @@ const HomePage = () => {
       <section className="py-24 px-6 border-y border-white/5 bg-zinc-950/50">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[{ value: 50000, suffix: '+', label: 'Active Users' }, { value: 2, suffix: 'M+', label: 'Photos Tracked' }, { value: 500, suffix: 'K+', label: 'PRs Recorded' }, { value: 4.9, suffix: '', label: 'App Store Rating', prefix: '★ ' }].map((stat, i) => (
+            {[{ value: '★ 5.0', label: 'App Store Rating' }, { value: 'Photos', label: 'Weight logged with pictures' }, { value: 'Every set', label: 'Workout tracking built in' }, { value: '1 Score', label: 'Your overall fitness, one number' }].map((stat, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
-                <div className="text-4xl md:text-6xl font-black text-white mb-2"><NumberCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} /></div>
+                <div className="text-4xl md:text-6xl font-black text-white mb-2">{stat.value}</div>
                 <div className="text-zinc-500 font-medium">{stat.label}</div>
               </motion.div>
             ))}
@@ -1085,6 +1086,52 @@ const SupportPage = () => {
   );
 };
 
+const BlogPage = () => (
+  <div className="relative min-h-screen"><GridPattern />
+    <section className="pt-40 pb-32 px-6"><div className="max-w-4xl mx-auto">
+      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="mb-16">
+        <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-4">Blog<span className="text-green-500">.</span></h1>
+        <p className="text-xl text-zinc-500">Notes on tracking progress, training smarter, and building better habits.</p>
+      </motion.div>
+      {posts.length === 0 ? (
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-zinc-500">New articles are on the way. In the meantime, take a look at <Link to="/trackr" className="text-green-400 hover:underline">Trackr</Link>.</motion.p>
+      ) : (
+        <div className="space-y-6">
+          {posts.map((post, i) => (
+            <motion.div key={post.slug} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
+              <Link to={`/blog/${post.slug}`} className="block bg-zinc-900/60 hover:bg-zinc-900 rounded-3xl border border-white/10 hover:border-green-500/40 p-8 transition-colors">
+                <div className="text-xs font-semibold text-zinc-500 mb-3">{post.date} · {post.readingMinutes} min read</div>
+                <h2 className="text-2xl font-bold text-white mb-2">{post.title}</h2>
+                <p className="text-zinc-400 leading-relaxed">{post.description}</p>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      )}
+    </div></section>
+  </div>
+);
+
+const BlogPostPage = () => {
+  const { slug } = useParams();
+  const post = posts.find(p => p.slug === slug);
+  if (!post) return <BlogPage />;
+  return (
+    <div className="relative min-h-screen"><GridPattern />
+      <section className="pt-40 pb-32 px-6"><article className="max-w-3xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
+          <Link to="/blog" className="text-sm font-semibold text-green-400 hover:underline">← All posts</Link>
+          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mt-6 mb-4">{post.title}</h1>
+          <div className="text-sm text-zinc-500">{post.date} · {post.readingMinutes} min read</div>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="space-y-6 text-zinc-400 leading-relaxed [&_h2]:text-white [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h3]:text-white [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-8 [&_a]:text-green-400 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6">
+          {post.body}
+        </motion.div>
+      </article></section>
+    </div>
+  );
+};
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [pathname]);
@@ -1110,6 +1157,8 @@ export default function EmkeWebsite() {
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/support" element={<SupportPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
           </motion.div>

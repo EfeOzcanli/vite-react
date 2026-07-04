@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 
 const root = dirname(fileURLToPath(import.meta.url))
 const template = readFileSync(join(root, 'dist/index.html'), 'utf-8')
-const { render } = await import('./dist-ssr/entry-server.js')
+const { render, posts } = await import('./dist-ssr/entry-server.js')
 
 const BASE_TITLE = 'EMKE — Track Your Evolution | Apps by EMKE, home of Trackr'
 const BASE_DESC =
@@ -49,6 +49,18 @@ const routes = [
     title: 'Terms of Service — EMKE',
     desc: 'The terms of service for using Trackr and other EMKE apps.',
   },
+  {
+    path: '/blog',
+    title: 'Blog — EMKE',
+    desc: 'Notes on tracking progress, training smarter, and building better habits — from the team behind Trackr.',
+    noindex: posts.length === 0,
+  },
+  ...posts.map((p) => ({
+    path: `/blog/${p.slug}`,
+    title: `${p.title} — EMKE Blog`,
+    desc: p.description,
+    lastmod: p.date,
+  })),
 ]
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
@@ -59,6 +71,7 @@ for (const route of routes) {
 
   let html = template
     .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
+    .replace('</title>', route.noindex ? '</title>\n    <meta name="robots" content="noindex" />' : '</title>')
     .replace(`<title>${BASE_TITLE}</title>`, `<title>${esc(route.title).replace(/&quot;/g, '"')}</title>`)
     .replace(`<link rel="canonical" href="https://www.emke.app/" />`, `<link rel="canonical" href="${url}" />`)
     .replace(`<meta property="og:url" content="https://www.emke.app/" />`, `<meta property="og:url" content="${url}" />`)
@@ -71,6 +84,21 @@ for (const route of routes) {
   writeFileSync(join(outDir, 'index.html'), html)
   console.log(`prerendered ${route.path} -> ${join(outDir, 'index.html').replace(root + '/', '')}`)
 }
+
+// Regenerate sitemap.xml from the same route list (noindex routes excluded).
+const today = new Date().toISOString().slice(0, 10)
+const sitemapEntries = routes
+  .filter((r) => !r.noindex)
+  .map((r) => {
+    const url = 'https://www.emke.app' + (r.path === '/' ? '/' : r.path)
+    return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${r.lastmod || today}</lastmod>\n  </url>`
+  })
+  .join('\n')
+writeFileSync(
+  join(root, 'dist/sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`
+)
+console.log('sitemap.xml written:', routes.filter((r) => !r.noindex).length, 'URLs')
 
 rmSync(join(root, 'dist-ssr'), { recursive: true, force: true })
 console.log('prerender complete:', routes.length, 'routes')

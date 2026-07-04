@@ -3,6 +3,8 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
 import App from './App.jsx'
 
+export { posts } from './blog/posts.jsx'
+
 export function render(url) {
   return renderToString(
     <React.StrictMode>
