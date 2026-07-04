@@ -8,6 +8,13 @@
     }
   ],
   "rewrites": [
+    { "source": "/apps", "destination": "/apps/index.html" },
+    { "source": "/trackr", "destination": "/trackr/index.html" },
+    { "source": "/vision", "destination": "/vision/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/support", "destination": "/support/index.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/terms", "destination": "/terms/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
