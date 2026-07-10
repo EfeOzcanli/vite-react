@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // Blog registry — the single source of truth for the EMKE blog.
 //
@@ -278,6 +279,372 @@ export const posts = [
           will, at some point in the next few months, be the thing that keeps you going —
           or the thing that tells you, clearly and without drama, that it's time to adjust.
           Either way, you'll know. Which is the whole point of tracking anything.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: 'how-to-build-a-tracking-habit',
+    title: 'How to Build a Tracking Habit That Sticks',
+    description:
+      'Most tracking habits die in week two. Here is a practical way to build one that lasts, starting with one metric and entries that take under 30 seconds.',
+    date: '2026-07-10',
+    readingMinutes: 6,
+    body: (
+      <>
+        <p>
+          Everyone starts tracking the same way. You download a new app in a burst of
+          motivation and log five metrics before breakfast on day one.
+        </p>
+        <p>
+          By week two the entries thin out. By week four the habit is gone, and the data you
+          did collect tells you nothing, because four weeks of patchy logging is not enough
+          to show a trend.
+        </p>
+        <p>
+          The problem is almost never discipline. It is design. Most people build a tracking
+          routine that only works on their most motivated days, then blame themselves when
+          an ordinary Tuesday kills it. This guide is about building the opposite: a routine
+          so small and so anchored to your existing day that quitting takes more effort than
+          continuing.
+        </p>
+
+        <h2>Why tracking habits fail</h2>
+        <p>
+          Several separate habits usually get bundled into one. Measuring is one action and
+          logging is another, and reviewing your results is a third with a completely
+          different cost. When you try to do all of them daily, the heaviest one drags the
+          rest down.
+        </p>
+        <p>
+          There is also the perfectionism trap. Miss one day and the streak is broken. The
+          chart has a gap. For a lot of people that gap feels like failure, so they stop
+          looking at the chart, and then they stop logging at all.
+        </p>
+        <p>
+          The fix for both is the same: shrink the habit until it survives your worst day,
+          not just your best one.
+        </p>
+
+        <h2>Step 1: Track one thing, not five</h2>
+        <p>
+          Pick the single number that matters most for your current goal. Cutting weight?
+          Track bodyweight. Building strength? Track your main lift. That is it for the
+          first month.
+        </p>
+        <p>
+          This feels too easy, which is exactly the point. A habit forms through repetition,
+          and repetition only happens when the action is light enough to repeat on a
+          stressful day, or on a morning when you would rather not know the number.
+        </p>
+        <p>
+          Once the first metric is automatic, adding a second costs almost nothing. Adding
+          five on day one costs you the whole habit.
+        </p>
+
+        <h2>Step 2: Anchor it to something you already do</h2>
+        <p>
+          A tracking habit that floats freely in your day will lose to whatever else is
+          happening. A habit attached to an existing routine does not need to be remembered
+          at all.
+        </p>
+        <p>
+          The classic anchor for bodyweight is the morning bathroom visit: wake up, use the
+          toilet, step on the scale, log it. Same time, same conditions, so the data stays
+          comparable. For workout tracking, the anchor is the workout itself. You log the
+          set during the rest period, not "later tonight," because later tonight does not
+          exist.
+        </p>
+        <p>
+          Write the anchor down as a sentence: "After I brush my teeth, I weigh in and log
+          it." If you cannot phrase it that way, you do not have an anchor yet. You have an
+          intention.
+        </p>
+
+        <h2>Step 3: Get each entry under 30 seconds</h2>
+        <p>
+          Time yourself once. Open the app or the notebook and enter the number. If that
+          takes more than 30 seconds, the habit has a leak, and leaks compound daily.
+        </p>
+        <p>
+          Common leaks are easy to find. Maybe your log asks for ten fields when you only
+          care about one. Maybe your spreadsheet needs a laptop, so gym-day numbers sit in
+          your head until they evaporate.
+        </p>
+        <p>
+          Cut every field that is not your one metric. If your tool will not let you, change
+          tools. This sounds drastic, but a tracking system you avoid opening is worth
+          exactly nothing.
+        </p>
+
+        <h2>Step 4: Let the tool do the remembering</h2>
+        <p>
+          Here is the failure mode nobody warns you about: you stay consistent for months,
+          and the record still ends up useless because the pieces do not connect. You scroll
+          through old progress photos wondering what you weighed in each one. The answer is
+          in a different app, on a different timeline, and matching them up by date is
+          miserable.
+        </p>
+        <p>
+          So pick tools that connect the dots for you. This is the exact problem Trackr was
+          built around: every progress photo you take gets tagged with your current weight
+          automatically, so the before-and-after record builds itself while you just show
+          up.
+        </p>
+        <p>
+          Whatever tool you use, the principle holds. Anything the system can remember for
+          you, it should. Your job is the 30-second entry. The tool's job is everything
+          after.
+        </p>
+
+        <h2>Step 5: Review weekly, not daily</h2>
+        <p>
+          Daily numbers are noisy. Bodyweight swings a kilo or more with water and food
+          timing, and staring at that noise every morning is how people convince themselves
+          nothing is working.
+        </p>
+        <p>
+          Log daily, judge weekly. Pick one day, Sunday works, and look at the seven-day
+          picture instead of any single reading. Weekly averages smooth out the noise and
+          show the actual direction. This one change protects more tracking habits than any
+          motivational trick, because it separates the act of logging from the emotion of
+          the result.
+        </p>
+
+        <h2>What to do when you break the streak</h2>
+        <p>
+          You will miss a day. The habit does not die when you miss one. It dies when
+          missing one turns into missing a week, because the gap starts to feel like a
+          verdict.
+        </p>
+        <p>
+          Use the two-day rule: never miss twice in a row. One missed day is a data point.
+          Two is the start of a new habit, the habit of not tracking.
+        </p>
+        <p>
+          And when you come back, do not backfill. Do not estimate what you weighed on the
+          days you missed. Just log today. A record with honest gaps beats a record padded
+          with guesses, and the fastest way back into rhythm is the next real entry, not an
+          accounting exercise about the ones you skipped.
+        </p>
+
+        <h2>The 30-day version of this plan</h2>
+        <p>Put simply, here is the whole system:</p>
+        <ul>
+          <li>
+            <strong>Week 1:</strong> one metric tied to one anchor, with entries under 30
+            seconds.
+          </li>
+          <li>
+            <strong>Week 2:</strong> same, plus set your weekly review day.
+          </li>
+          <li>
+            <strong>Week 3:</strong> expect a missed day. Apply the two-day rule and move
+            on.
+          </li>
+          <li>
+            <strong>Week 4:</strong> review the month. If the habit held, add a second
+            metric. If it wobbled, shrink it again instead of pushing harder.
+          </li>
+        </ul>
+        <p>
+          Thirty days of one boring number beats ninety days of ambitious plans you
+          abandoned. The boring number compounds.
+        </p>
+
+        <h2>FAQ</h2>
+        <h3>How long does it take to build a tracking habit?</h3>
+        <p>
+          Research on habit formation puts the range anywhere from three weeks to several
+          months, and the honest answer is that it depends on how small the habit is. A
+          20-second weigh-in anchored to your morning routine can feel automatic within a
+          month. A 10-minute logging session rarely becomes automatic at all.
+        </p>
+        <h3>Should I track every day or is a few times a week enough?</h3>
+        <p>
+          For bodyweight, daily entries reviewed weekly give you the cleanest trend, because
+          averages need data points. For workouts, track every session you do, whether that
+          is twice a week or five times. The rule is to match tracking frequency to the
+          thing itself, then judge the results on a weekly rhythm either way.
+        </p>
+        <h3>What should I do after missing a whole week?</h3>
+        <p>
+          Log today and say nothing to yourself about the gap. Do not backfill, and do not
+          add extra metrics to compensate. If a whole week slipped, the habit was probably
+          too big, so shrink it: fewer fields and a stronger anchor.
+        </p>
+        <p>
+          If you want a tracker that handles the remembering for you, with progress photos
+          that tag themselves with your weight,{' '}
+          <Link to="/trackr">Trackr</Link> is on the App Store and Google Play. Start with
+          one metric. The rest can wait.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: 'trackr-vs-spreadsheet-daily-tracking',
+    title: 'Trackr vs. Spreadsheet: Which Is Better for Daily Tracking?',
+    description:
+      'An honest comparison of Trackr and spreadsheets for daily fitness tracking. The spreadsheet is genuinely better at some things. Here is where each one wins.',
+    date: '2026-07-10',
+    readingMinutes: 5,
+    body: (
+      <>
+        <p>
+          We build Trackr, so you would expect this comparison to end with "download the
+          app." It mostly does, but not entirely, because spreadsheets are genuinely good at
+          things no fitness app will ever match. If you have been tracking your weight or
+          your lifts in Google Sheets for two years and it works, some of what follows will
+          confirm you were right.
+        </p>
+        <p>
+          The real question is narrower than "which tool is better." It is: which tool
+          survives daily use, at the gym or half-asleep on the scale, on a day when
+          motivation is gone? That is where the two options separate.
+        </p>
+
+        <h2>The short answer</h2>
+        <p>
+          A spreadsheet wins on flexibility and control. Trackr wins on friction, and
+          friction is what decides whether you are still tracking in month three. If you
+          love building systems and actually maintain them, keep the sheet. If your last
+          three spreadsheets died quietly by week four, the app is the better bet.
+        </p>
+        <p>Here are the honest details.</p>
+
+        <h2>What a spreadsheet genuinely does better</h2>
+        <h3>Total flexibility</h3>
+        <p>
+          A spreadsheet tracks anything. Weight next to sleep hours next to your grocery
+          budget, in whatever layout you invent. No app matches that, Trackr included.
+          Trackr is built for fitness, meaning your bodyweight and photos plus your
+          performance on specific lifts. If your tracking system spans your whole life, a
+          sheet is the right container for the rest of it.
+        </p>
+        <h3>Custom analysis</h3>
+        <p>
+          Formulas are a superpower. Want a 7-day rolling average with a custom smoothing
+          window, or a chart comparing your cut this year against last year? A spreadsheet
+          does it exactly your way. Apps give you the views their designers chose. For most
+          people those views are enough, but "most people" is not everyone.
+        </p>
+        <h3>A file you own forever</h3>
+        <p>
+          A spreadsheet is a file. You can back it up anywhere and open it in twenty years.
+          That kind of portability is a real argument, and pretending otherwise would be
+          dishonest. It is worth saying that Trackr keeps your data private and on your
+          device rather than mining it, with cloud backup as a premium option, but a plain
+          file you control is still the simplest form of ownership there is.
+        </p>
+
+        <h2>Where spreadsheets fall apart for daily tracking</h2>
+        <h3>Friction at the moment of entry</h3>
+        <p>
+          The whole game of daily tracking is the ten seconds after you step off the scale
+          or finish a set. A spreadsheet on your phone means finding the file, waiting for
+          it to load, pinching to zoom into the right cell, and fat-fingering the wrong row.
+          Every one of those steps is a chance to say "I'll do it later." Later is where
+          tracking habits go to die.
+        </p>
+        <h3>Photos do not fit in cells</h3>
+        <p>
+          Progress photos are the most convincing record of a body transformation, and
+          spreadsheets have no good place for them. So photos end up in your camera roll
+          while numbers live in the sheet, and six months later you are scrolling through
+          hundreds of pictures trying to remember what you weighed in each one. Trackr
+          closes that gap automatically: every progress photo is tagged with your current
+          weight, so the before-and-after pairs build themselves.
+        </p>
+        <h3>No feedback loop</h3>
+        <p>
+          A sheet records. It does not respond. There is no streak telling you that you have
+          logged twelve weeks straight, and nothing flags a personal record when your bench
+          press finally moves. You can build some of that with formulas, and a few people
+          do. Most never will, and the motivational loop is a bigger part of long-term
+          consistency than it sounds.
+        </p>
+
+        <h2>What Trackr actually does</h2>
+        <p>To keep the comparison concrete, here is what is in the app, without embellishment:</p>
+        <ul>
+          <li>
+            <strong>Weight tracking over time</strong>, with your bodyweight history in one
+            timeline.
+          </li>
+          <li>
+            <strong>Progress photos tagged with your weight automatically</strong>, for real
+            before-and-after comparisons.
+          </li>
+          <li>
+            <strong>Exercise tracking with personal records</strong>, across lifts like
+            bench press, squat, deadlift, and overhead press.
+          </li>
+          <li>
+            <strong>Workout history and streaks</strong>, so consistency is visible at a
+            glance.
+          </li>
+          <li>
+            <strong>An overall score</strong> that rolls your consistency and progress,
+            together with your achievements, into one number you can watch move.
+          </li>
+        </ul>
+        <p>
+          It runs on iOS and Android, and your data stays private on your device. Cloud
+          backup is there for premium users.
+        </p>
+        <p>
+          Notice what is missing from that list: macros, for example, or custom life
+          metrics. Trackr does not try to be everything. If your tracking needs are mostly
+          your weight and photos plus how your lifts are moving, that focus is a feature. If
+          they are broader, see the verdict below.
+        </p>
+
+        <h2>The verdict, by person</h2>
+        <p>
+          <strong>Keep the spreadsheet if</strong> you track many unrelated things in one
+          system, or you have an entrenched sheet with years of history that is still
+          getting daily entries. Do not fix what works.
+        </p>
+        <p>
+          <strong>Use Trackr if</strong> your entries happen on your phone at the gym or on
+          the scale, or your past attempts at tracking died from friction rather than lack
+          of interest.
+        </p>
+        <p>
+          <strong>Use both if</strong> you want the app for daily capture and a spreadsheet
+          for occasional deep analysis. Plenty of careful trackers run exactly this split:
+          the phone does the logging, the sheet does the quarterly review.
+        </p>
+
+        <h2>FAQ</h2>
+        <h3>Can I use Trackr and a spreadsheet together?</h3>
+        <p>
+          Yes, and it is a sensible setup. Let the app handle the daily grind where friction
+          matters most, then keep a sheet for any custom analysis or non-fitness metrics you
+          care about. The mistake is making the spreadsheet the daily entry point when your
+          entries happen away from a desk.
+        </p>
+        <h3>Is my data safe in an app compared to my own file?</h3>
+        <p>
+          That is a fair concern. Trackr stores your data privately on your device by
+          default, and cloud backup is available as a premium feature rather than a silent
+          default. A spreadsheet file you back up yourself is still the most direct form of
+          control, so if that matters more to you than convenience, the sheet is a
+          legitimate choice.
+        </p>
+        <h3>Is a spreadsheet enough for tracking weight loss?</h3>
+        <p>
+          Honestly, yes, if you use it. A weekly-averaged weight column and a chart cover
+          the analytical side of a cut completely. The reason people fail with spreadsheet
+          weight tracking is rarely the tool's math. It is the daily entry friction, and
+          that is the one thing you should judge any tracking setup on before anything else.
+        </p>
+        <p>
+          If the friction argument sounds like your last three abandoned sheets, try{' '}
+          <Link to="/trackr">Trackr</Link> on the App Store or Google Play and give it the
+          same 30 days you gave the spreadsheet. Keep whichever one you are still using at
+          the end.
         </p>
       </>
     ),
