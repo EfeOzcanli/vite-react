@@ -171,6 +171,12 @@ export const posts = [
           other Sunday morning — so it becomes automatic rather than a mood-dependent
           decision. The people with useless photo histories aren't the ones who chose the
           wrong interval; they're the ones who shot whenever they happened to feel lean.
+          If keeping any schedule like this has failed you before, the fix is usually the
+          routine rather than the willpower, and we wrote a separate guide on{' '}
+          <Link to="/blog/how-to-build-a-tracking-habit">
+            building a tracking habit that sticks
+          </Link>
+          .
         </p>
 
         <h2>Reading your photos: muscle vs. fat, and the right comparisons</h2>
@@ -259,7 +265,12 @@ export const posts = [
         <p>
           Whatever tool you use — Trackr, a dedicated album, a folder on your laptop — the
           requirement is the same: dated, organized, and viewable side by side. The system
-          matters more than the app.
+          matters more than the app. And if you are torn between an app and your own
+          spreadsheet, we compared{' '}
+          <Link to="/blog/trackr-vs-spreadsheet-daily-tracking">
+            Trackr and a spreadsheet for daily tracking
+          </Link>{' '}
+          honestly, including where the sheet wins.
         </p>
 
         <h2>The checklist</h2>
