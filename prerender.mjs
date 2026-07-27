@@ -84,7 +84,13 @@ const organization = {
   description:
     'EMKE builds minimalist mobile apps for personal progress. Its first app, Trackr, records weight with progress photos, logs every exercise, and turns it into one overall fitness score.',
   email: 'info@emke.app',
-  founder: { '@type': 'Person', name: 'Kerim Efe Ozcanli' },
+  // One canonical spelling across every property; variants listed so they resolve
+  // to the same person rather than looking like separate founders.
+  founder: {
+    '@type': 'Person',
+    name: 'Kerim Efe Ozcanli',
+    alternateName: ['Efe Ozcanli', 'Kerim Efe Özcanlı', 'Efe Özcanlı'],
+  },
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer support',
