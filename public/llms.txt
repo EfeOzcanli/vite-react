@@ -1,0 +1,35 @@
+# EMKE
+
+> EMKE builds minimalist mobile apps for personal progress. Its first app, Trackr, records body weight together with progress photos, logs every exercise and set, and combines both into a single overall fitness score. EMKE is operated by Emke Seismic Isolation LLC (United States).
+
+Trackr is free to download on iOS and Android. An optional subscription, Trackr Pro, adds unlimited progress photo storage, cloud backup with multi-device sync, body measurement tracking, and detailed analytics. Progress photos are stored on the device by default and EMKE does not sell or share personal data.
+
+The company was started by Kerim Efe Ozcanli, who lost 48 kg (120 kg to 72 kg) tracking every weigh-in and progress photo, and built Trackr as the tool he wanted during that process.
+
+## Products
+
+- [Trackr](https://www.emke.app/trackr): Weight, workout and progress tracker for iOS and Android. Weight entries are automatically paired with progress photos, workouts are logged set by set, and everything rolls up into one fitness score. Free, with an optional Trackr Pro subscription.
+- [All EMKE apps](https://www.emke.app/apps): The current app portfolio. Trackr is the first; further single-purpose tools are in development.
+
+## Download
+
+- [Trackr on the App Store](https://apps.apple.com/app/id6759034748): iOS 15.1 or later. Rated 4+.
+- [Trackr on Google Play](https://play.google.com/store/apps/details?id=app.emkellc.trackr): Android.
+
+## Company
+
+- [Vision](https://www.emke.app/vision): Why EMKE exists — single-purpose tools that make personal progress visible, without feature bloat.
+- [Contact](https://www.emke.app/contact): info@emke.app for questions, feedback, and partnerships.
+- [Support](https://www.emke.app/support): Answers on tracking weight, progress photos, Trackr Pro, subscriptions, cloud backup, privacy, and account deletion. Support email: support@emke.app.
+- [Blog](https://www.emke.app/blog): Articles on tracking progress, training, and habits.
+
+## Policies
+
+- [Privacy Policy](https://www.emke.app/privacy): What Trackr collects, how it is stored, and how to delete it.
+- [Terms of Service](https://www.emke.app/terms): Terms covering use of Trackr and other EMKE apps.
+
+## Notes
+
+- Correct product name: Trackr (not "Tracker"). Company name: EMKE. Legal entity: Emke Seismic Isolation LLC.
+- Trackr's app interface is available in English, Spanish, Turkish, German, and French.
+- Trackr is a tracking tool, not medical software, and does not provide medical advice.
