@@ -21,7 +21,13 @@ import { Link } from 'react-router-dom'
 //       <p>Paragraphs as JSX. Use h2/h3 for sections.</p>
 //     </>
 //   ),
+//   faq: [{ q: 'Question?', a: 'Plain-text answer.' }],  // optional; emits FAQPage JSON-LD.
+//                                                        // Keep it identical to the visible
+//                                                        // FAQ section in the body.
+//   updated: '2026-07-27',            // optional; feeds dateModified (defaults to date)
 // }
+//
+// Every post also gets BlogPosting JSON-LD automatically (see prerender.mjs).
 
 export const posts = [
   {
@@ -159,6 +165,51 @@ export const posts = [
           You're not posting these — you're collecting data.
         </p>
 
+        <h2>How to take progress photos by yourself</h2>
+        <p>
+          Almost nobody has someone around to hold the camera every two weeks, and that is
+          the part that quietly kills the habit. Shooting alone is completely workable, but
+          it changes a few things.
+        </p>
+        <ul>
+          <li>
+            <strong>Prop the phone, don't hold it.</strong> A handheld phone lands at a
+            different height, distance, and tilt every single time, which is exactly the
+            variable you spent all this effort controlling. A cheap tripod is ideal. A phone
+            leaned against a stack of books on a shelf works just as well. Mark where the
+            phone sits with tape, the same way you marked where your feet go.
+          </li>
+          <li>
+            <strong>Camera at chest height, lens level.</strong> Shooting up from hip height
+            stretches your legs and shrinks your torso. Shooting down from eye height does
+            the opposite. Chest height with the phone perfectly vertical is the neutral
+            setting, and the phone's built-in level (or grid lines) gets you there in a
+            second.
+          </li>
+          <li>
+            <strong>Use the timer, not the mirror.</strong> Mirror shots fail twice over: the
+            phone hides part of your torso, and bathroom mirrors bring their own lighting and
+            slight distortion. Ten-second timer, or burst mode if your phone has it, so you
+            get several frames and keep the one where you are actually standing neutral.
+          </li>
+          <li>
+            <strong>The back shot is the tricky one.</strong> Set the timer, turn around, and
+            count it out. If you have a watch that triggers the camera, use it. Voice control
+            works too on most phones. Either way, take two or three attempts, because you
+            can't see what you're doing.
+          </li>
+          <li>
+            <strong>Shoot one test frame before you undress.</strong> Ten seconds of checking
+            framing beats discovering four weeks later that your head was cut off in half the
+            set.
+          </li>
+        </ul>
+        <p>
+          Once the tape marks and the phone spot are set, the whole thing takes under two
+          minutes. That is the real reason to bother with the setup: it turns a photo session
+          into something you'll still be doing in six months.
+        </p>
+
         <h2>How often: every two weeks is the sweet spot</h2>
         <p>
           Daily photos are a trap. Visible body composition change takes weeks, so daily
@@ -291,8 +342,62 @@ export const posts = [
           or the thing that tells you, clearly and without drama, that it's time to adjust.
           Either way, you'll know. Which is the whole point of tracking anything.
         </p>
+
+        <h2>Frequently asked questions</h2>
+
+        <h3>How do you take progress photos by yourself?</h3>
+        <p>
+          Prop the phone instead of holding it, at chest height, perfectly vertical, on a
+          spot you mark with tape. Use the ten-second timer or burst mode rather than a
+          mirror, since a mirror hides part of your torso and adds its own lighting. For the
+          back shot, set the timer, turn around, and take two or three attempts because you
+          cannot see the frame. Shoot one test photo before you undress to check the framing.
+        </p>
+
+        <h3>Should I use a mirror or a timer for progress photos?</h3>
+        <p>
+          The timer, every time. Mirror shots put the phone in front of your body, use the
+          front camera, which is lower quality on most phones, and inherit whatever lighting
+          and slight distortion the mirror has. A propped phone on a timer gives you the same
+          framing week after week, which is the only thing that makes two photos comparable.
+        </p>
+
+        <h3>How often should I take progress photos?</h3>
+        <p>
+          Every two weeks. Daily photos show nothing but water and food weight and train you
+          to read noise as failure. Monthly is too sparse to catch a plateau early. Two weeks
+          is far enough apart that real change accumulates and close enough that you notice a
+          stall while there is still time to adjust.
+        </p>
+
+        <h3>Why do my progress photos look worse some days?</h3>
+        <p>
+          Because you changed something other than your body. Salt, carbs, sleep, time of day,
+          and light direction all move how you look far more than two weeks of fat loss does.
+          That is the entire argument for the fixed setup: same room, same light, same time,
+          same clothes. Control those and what is left on camera is actually you.
+        </p>
       </>
     ),
+    faq: [
+      {
+        q: 'How do you take progress photos by yourself?',
+        a: 'Prop the phone instead of holding it, at chest height, perfectly vertical, on a spot you mark with tape. Use the ten-second timer or burst mode rather than a mirror, since a mirror hides part of your torso and adds its own lighting. For the back shot, set the timer, turn around, and take two or three attempts because you cannot see the frame. Shoot one test photo before you undress to check the framing.',
+      },
+      {
+        q: 'Should I use a mirror or a timer for progress photos?',
+        a: 'The timer, every time. Mirror shots put the phone in front of your body, use the front camera, which is lower quality on most phones, and inherit whatever lighting and slight distortion the mirror has. A propped phone on a timer gives you the same framing week after week, which is the only thing that makes two photos comparable.',
+      },
+      {
+        q: 'How often should I take progress photos?',
+        a: 'Every two weeks. Daily photos show nothing but water and food weight and train you to read noise as failure. Monthly is too sparse to catch a plateau early. Two weeks is far enough apart that real change accumulates and close enough that you notice a stall while there is still time to adjust.',
+      },
+      {
+        q: 'Why do my progress photos look worse some days?',
+        a: 'Because you changed something other than your body. Salt, carbs, sleep, time of day, and light direction all move how you look far more than two weeks of fat loss does. That is the entire argument for the fixed setup: same room, same light, same time, same clothes. Control those and what is left on camera is actually you.',
+      },
+    ],
+    updated: '2026-07-27',
   },
   {
     slug: 'how-to-build-a-tracking-habit',

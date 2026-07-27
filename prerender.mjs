@@ -60,10 +60,47 @@ const routes = [
     title: `${p.title} — EMKE Blog`,
     desc: p.description,
     lastmod: p.date,
+    post: p,
   })),
 ]
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+
+// JSON-LD for blog posts: BlogPosting always, FAQPage when the post declares `faq`.
+const jsonLd = (route, url) => {
+  const p = route.post
+  if (!p) return ''
+  const graph = [
+    {
+      '@type': 'BlogPosting',
+      headline: p.title,
+      description: p.description,
+      image: 'https://www.emke.app/trackr-logo.png',
+      datePublished: `${p.date}T09:00:00Z`,
+      dateModified: `${p.updated || p.date}T09:00:00Z`,
+      inLanguage: 'en',
+      author: { '@type': 'Organization', name: 'EMKE', url: 'https://www.emke.app/' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'EMKE',
+        logo: { '@type': 'ImageObject', url: 'https://www.emke.app/trackr-logo.png' },
+      },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    },
+  ]
+  if (p.faq?.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      mainEntity: p.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })
+  }
+  const data = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
+  return `    <script type="application/ld+json">${data.replace(/</g, '\\u003c')}</script>\n`
+}
 
 for (const route of routes) {
   const appHtml = render(route.path)
@@ -78,6 +115,7 @@ for (const route of routes) {
     .replace(`<meta property="og:title" content="EMKE — Track Your Evolution" />`, `<meta property="og:title" content="${esc(route.title)}" />`)
     .replace(`<meta name="twitter:title" content="EMKE — Track Your Evolution" />`, `<meta name="twitter:title" content="${esc(route.title)}" />`)
     .replaceAll(`content="${BASE_DESC}"`, `content="${esc(route.desc)}"`)
+    .replace('  </head>', `${jsonLd(route, url)}  </head>`)
 
   const outDir = route.path === '/' ? join(root, 'dist') : join(root, 'dist', route.path.slice(1))
   mkdirSync(outDir, { recursive: true })

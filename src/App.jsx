@@ -19,8 +19,11 @@ const TrackrLogo = ({ className = "w-12 h-12" }) => (
 );
 
 // Apple Store Button with accurate logo
+const APP_STORE_URL = "https://apps.apple.com/app/id6759034748";
+const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=app.emkellc.trackr";
+
 const AppStoreButton = ({ className = "" }) => (
-  <button className={`flex items-center gap-3 bg-white text-black px-6 py-4 rounded-2xl font-bold hover:bg-zinc-100 transition-colors ${className}`}>
+  <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download Trackr on the App Store" className={`flex items-center gap-3 bg-white text-black px-6 py-4 rounded-2xl font-bold hover:bg-zinc-100 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-200 ${className}`}>
     <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
       <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
     </svg>
@@ -28,12 +31,12 @@ const AppStoreButton = ({ className = "" }) => (
       <div className="text-[10px] leading-tight opacity-60">Download on the</div>
       <div className="text-lg font-bold leading-tight -mt-0.5">App Store</div>
     </div>
-  </button>
+  </a>
 );
 
 // Google Play Button with accurate colorful logo
 const PlayStoreButton = ({ className = "" }) => (
-  <button className={`flex items-center gap-3 bg-white text-black px-6 py-4 rounded-2xl font-bold hover:bg-zinc-100 transition-colors ${className}`}>
+  <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get Trackr on Google Play" className={`flex items-center gap-3 bg-white text-black px-6 py-4 rounded-2xl font-bold hover:bg-zinc-100 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-200 ${className}`}>
     <svg viewBox="0 0 24 24" className="w-7 h-7">
       <path fill="#EA4335" d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z"/>
       <path fill="#FBBC04" d="M17.556 8.238l-3.764 3.762L3.609 1.814l.02-.012c.332-.199.747-.2 1.08-.002l12.847 6.438z"/>
@@ -44,7 +47,7 @@ const PlayStoreButton = ({ className = "" }) => (
       <div className="text-[10px] leading-tight opacity-60">GET IT ON</div>
       <div className="text-lg font-bold leading-tight -mt-0.5">Google Play</div>
     </div>
-  </button>
+  </a>
 );
 
 const useMousePosition = () => {
@@ -243,10 +246,10 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <div className="flex items-center gap-1 bg-white/5 backdrop-blur-xl rounded-full p-1.5 border border-white/10">
               {navLinks.map(link => (
-                <button key={link.id} onClick={() => navigate(link.path)} className={`relative px-5 py-2 text-[13px] font-semibold transition-all duration-300 rounded-full ${activePage === link.id ? 'text-black' : 'text-zinc-400 hover:text-white'}`}>
+                <Link key={link.id} to={link.path} className={`relative px-5 py-2 text-[13px] font-semibold transition-all duration-300 rounded-full ${activePage === link.id ? 'text-black' : 'text-zinc-400 hover:text-white'}`}>
                   {activePage === link.id && <motion.div layoutId="navPill" className="absolute inset-0 bg-green-500 rounded-full" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
                   <span className="relative z-10">{link.name}</span>
-                </button>
+                </Link>
               ))}
             </div>
             <MagneticButton onClick={() => navigate('/contact')} className="ml-6 px-6 py-2.5 rounded-full bg-white text-black text-[13px] font-bold hover:bg-green-400 transition-colors duration-300">Contact</MagneticButton>
@@ -286,11 +289,11 @@ const Footer = () => {
         </div>
         <div>
           <h4 className="text-white font-bold mb-6 text-sm">Platform</h4>
-          <ul className="space-y-3">{['Trackr App', 'Our Vision', 'Partner With Us'].map((item, i) => <li key={i} onClick={() => navigate(['/trackr', '/vision', '/contact'][i])} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</li>)}</ul>
+          <ul className="space-y-3">{['Trackr App', 'Our Vision', 'Partner With Us'].map((item, i) => <li key={i}><Link to={['/trackr', '/vision', '/contact'][i]} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</Link></li>)}</ul>
         </div>
         <div>
           <h4 className="text-white font-bold mb-6 text-sm">Legal</h4>
-          <ul className="space-y-3">{['Privacy Policy', 'Terms of Service', 'Support'].map((item, i) => <li key={i} onClick={() => navigate(['/privacy', '/terms', '/support'][i])} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</li>)}</ul>
+          <ul className="space-y-3">{['Privacy Policy', 'Terms of Service', 'Support'].map((item, i) => <li key={i}><Link to={['/privacy', '/terms', '/support'][i]} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</Link></li>)}</ul>
           <h4 className="text-white font-bold mb-4 mt-8 text-sm">Contact</h4>
           <ul className="space-y-2">
             <li className="text-zinc-500 text-sm">+1 (775) 770-0677</li>
@@ -552,6 +555,49 @@ const TrackrPage = () => (
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.8, rotateY: -15 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="relative">
             <div className="relative"><div className="absolute inset-0 bg-gradient-to-br from-green-500/30 via-transparent to-emerald-500/30 rounded-[60px] blur-3xl" /><div className="relative aspect-[3/4] max-w-md mx-auto rounded-[60px] bg-gradient-to-br from-zinc-800 to-zinc-900 p-3 shadow-2xl border border-white/10"><div className="w-full h-full rounded-[52px] bg-black overflow-hidden flex items-center justify-center"><img src="/icon_center.png" alt="Trackr" className="w-64 h-64 md:w-80 md:h-80 object-contain" /></div><div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full" /></div></div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+
+    {/* Founder transformation — the real story behind Trackr */}
+    <section className="py-32 px-6 relative bg-gradient-to-b from-black via-zinc-950 to-zinc-900/40 border-y border-white/10">
+      <div className="max-w-6xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/25 border border-green-500/40 rounded-full text-green-400 text-sm font-semibold mb-6"><Trophy size={14} /> Why we built Trackr</span>
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6">120 kg to 72 kg.<br className="hidden md:block" /> One photo at a time.</h2>
+          <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">Our founder lost 48 kg by tracking every weigh-in and every progress photo. Trackr is the tool he wished he had the whole way.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          {/* Before / After */}
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-2 gap-4">
+            {[{ src: '/founder-before.jpg', tag: 'Before', kg: '120 kg', tone: 'text-zinc-300 bg-black/60 border-white/15', pos: 'object-[22%_38%]' }, { src: '/founder-after.jpg', tag: 'After', kg: '72 kg', tone: 'text-green-400 bg-green-500/15 border-green-500/40', pos: 'object-center' }].map((img, i) => (
+              <div key={i} className="relative rounded-[28px] overflow-hidden border border-white/10 shadow-2xl">
+                <img src={img.src} alt={`Founder ${img.tag}`} className={`w-full h-full object-cover aspect-[3/4] ${img.pos}`} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute top-4 left-4"><span className="px-3 py-1 rounded-full bg-black/60 border border-white/15 text-white text-xs font-bold uppercase tracking-wide">{img.tag}</span></div>
+                <div className="absolute bottom-4 left-4"><span className={`px-3 py-1.5 rounded-full border text-sm font-black ${img.tone}`}>{img.kg}</span></div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Founder quote */}
+          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex">
+            <div className="bg-gradient-to-br from-zinc-800/80 to-zinc-900/80 backdrop-blur-xl rounded-[36px] border border-white/15 p-10 flex flex-col justify-center shadow-2xl w-full">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/15 border border-green-500/30"><TrendingUp size={16} className="text-green-400" /><span className="text-green-400 font-black">−48 kg</span></div>
+              </div>
+              <p className="text-2xl md:text-3xl text-white font-semibold leading-snug mb-8">"I went from 120 kg to 72 kg by staying consistent and tracking my progress. Trackr is everything I needed in one place — so you can do it too."</p>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-full bg-green-500 text-black font-black flex items-center justify-center text-lg">E</div>
+                <div><div className="text-white font-bold">Kerim Efe Ozcanli</div><div className="text-zinc-400 text-sm">Founder, Trackr</div></div>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <AppStoreButton />
+                <PlayStoreButton />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
