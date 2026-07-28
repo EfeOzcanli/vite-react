@@ -765,4 +765,472 @@ export const posts = [
       </>
     ),
   },
+  {
+    slug: 'trackr-vs-myfitnesspal',
+    title: 'Trackr vs. MyFitnessPal: Do You Need a Food Diary to Lose Weight?',
+    description:
+      'MyFitnessPal is built around logging every meal. Trackr is built around your weight and your photos. An honest comparison of which one fits how you actually track.',
+    date: '2026-07-27',
+    readingMinutes: 6,
+    body: (
+      <>
+        <p>
+          We make Trackr, so treat this with the scepticism it deserves. But the comparison
+          is worth making honestly, because these two apps are not really competitors. They
+          answer different questions, and picking the wrong one is the reason a lot of
+          people give up on tracking altogether.
+        </p>
+        <p>
+          MyFitnessPal answers: what did I eat today? Trackr answers: what is my body
+          actually doing over time? You can want one without wanting the other.
+        </p>
+
+        <h2>The short answer</h2>
+        <p>
+          If you need to know your calories and macros with real accuracy, use
+          MyFitnessPal. Nothing in Trackr competes with a food database that size, and we
+          are not going to pretend otherwise.
+        </p>
+        <p>
+          If you have tried calorie counting more than once and quietly stopped each time,
+          the food diary is probably not your problem to solve. Trackr skips it entirely and
+          tracks the two things that actually show change: your weight and your photos, in
+          the same entry.
+        </p>
+
+        <h2>What MyFitnessPal genuinely does better</h2>
+        <h3>The food database</h3>
+        <p>
+          It is enormous, it has been built up over more than a decade, and it covers
+          restaurant items and supermarket products that no smaller app will ever match.
+          Barcode scanning, saved meals, recipes. If your goal requires knowing that you ate
+          2,140 calories and 118 grams of protein, this is the category leader and it is not
+          close.
+        </p>
+        <h3>Nutrition, not just weight</h3>
+        <p>
+          Protein targets, fibre, sugar, micronutrients. If a coach or a clinician has asked
+          you to hit specific numbers, you need a nutrition app. Trackr does not track food
+          at all, so it cannot help you there.
+        </p>
+        <h3>It works for people who like the detail</h3>
+        <p>
+          Some people genuinely enjoy the logging. It gives them a sense of control and it
+          makes the invisible visible. If that is you, and you have kept it up for months,
+          you are using the right tool and this article is not for you.
+        </p>
+
+        <h2>What Trackr does differently</h2>
+        <h3>Your weight and your photo live in the same entry</h3>
+        <p>
+          This is the one thing we built the app around. When you log a weight, you can
+          attach the photo at the same moment, and the two stay linked forever. Six months
+          later you are not scrolling a camera roll trying to remember what you weighed in a
+          particular picture. The number is attached to the image.
+        </p>
+        <p>
+          That sounds small until you want to answer the question everyone eventually asks:
+          how much did I weigh when I looked like that? A food diary cannot tell you. A
+          folder of photos cannot tell you either.
+        </p>
+        <h3>Nothing to log except the things that change slowly</h3>
+        <p>
+          A weigh-in is a few seconds. A photo is a few more. There is no meal to break into
+          ingredients, no portion to estimate, no evening where you skip the log because you
+          ate out and it is too much effort to reconstruct. The most common way tracking
+          dies is a day you cannot be bothered, followed by a week, followed by never
+          opening the app again.
+        </p>
+        <h3>Training in the same place</h3>
+        <p>
+          Workouts are logged set by set, so your bodyweight, your photos, and what you
+          actually lifted sit in one app rather than three. On the paid tier that history
+          rolls up into a single Progress Score from 0 to 100, built from your goal, how
+          consistently you log, the direction of your weight trend, and how often your
+          entries include training.
+        </p>
+
+        <h2>The honest limitation</h2>
+        <p>
+          Trackr will not tell you why your weight is not moving. MyFitnessPal, used
+          properly, often will, because the answer is usually in the food and the food is
+          what it measures. If you are genuinely stuck and have no idea what you are eating,
+          a few weeks of accurate logging is more useful than any trend line.
+        </p>
+        <p>
+          The catch is the word accurate. Under-reporting on food logs is well documented and
+          mostly unintentional. A diary you fill in loosely can be worse than no diary,
+          because it produces numbers you then trust.
+        </p>
+
+        <h2>How to choose</h2>
+        <p>
+          <strong>Use MyFitnessPal if</strong> you need calorie or macro numbers, you are
+          working to a plan someone gave you, or you know from experience that you will keep
+          the log up.
+        </p>
+        <p>
+          <strong>Use Trackr if</strong> your goal is to see your body change over time,
+          you want your weight and photos in one record, and every previous attempt at food
+          logging died within a month.
+        </p>
+        <p>
+          <strong>Use both if</strong> you want nutrition detail during a focused cut and a
+          long-run visual record that outlives it. They do not overlap much, which is
+          exactly why they sit together comfortably.
+        </p>
+
+        <h2>FAQ</h2>
+        <h3>Can you lose weight without counting calories?</h3>
+        <p>
+          Plenty of people do. Calorie counting is one method of creating a deficit, not the
+          only one, and it is the method with the highest daily effort cost. What matters is
+          that you can see whether the approach is working, which is what a consistent weight
+          trend and a photo record give you.
+        </p>
+        <h3>Does Trackr track calories or macros?</h3>
+        <p>
+          No. There is no food logging in Trackr at all. It tracks bodyweight, progress
+          photos, and workouts. If you need nutrition data, use a nutrition app alongside it.
+        </p>
+        <h3>Is Trackr free?</h3>
+        <p>
+          Trackr is free to download on iOS and Android, and weight and photo logging work
+          on the free tier. Trackr Pro is an optional subscription that adds unlimited photo
+          storage, cloud backup with multi-device sync, detailed analytics, and the Progress
+          Score.
+        </p>
+        <h3>Which is better for tracking progress photos?</h3>
+        <p>
+          Trackr, because the photo is tied to the weight entry rather than stored as a
+          separate note, and because the Timeline view puts two photos side by side across
+          any span of time. Photo comparison is a core feature rather than an extra.
+        </p>
+        <p>
+          If the food diary is the part that keeps failing, try{' '}
+          <Link to="/trackr">Trackr</Link> on the App Store or Google Play and see whether
+          tracking survives longer when there is less of it to do.
+        </p>
+      </>
+    ),
+    faq: [
+      {
+        q: 'Can you lose weight without counting calories?',
+        a: 'Plenty of people do. Calorie counting is one method of creating a deficit, not the only one, and it has the highest daily effort cost. What matters is being able to see whether your approach is working, which a consistent weight trend and a photo record give you.',
+      },
+      {
+        q: 'Does Trackr track calories or macros?',
+        a: 'No. There is no food logging in Trackr at all. It tracks bodyweight, progress photos, and workouts. If you need nutrition data, use a nutrition app alongside it.',
+      },
+      {
+        q: 'Is Trackr free?',
+        a: 'Trackr is free to download on iOS and Android, and weight and photo logging work on the free tier. Trackr Pro is an optional subscription that adds unlimited photo storage, cloud backup with multi-device sync, detailed analytics, and the Progress Score.',
+      },
+      {
+        q: 'Which app is better for tracking progress photos?',
+        a: 'Trackr, because the photo is tied to the weight entry rather than stored separately, and the Timeline view puts two photos side by side across any span of time.',
+      },
+    ],
+  },
+  {
+    slug: 'trackr-vs-macrofactor',
+    title: 'Trackr vs. MacroFactor: Coaching App or Progress Record?',
+    description:
+      'MacroFactor is a nutrition coach that adapts your targets from your data. Trackr is a record of your weight and your photos. Which one fits depends on whether you will log food.',
+    date: '2026-07-27',
+    readingMinutes: 6,
+    body: (
+      <>
+        <p>
+          MacroFactor has a strong reputation among people who take nutrition seriously, and
+          it earns it. We build Trackr, and we would still tell you to use MacroFactor for
+          the job it is designed to do. The two apps are aimed at different problems and the
+          comparison only makes sense once that is clear.
+        </p>
+
+        <h2>The short answer</h2>
+        <p>
+          MacroFactor is a coach. It reads your food logs and your weigh-ins, estimates your
+          energy expenditure, and adjusts your calorie and macro targets as your body
+          responds. That engine is the product, and it needs consistent food logging to run.
+        </p>
+        <p>
+          Trackr is a record. It does not set targets and it does not model your metabolism.
+          It keeps your weight, your progress photos, and your training in one place so you
+          can see what has actually happened.
+        </p>
+        <p>
+          So the question is not which app is better. It is whether you are going to log
+          your food.
+        </p>
+
+        <h2>What MacroFactor does that Trackr does not attempt</h2>
+        <h3>Adaptive targets</h3>
+        <p>
+          Fixed calorie targets from a calculator go stale as you lose weight. MacroFactor
+          recalculates from your own data instead of a formula, which is genuinely better
+          than most of the category and is the main reason people pay for it.
+        </p>
+        <h3>A fast food logger</h3>
+        <p>
+          Its logging flow is deliberately built to reduce the friction that kills food
+          diaries. If any nutrition app is going to survive daily use for you, it has a
+          decent chance of being this one.
+        </p>
+        <h3>Nutrition depth</h3>
+        <p>
+          Macro splits, protein targets, and the analysis that goes with them. Trackr has
+          none of this, because it does not track food.
+        </p>
+
+        <h2>Where Trackr fits instead</h2>
+        <h3>It works on the days you log nothing but a number</h3>
+        <p>
+          A coaching engine that depends on food data degrades when the food data stops. A
+          record does not. A weigh-in and a photo take seconds and still mean something six
+          months later, even if you logged nothing else that week.
+        </p>
+        <h3>The visual record is the point, not a side feature</h3>
+        <p>
+          Every weight entry can carry a progress photo, and the two stay linked. The
+          Timeline view compares any two photos side by side, which is the honest way to
+          judge a recomposition phase where the scale barely moves for weeks while your
+          shape changes.
+        </p>
+        <h3>Training lives in the same app</h3>
+        <p>
+          Workouts logged set by set, alongside the weight and the photos. On the paid tier
+          that history condenses into a single Progress Score from 0 to 100, drawn from your
+          goal, your logging consistency, your weight trend, and how often you train.
+        </p>
+        <h3>Free to start</h3>
+        <p>
+          Trackr is free to download, and the core weight and photo logging works without
+          paying. MacroFactor is a subscription product. That is a fair price for what it
+          does, but it is a commitment made before you know whether you will keep logging
+          food.
+        </p>
+
+        <h2>The honest case against Trackr</h2>
+        <p>
+          If you are in a serious cut, working to a deadline, or you have stalled and need to
+          know why, a record will not fix it. You need intake data and adaptive targets, and
+          that means MacroFactor or something like it. Trackr will show you clearly that the
+          trend is flat. It will not tell you what to change.
+        </p>
+
+        <h2>How to choose</h2>
+        <p>
+          <strong>Use MacroFactor if</strong> you will log your food most days and you want
+          your targets managed for you as your body adapts.
+        </p>
+        <p>
+          <strong>Use Trackr if</strong> you want a long-run record of your weight, your
+          photos, and your training, without a daily food log as the price of entry.
+        </p>
+        <p>
+          <strong>Use both if</strong> you want the coaching during a focused phase and a
+          visual record that continues long after that phase ends.
+        </p>
+
+        <h2>FAQ</h2>
+        <h3>Is MacroFactor better than Trackr?</h3>
+        <p>
+          For nutrition coaching, yes, comfortably. It is built for that and Trackr does not
+          track food at all. For keeping a long-term record of your weight alongside progress
+          photos, Trackr is the more direct fit.
+        </p>
+        <h3>Does Trackr adjust my calories like MacroFactor does?</h3>
+        <p>
+          No. Trackr does not set or adjust calorie targets, because it does not track
+          intake. It shows your weight trend, your photos, and your training history.
+        </p>
+        <h3>Can I use Trackr without paying?</h3>
+        <p>
+          Yes. Trackr is free to download on iOS and Android and logging weight with progress
+          photos works on the free tier. Trackr Pro adds unlimited photo storage, cloud
+          backup with sync, detailed analytics, and the Progress Score.
+        </p>
+        <h3>Which app is better if I keep quitting after a few weeks?</h3>
+        <p>
+          Look honestly at what you quit. If you quit food logging specifically, an app built
+          around food logging will probably go the same way. A weigh-in and a photo is a much
+          smaller daily ask.
+        </p>
+        <p>
+          If you want the record without the food diary, try{' '}
+          <Link to="/trackr">Trackr</Link> on the App Store or Google Play.
+        </p>
+      </>
+    ),
+    faq: [
+      {
+        q: 'Is MacroFactor better than Trackr?',
+        a: 'For nutrition coaching, yes, comfortably. It is built for that and Trackr does not track food at all. For keeping a long-term record of your weight alongside progress photos, Trackr is the more direct fit.',
+      },
+      {
+        q: 'Does Trackr adjust my calories like MacroFactor does?',
+        a: 'No. Trackr does not set or adjust calorie targets, because it does not track intake. It shows your weight trend, your photos, and your training history.',
+      },
+      {
+        q: 'Can I use Trackr without paying?',
+        a: 'Yes. Trackr is free to download on iOS and Android and logging weight with progress photos works on the free tier. Trackr Pro adds unlimited photo storage, cloud backup with sync, detailed analytics, and the Progress Score.',
+      },
+      {
+        q: 'Which app is better if I keep quitting after a few weeks?',
+        a: 'Look at what you quit. If you quit food logging specifically, an app built around food logging will probably go the same way. A weigh-in and a photo is a much smaller daily ask.',
+      },
+    ],
+  },
+  {
+    slug: 'weight-tracking-app-without-calorie-counting',
+    title: 'Weight Tracking Apps Without Calorie Counting: What to Look For',
+    description:
+      'Most weight apps are food diaries with a scale attached. If you want to track your weight and see your body change without logging meals, here is what actually matters.',
+    date: '2026-07-27',
+    readingMinutes: 7,
+    body: (
+      <>
+        <p>
+          Search for a weight tracking app and almost everything you find is a nutrition app
+          first. The weight field is there, but it is a supporting feature next to the food
+          diary that the product is really built around. If you do not want to log meals,
+          you end up using ten percent of an app and feeling vaguely guilty about the rest.
+        </p>
+        <p>
+          There is a real category underneath: apps for people who want to weigh themselves,
+          see the trend, and watch their body change, without accounting for every meal.
+          This is what to look for in one, and where the common ones land.
+        </p>
+
+        <h2>Why people drop calorie counting</h2>
+        <p>
+          Not because it does not work. It works well when it is done accurately. The
+          problem is the daily cost. Every meal has to be broken into components, portions
+          have to be estimated, and eating out turns into a reconstruction exercise. Miss two
+          days and the week is incomplete; miss a week and most people never reopen the app.
+        </p>
+        <p>
+          There is also an accuracy trap. Under-reporting on food logs is common and mostly
+          unintentional, which means a loosely kept diary can be worse than none at all
+          because it produces numbers you then trust. A weight trend does not have that
+          failure mode. The scale does not care how carefully you estimated anything.
+        </p>
+
+        <h2>What actually matters in a weight-only app</h2>
+        <h3>Trend, not daily numbers</h3>
+        <p>
+          Day-to-day weight swings by a kilogram or more from water, sodium, glycogen, and
+          timing. An app that only shows you today's number will make you miserable. You
+          want a smoothed trend line so the signal is visible under the noise.
+        </p>
+        <h3>Photos attached to the weight, not stored separately</h3>
+        <p>
+          This is the feature that separates a record from a spreadsheet. During a
+          recomposition phase the scale can sit still for two months while your shape
+          clearly changes. Without photos, that reads as failure and people quit exactly when
+          things are working. And if the photo is not linked to the weigh-in, you lose the
+          ability to answer the obvious question later: what did I weigh in that picture?
+        </p>
+        <h3>Side-by-side comparison across long spans</h3>
+        <p>
+          Change over two weeks is invisible. Change over four months is obvious. The app
+          needs to let you put two distant photos next to each other easily, or the archive
+          is just storage.
+        </p>
+        <h3>Low enough friction to survive a bad week</h3>
+        <p>
+          Judge any tracking setup by what happens on the day you cannot be bothered. If
+          logging takes more than a few seconds, that day ends the streak, and the streak is
+          the whole product.
+        </p>
+        <h3>Sensible privacy defaults</h3>
+        <p>
+          Progress photos are personal. Check whether they stay on the device by default and
+          whether cloud sync is something you switch on rather than something that happens
+          silently.
+        </p>
+
+        <h2>The common options</h2>
+        <p>
+          <strong>Happy Scale and Libra</strong> are the classic trend-smoothing weight
+          trackers on iOS and Android respectively. Both do the trend maths well. Neither is
+          built around photos.
+        </p>
+        <p>
+          <strong>Dedicated photo apps</strong> handle the visual side and nothing else,
+          which means running two apps and keeping the dates lined up yourself.
+        </p>
+        <p>
+          <strong>Nutrition apps with a weight field</strong>, including the large calorie
+          trackers, will do the job if you ignore most of the interface. Many people do
+          exactly this and it works, it just means living inside a product designed for
+          something you are not doing.
+        </p>
+        <p>
+          <strong>Trackr</strong>, which we build, sits in the gap: weight and progress photo
+          in the same entry, side-by-side comparison in the Timeline, and workouts logged in
+          the same app. There is no food logging at all, deliberately. Free to download on
+          iOS and Android, with an optional Pro subscription for unlimited photo storage,
+          cloud backup, detailed analytics, and a 0 to 100 Progress Score.
+        </p>
+
+        <h2>When calorie counting is still the right answer</h2>
+        <p>
+          If you have stalled and genuinely do not know what you are eating, a few weeks of
+          accurate food logging will tell you more than any trend line. If a coach or a
+          clinician has given you targets, you need a nutrition app. Skipping the food diary
+          is a reasonable default, not a rule.
+        </p>
+
+        <h2>FAQ</h2>
+        <h3>Is there a weight tracking app that does not require logging food?</h3>
+        <p>
+          Yes, several. Trend-focused weight trackers and progress-record apps like Trackr
+          are built for exactly this, with no food diary involved.
+        </p>
+        <h3>Can I lose weight by only tracking my weight?</h3>
+        <p>
+          Tracking does not cause weight loss on its own, but it tells you quickly whether
+          what you are doing is working, which is what lets you adjust before wasting
+          months. Many people manage a deficit through habits rather than counting, and a
+          trend line plus photos is enough to confirm it is working.
+        </p>
+        <h3>How often should I weigh myself?</h3>
+        <p>
+          Daily, at the same time, ideally in the morning after the bathroom and before
+          eating, and then judge the smoothed trend rather than any single day. Weighing
+          less often makes the noise harder to separate from the signal, not easier.
+        </p>
+        <h3>Why should the photo be attached to the weight entry?</h3>
+        <p>
+          Because months later the useful question is what you weighed when you looked a
+          certain way. If photos live in the camera roll and weights live in an app, that
+          question takes an afternoon to answer instead of a second.
+        </p>
+        <p>
+          If this describes what you have been looking for, <Link to="/trackr">Trackr</Link>{' '}
+          is on the App Store and Google Play.
+        </p>
+      </>
+    ),
+    faq: [
+      {
+        q: 'Is there a weight tracking app that does not require logging food?',
+        a: 'Yes, several. Trend-focused weight trackers and progress-record apps like Trackr are built for exactly this, with no food diary involved.',
+      },
+      {
+        q: 'Can I lose weight by only tracking my weight?',
+        a: 'Tracking does not cause weight loss on its own, but it tells you quickly whether what you are doing is working, which lets you adjust before wasting months. Many people manage a deficit through habits rather than counting, and a trend line plus photos is enough to confirm it.',
+      },
+      {
+        q: 'How often should I weigh myself?',
+        a: 'Daily, at the same time, ideally in the morning after the bathroom and before eating, then judge the smoothed trend rather than any single day.',
+      },
+      {
+        q: 'Why should the photo be attached to the weight entry?',
+        a: 'Because months later the useful question is what you weighed when you looked a certain way. If photos live in the camera roll and weights live in an app, that question takes an afternoon to answer instead of a second.',
+      },
+    ],
+  },
 ]
