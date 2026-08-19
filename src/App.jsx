@@ -1037,19 +1037,20 @@ const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="border border-white/10 rounded-2xl overflow-hidden">
-      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors">
+      <button onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen} className="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors">
         <span className="text-white font-semibold pr-4">{question}</span>
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
           <ChevronDown size={20} className="text-green-400 shrink-0" />
         </motion.div>
       </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}>
-            <div className="px-5 pb-5 text-zinc-400 leading-relaxed">{answer}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        style={{ overflow: 'hidden' }}
+      >
+        <div className="px-5 pb-5 text-zinc-400 leading-relaxed">{answer}</div>
+      </motion.div>
     </div>
   );
 };
