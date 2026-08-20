@@ -1,6 +1,7 @@
 // Prerenders each route into dist/<route>/index.html after `vite build`.
 // Run via the build script: vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender.mjs
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs'
+import { createHash } from 'node:crypto'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -210,9 +211,23 @@ const jsonLd = (route, url) => {
   return `    <script type="application/ld+json">${data.replace(/</g, '\\u003c')}</script>\n`
 }
 
+// lastmod, gercek icerik degisiminden turetilir.
+// Onceki hali her build'de "bugun" damgaliyordu: degismemis 9 sayfa da her seferinde
+// yeni tarih aliyordu. Google lastmod'u ancak tutarli ve dogrulanabilir oldugunda
+// dikkate aldigi icin bu, guvendigimiz sinyali kendi elimizle asindiriyordu.
+// Hash girdisi bilerek SADECE route'a ozgu icerik: template'teki asset dosya adlari
+// her JS derlemesinde degistigi icin disarida birakildi, aksi halde tek bir bundle
+// degisikligi butun sayfalarin tarihini zipliyordu.
+const MANIFEST = join(root, 'lastmod.json')
+const onceki = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf-8')) : {}
+const yeni = {}
+const bugun = new Date().toISOString().slice(0, 10)
+
 for (const route of routes) {
   const appHtml = render(route.path)
   const url = 'https://www.emke.app' + (route.path === '/' ? '/' : route.path)
+
+  const ld = jsonLd(route, url)
 
   let html = template
     .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
@@ -223,21 +238,34 @@ for (const route of routes) {
     .replace(`<meta property="og:title" content="EMKE — Track Your Evolution" />`, `<meta property="og:title" content="${esc(route.title)}" />`)
     .replace(`<meta name="twitter:title" content="EMKE — Track Your Evolution" />`, `<meta name="twitter:title" content="${esc(route.title)}" />`)
     .replaceAll(`content="${BASE_DESC}"`, `content="${esc(route.desc)}"`)
-    .replace('  </head>', `${jsonLd(route, url)}  </head>`)
+    .replace('  </head>', `${ld}  </head>`)
 
   const outDir = route.path === '/' ? join(root, 'dist') : join(root, 'dist', route.path.slice(1))
   mkdirSync(outDir, { recursive: true })
   writeFileSync(join(outDir, 'index.html'), html)
-  console.log(`prerendered ${route.path} -> ${join(outDir, 'index.html').replace(root + '/', '')}`)
+
+  const hash = createHash('sha256')
+    .update(appHtml + '\n' + route.title + '\n' + route.desc + '\n' + ld)
+    .digest('hex')
+    .slice(0, 16)
+  const kayit = onceki[route.path]
+  // Sayfa yeni ise: blog yazisinin kendi tarihi varsa onu al, yoksa bugun.
+  // Degismemisse onceki tarihi AYNEN koru. Degismisse bugun.
+  route.lastmod = kayit && kayit.hash === hash ? kayit.date : (kayit ? bugun : route.lastmod || bugun)
+  yeni[route.path] = { hash, date: route.lastmod }
+
+  const durum = !kayit ? 'yeni' : kayit.hash === hash ? 'degismedi' : 'DEGISTI'
+  console.log(`prerendered ${route.path} -> ${join(outDir, 'index.html').replace(root + '/', '')}  [${durum} ${route.lastmod}]`)
 }
 
+writeFileSync(MANIFEST, JSON.stringify(yeni, null, 2) + '\n')
+
 // Regenerate sitemap.xml from the same route list (noindex routes excluded).
-const today = new Date().toISOString().slice(0, 10)
 const sitemapEntries = routes
   .filter((r) => !r.noindex)
   .map((r) => {
     const url = 'https://www.emke.app' + (r.path === '/' ? '/' : r.path)
-    return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${r.lastmod || today}</lastmod>\n  </url>`
+    return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${r.lastmod}</lastmod>\n  </url>`
   })
   .join('\n')
 writeFileSync(
