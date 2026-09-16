@@ -12,6 +12,7 @@ import { posts } from './blog/posts.jsx';
 
 const CONTACT_EMAIL = "info@emke.app";
 const EFFECTIVE_DATE = "01/30/2026";
+const STEEL_EFFECTIVE_DATE = "09/16/2026";
 
 // Trackr Logo - uses image
 const TrackrLogo = ({ className = "w-12 h-12" }) => (
@@ -824,12 +825,18 @@ const AppsPage = () => {
             </div>
           </div></GlowingBorder>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-          <div className="p-10 rounded-[40px] bg-zinc-900/30 border border-dashed border-white/10 h-full flex flex-col items-center justify-center text-center">
-            <div className="w-20 h-20 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-600 mb-6"><Sparkles size={32} /></div>
-            <h3 className="text-2xl font-bold text-zinc-600 mb-4">Coming Soon</h3>
-            <p className="text-zinc-700 max-w-xs">New tools to optimize your performance.</p>
-          </div>
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} onClick={() => navigate('/steelsurvivor')} className="cursor-pointer group">
+          <GlowingBorder><div className="p-10 rounded-[40px] bg-zinc-900/50 border border-white/5 h-full overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-[100px] group-hover:bg-amber-500/20 transition-all duration-500" />
+            <div className="relative z-10">
+              <div className="w-14 h-14 mb-6 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500"><Target size={28} /></div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-semibold mb-4"><Timer size={12} />Coming soon</div>
+              <h3 className="text-3xl font-black text-white mb-4">Steel Survivor</h3>
+              <p className="text-zinc-500 mb-4">One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time.</p>
+              <div className="flex flex-wrap gap-2 mb-6">{['Campaign', 'Roguelite', 'Offline'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
+              <span className="inline-flex items-center gap-2 text-amber-500 font-semibold group-hover:gap-4 transition-all">Learn more <ArrowRight size={18} /></span>
+            </div>
+          </div></GlowingBorder>
         </motion.div>
       </div>
     </div></section>
@@ -837,12 +844,61 @@ const AppsPage = () => {
   );
 };
 
-const LegalPage = ({ title, icon, children }) => (
+const STEEL_SHOTS = [
+  { src: '/steelsurvivor-campaign.jpg', alt: 'Steel Survivor campaign map with twelve missions and stars' },
+  { src: '/steelsurvivor-fight.jpg', alt: 'Steel Survivor gameplay, a tank surrounded by enemy armour' },
+  { src: '/steelsurvivor-cards.jpg', alt: 'Steel Survivor upgrade cards between waves' },
+];
+
+const SteelSurvivorPage = () => (
+  <div className="relative min-h-screen"><GridPattern />
+    <section className="pt-40 pb-24 px-6"><div className="max-w-7xl mx-auto">
+      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-semibold mb-6">
+          <Timer size={12} />Coming soon to the App Store
+        </div>
+        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">Steel Survivor</h1>
+        <p className="text-xl text-zinc-500 max-w-2xl mx-auto">One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time.</p>
+      </motion.div>
+
+      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24 max-w-4xl mx-auto">
+        {STEEL_SHOTS.map((shot, i) => (
+          <div key={i} className="rounded-[28px] overflow-hidden border border-white/10 bg-zinc-900/50">
+            <img src={shot.src} alt={shot.alt} width="620" height="1347" loading={i === 0 ? 'eager' : 'lazy'} className="w-full h-auto block" />
+          </div>
+        ))}
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {[
+          { icon: <Target size={28} />, title: 'Cover is real', body: 'Enemy armour cannot see you through a wall, and you cannot shoot them through one either. Drive into the open and the whole line wakes up at once.' },
+          { icon: <Trophy size={28} />, title: 'Three stars a mission', body: 'One for clearing it, one for finishing with half your hull, one for finishing without calling a repair. Stars open the next sector.' },
+          { icon: <Flame size={28} />, title: 'A different tank every run', body: 'You start with a single gun and pick one card between waves. Weapons evolve. Nothing carries over except what you bought in the garage.' },
+          { icon: <Shield size={28} />, title: 'No internet, no account', body: 'The whole game runs on the device. Nothing to sign up for, nothing to wait for. Play it on a plane.' },
+        ].map((f, i) => (
+          <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+            <div className="p-8 rounded-[32px] bg-zinc-900/50 border border-white/5 h-full">
+              <div className="text-amber-500 mb-4">{f.icon}</div>
+              <h3 className="text-xl font-bold text-white mb-3">{f.title}</h3>
+              <p className="text-zinc-500 leading-relaxed">{f.body}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="text-center mt-20">
+        <Link to="/steelsurvivor/privacy" className="text-zinc-500 hover:text-amber-500 transition-colors text-sm font-semibold">Steel Survivor privacy policy</Link>
+      </div>
+    </div></section>
+  </div>
+);
+
+const LegalPage = ({ title, icon, date = EFFECTIVE_DATE, children }) => (
   <div className="relative min-h-screen"><GridPattern />
     <section className="pt-40 pb-32 px-6"><div className="max-w-4xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
         <div className="flex items-center gap-4 mb-6"><div className="text-green-500">{icon}</div><h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">{title}</h1></div>
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-xs font-semibold text-zinc-500">Effective Date: {EFFECTIVE_DATE}</div>
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-xs font-semibold text-zinc-500">Effective Date: {date}</div>
       </motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="space-y-8 text-zinc-400 leading-relaxed">{children}</motion.div>
     </div></section>
@@ -944,6 +1000,43 @@ const PrivacyPage = () => (
       <li>📞 Phone: +1 (775) 770-0677</li>
       <li>🌐 Website: emke.app</li>
     </ul></div>
+  </LegalPage>
+);
+
+const SteelSurvivorPrivacyPage = () => (
+  <LegalPage title="Steel Survivor Privacy Policy" icon={<ShieldCheck size={36} />} date={STEEL_EFFECTIVE_DATE}>
+    <p className="text-white font-semibold text-lg">EMKE Seismic Isolation LLC</p>
+    <p>This policy covers the game Steel Survivor: Tank War. It is separate from the Trackr policy because the game collects far less.</p>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">The short version</h3>
+    <p>Steel Survivor has no accounts, no login, and no ads. It does not ask for your name, your email, your contacts, your photos, or your location. It does not use the advertising identifier and it does not track you across other apps or websites.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">What the game records</h3>
+    <p>So that we can tell whether people keep playing, the game sends a small set of gameplay events to a server we run:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>A device identifier the game generates by itself on first launch. It is a random value stored on your device. It is not the Apple advertising identifier, it is not your device serial number, and it cannot be connected to you as a person.</li>
+      <li>Session and gameplay information: when the app was opened, which mission was started, which wave was reached, whether the run was won or lost, which upgrade cards were picked, and whether a purchase was made.</li>
+      <li>Basic device information: app version, platform, device model, operating system version, system language, and country.</li>
+    </ul>
+    <p>That is the whole list. There is nothing else.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">What we do with it</h3>
+    <p>We count how many people come back the day after they install, and where in the game people stop playing. That is the only use. The data is not sold, not shared with advertisers, and not given to any third party analytics company. There is no advertising network in this version of the game.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Where it is stored</h3>
+    <p>On our own server, hosted on Cloudflare. Nobody outside EMKE Seismic Isolation LLC has access to it.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Purchases</h3>
+    <p>Purchases are handled entirely by Apple. We never see your payment details. We only record that a purchase of a given product happened, so that we can tell which items people want.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Children</h3>
+    <p>The game has no chat, no user generated content, and no way to contact another player.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Your choices</h3>
+    <p>Deleting the app removes the identifier the game generated, and a reinstall creates a new one. If you would like the records associated with your device removed, write to us at {CONTACT_EMAIL} and we will delete them.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Contact</h3>
+    <p>{CONTACT_EMAIL}</p></div>
   </LegalPage>
 );
 
@@ -1201,6 +1294,8 @@ export default function EmkeWebsite() {
               <Route path="/trackr" element={<TrackrPage />} />
               <Route path="/vision" element={<VisionPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/steelsurvivor" element={<SteelSurvivorPage />} />
+              <Route path="/steelsurvivor/privacy" element={<SteelSurvivorPrivacyPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/support" element={<SupportPage />} />

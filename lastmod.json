@@ -4,8 +4,8 @@
     "date": "2026-07-28"
   },
   "/apps": {
-    "hash": "903fff055d671ead",
-    "date": "2026-07-28"
+    "hash": "a217c767584511b7",
+    "date": "2026-09-16"
   },
   "/trackr": {
     "hash": "2a7704c0d37906d6",
@@ -22,6 +22,14 @@
   "/support": {
     "hash": "c2c6d1cecd527e71",
     "date": "2026-08-19"
+  },
+  "/steelsurvivor": {
+    "hash": "d9066a8fd845fe25",
+    "date": "2026-09-16"
+  },
+  "/steelsurvivor/privacy": {
+    "hash": "2ae5a36ffd5fcb59",
+    "date": "2026-09-16"
   },
   "/privacy": {
     "hash": "fe2c988c156d689b",

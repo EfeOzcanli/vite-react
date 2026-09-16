@@ -2,21 +2,64 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "emke.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "emke.app"
+        }
+      ],
       "destination": "https://www.emke.app/$1",
       "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/apps", "destination": "/apps/index.html" },
-    { "source": "/trackr", "destination": "/trackr/index.html" },
-    { "source": "/vision", "destination": "/vision/index.html" },
-    { "source": "/contact", "destination": "/contact/index.html" },
-    { "source": "/support", "destination": "/support/index.html" },
-    { "source": "/privacy", "destination": "/privacy/index.html" },
-    { "source": "/terms", "destination": "/terms/index.html" },
-    { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/blog/:slug", "destination": "/blog/:slug/index.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/apps",
+      "destination": "/apps/index.html"
+    },
+    {
+      "source": "/trackr",
+      "destination": "/trackr/index.html"
+    },
+    {
+      "source": "/vision",
+      "destination": "/vision/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/index.html"
+    },
+    {
+      "source": "/support",
+      "destination": "/support/index.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy/index.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog/:slug/index.html"
+    },
+    {
+      "source": "/steelsurvivor",
+      "destination": "/steelsurvivor/index.html"
+    },
+    {
+      "source": "/steelsurvivor/privacy",
+      "destination": "/steelsurvivor/privacy/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

@@ -41,6 +41,16 @@ const routes = [
     desc: 'Need help with Trackr or another EMKE app? Find answers and contact support at info@emke.app.',
   },
   {
+    path: '/steelsurvivor',
+    title: 'Steel Survivor: Tank War — Tank Roguelite by EMKE',
+    desc: 'One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time. Coming soon to the App Store.',
+  },
+  {
+    path: '/steelsurvivor/privacy',
+    title: 'Steel Survivor Privacy Policy — EMKE',
+    desc: 'What Steel Survivor: Tank War records and what it does not. No accounts, no ads, no advertising identifier, no tracking.',
+  },
+  {
     path: '/privacy',
     title: 'Privacy Policy — EMKE',
     desc: 'How EMKE apps collect, use, and protect your data. Read the full privacy policy for Trackr and other EMKE apps.',
