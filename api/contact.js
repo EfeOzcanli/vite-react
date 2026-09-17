@@ -72,12 +72,15 @@ async function handle(request) {
     return json({ ok: true });
   }
 
-  // 3) Turnstile. Sayfayi hic acmadan buraya POST atan bot burada durur.
+  // 3) Turnstile. Gecemeyeni ELEMIYORUZ, isaretliyoruz.
+  //
+  // Gorunmez modda Turnstile supheli buldugu ziyaretciye gosterecek bir kutu bulamiyor,
+  // yani kisi kendini kanitlayamiyor. Gercek bir musteri de VPN, gizlilik eklentisi ya da
+  // kurumsal guvenlik duvari yuzunden takilabilir. Diger butun kontroller temizse mail
+  // yine gidiyor, konusu [UNVERIFIED] ile basliyor.
   const secret = env("TURNSTILE_SECRET");
   if (!secret) return json({ ok: false, error: "server_not_configured" });
-  if (!(await verifyTurnstile(secret, str(data.turnstile_token), ip))) {
-    return json({ ok: false, error: "verification_failed" }, 403);
-  }
+  const verified = await verifyTurnstile(secret, str(data.turnstile_token), ip);
 
   // 4) Alan kontrolu.
   const name = str(data.name);
@@ -106,9 +109,11 @@ async function handle(request) {
   };
   order.forEach(push);
   Object.keys(data).forEach(push);
-  const subject = (env("FORM_SUBJECT") || "New inquiry from emke.app") + ": " + (name || email);
+  const subject =
+    (verified ? "" : "[UNVERIFIED] ") +
+    (env("FORM_SUBJECT") || "New inquiry from emke.app") + ": " + (name || email);
 
-  const viaResend = await sendViaResend({ subject, fields, replyTo: email });
+  const viaResend = await sendViaResend({ subject, fields, replyTo: email, verified });
   if (viaResend.ok) return json({ ok: true });
 
   const viaFormSubmit = await sendViaFormSubmit(request, { subject, fields, replyTo: email });
@@ -117,7 +122,7 @@ async function handle(request) {
   return json({ ok: false, error: "delivery_failed", detail: viaResend.detail || viaFormSubmit.detail });
 }
 
-async function sendViaResend({ subject, fields, replyTo }) {
+async function sendViaResend({ subject, fields, replyTo, verified }) {
   const key = env("RESEND_API_KEY");
   const to = env("FORM_TO");
   const from = env("FORM_FROM");
@@ -144,11 +149,18 @@ async function sendViaResend({ subject, fields, replyTo }) {
         reply_to: replyTo,
         subject,
         text:
+          (verified ? "" : "THE BOT CHECK DID NOT PASS FOR THIS ONE. Everything else looked human, so it was sent " +
+            "through rather than dropped. It can be a real person behind a VPN or a privacy extension, and it can " +
+            "also be a bot.\n\n") +
           "Someone filled in the contact form on emke.app.\n\n" +
           fields.map(([k, v]) => `${label(k)}: ${v || "not given"}`).join("\n") +
           "\n\nReply to this email and your answer goes straight to them.\n",
         html:
           `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.7;max-width:640px;color:#111827">` +
+          (verified ? "" : `<p style="margin:0 0 18px;padding:12px 14px;background:#fef3c7;border-radius:6px;font-size:13.5px;color:#78350f">` +
+            `<strong>The bot check did not pass for this one.</strong> Everything else looked human, so it was sent ` +
+            `through rather than dropped. It can be a real person behind a VPN, a privacy extension or a company ` +
+            `firewall, and it can also be a bot. Read it before you reply.</p>`) +
           `<p style="margin:0 0 18px"><strong>Someone filled in the contact form on emke.app.</strong></p>` +
           `<table style="border-collapse:collapse;width:100%">${rows}</table>` +
           `<p style="margin:22px 0 0;font-size:13px;color:#6b7280">Reply to this email and your answer goes straight to them.</p></div>`,
