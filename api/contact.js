@@ -92,9 +92,6 @@ async function handle(request) {
   }
   if (message.length < MIN_MESSAGE) return json({ ok: false, error: "message_too_short" }, 400);
 
-  // 5) Link yigini.
-  if (message.split("http").length - 1 > 2) return json({ ok: true });
-
   // Formdaki her soru bildirimde gorunsun, bos birakilan da bilgidir.
   const order = Array.isArray(data.field_order) && data.field_order.length
     ? data.field_order

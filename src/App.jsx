@@ -806,9 +806,6 @@ const ContactPage = () => {
     if (formData.message.trim().length < 20 || formData.name.trim().length < 2) {
       setError('Please add a little more detail so we can reply properly.'); return;
     }
-    if ((formData.message.match(/https?:\/\//g) || []).length > 2) {
-      setSubmitted(true); clear(); return;
-    }
     setSending(true);
     try {
       // Hedef adres artik sayfada degil, api/contact.js icinde.
