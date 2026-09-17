@@ -730,35 +730,106 @@ const VisionPage = () => (
   </div>
 );
 
+const TURNSTILE_SITEKEY = '0x4AAAAAAE5yIWcOa7V9n5ik';
+
+// Gorunmez Turnstile. Sayfaya hicbir sey cizmez, arka planda token uretir. Bu token
+// olmadan /api/contact 403 doner, yani sayfayi hic acmayan bot oradan gecemez.
+// callback her zaman tetiklenmiyor, dogru okuma yolu getResponse.
+const useTurnstile = (containerRef) => {
+  const widgetId = useRef(null);
+  const token = useRef('');
+
+  useEffect(() => {
+    let cancelled = false;
+    const render = () => {
+      if (cancelled || !containerRef.current || !window.turnstile || widgetId.current !== null) return;
+      widgetId.current = window.turnstile.render(containerRef.current, {
+        sitekey: TURNSTILE_SITEKEY,
+        callback: (t) => { token.current = t; },
+        'error-callback': () => { token.current = ''; },
+        'expired-callback': () => {
+          token.current = '';
+          if (widgetId.current !== null) window.turnstile.reset(widgetId.current);
+        },
+      });
+    };
+    if (window.turnstile) {
+      render();
+    } else if (!document.getElementById('cf-turnstile-script')) {
+      const s = document.createElement('script');
+      s.id = 'cf-turnstile-script';
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onEmkeTurnstileLoad&render=explicit';
+      s.async = true;
+      s.defer = true;
+      window.onEmkeTurnstileLoad = render;
+      document.head.appendChild(s);
+    } else {
+      window.onEmkeTurnstileLoad = render;
+    }
+    return () => { cancelled = true; };
+  }, [containerRef]);
+
+  return () => new Promise((resolve) => {
+    if (!window.turnstile || widgetId.current === null) return resolve(token.current || '');
+    let tries = 0;
+    const poll = () => {
+      let t = '';
+      try { t = window.turnstile.getResponse(widgetId.current) || ''; } catch (e) { t = ''; }
+      if (t) return resolve(t);
+      if (token.current) return resolve(token.current);
+      if (tries === 0) { try { window.turnstile.execute(widgetId.current); } catch (e) { /* yoksay */ } }
+      if (++tries > 60) return resolve('');
+      setTimeout(poll, 100);
+    };
+    poll();
+  });
+};
+
 const ContactPage = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '', website: '' });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [sending, setSending] = useState(false);
   const loadedAt = useRef(Date.now());
+  const tsRef = useRef(null);
+  const getTurnstileToken = useTurnstile(tsRef);
+
+  const clear = () => setFormData({ name: '', email: '', message: '', website: '' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    // Spam kapisi: honeypot dolu ya da sayfa acilir acilmaz gonderilmis.
-    // Bota hata gosterme, sessizce basarili gibi davran.
+    // Bota hata gosterme, sessizce basarili gibi davran. Ayni kontroller sunucuda da var.
     if (formData.website.trim() !== '' || Date.now() - loadedAt.current < 4000) {
-      setSubmitted(true); setFormData({ name: '', email: '', message: '', website: '' }); return;
+      setSubmitted(true); clear(); return;
     }
     if (formData.message.trim().length < 20 || formData.name.trim().length < 2) {
       setError('Please add a little more detail so we can reply properly.'); return;
     }
     if ((formData.message.match(/https?:\/\//g) || []).length > 2) {
-      setSubmitted(true); setFormData({ name: '', email: '', message: '', website: '' }); return;
+      setSubmitted(true); clear(); return;
     }
+    setSending(true);
     try {
-      const response = await fetch('https://formsubmit.co/ajax/info@emke.app', {
+      // Hedef adres artik sayfada degil, api/contact.js icinde.
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message }),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          elapsed_ms: Date.now() - loadedAt.current,
+          turnstile_token: await getTurnstileToken(),
+        }),
       });
-      if (response.ok) { setSubmitted(true); setFormData({ name: '', email: '', message: '', website: '' }); }
+      const result = await response.json().catch(() => ({}));
+      if (response.ok && result.ok === true) { setSubmitted(true); clear(); }
+      else setError('That did not go through. Please email ' + CONTACT_EMAIL + ' directly.');
     } catch (err) {
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Contact from ${formData.name}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+      setError('That did not go through. Please email ' + CONTACT_EMAIL + ' directly.');
+    } finally {
+      setSending(false);
     }
   };
 
@@ -802,13 +873,14 @@ const ContactPage = () => {
           ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={formData.website} onChange={e => setFormData({...formData, website: e.target.value})} style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }} />
+            <div ref={tsRef} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Name</label><input type="text" name="name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all" placeholder="John Doe" required /></div>
               <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Email</label><input type="email" name="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all" placeholder="john@example.com" required /></div>
             </div>
             <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Message</label><textarea rows={5} name="message" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all resize-none" placeholder="Tell us about your project or idea..." required /></div>
             {error && <p className="text-red-400 text-sm text-center">{error}</p>}
-            <button type="submit" className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center">Send Message</button>
+            <button type="submit" disabled={sending} className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center disabled:opacity-60">{sending ? 'Sending...' : 'Send Message'}</button>
             <p className="text-zinc-500 text-xs text-center">Your message goes directly to our team. We respond within 24-48 business hours.</p>
           </form>
           )}
