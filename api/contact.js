@@ -98,7 +98,7 @@ async function handle(request) {
     const val = Array.isArray(v) ? v.join(", ") : str(v).slice(0, 5000);
     if (val) fields.push([k, val]);
   }
-  const subject = (env("FORM_SUBJECT") || "New inquiry from emke.app") + " — " + (name || email);
+  const subject = (env("FORM_SUBJECT") || "New inquiry from emke.app") + ": " + (name || email);
 
   const viaResend = await sendViaResend({ subject, fields, replyTo: email });
   if (viaResend.ok) return json({ ok: true });
