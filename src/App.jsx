@@ -819,6 +819,8 @@ const ContactPage = () => {
           name: formData.name,
           email: formData.email,
           message: formData.message,
+          // Formdaki tum sorularin adi ve sirasi; bos birakilanlar da bildirimde gorunsun.
+          field_order: ['name', 'email', 'message'],
           elapsed_ms: Date.now() - loadedAt.current,
           turnstile_token: await getTurnstileToken(),
         }),

@@ -23,7 +23,7 @@ const MIN_ELAPSED_MS = 4000;
 const MAX_ELAPSED_MS = 6 * 60 * 60 * 1000;
 const MIN_MESSAGE = 20;
 const INTERNAL_FIELDS = new Set([
-  "turnstile_token", "elapsed_ms", "website-url", "website_url",
+  "turnstile_token", "elapsed_ms", "website-url", "website_url", "field_order",
   // Turnstile widget kendi gizli inputunu forma koyuyor; token bildirim mailine sizmasin.
   "cf-turnstile-response",
 ]);
@@ -92,12 +92,20 @@ async function handle(request) {
   // 5) Link yigini.
   if (message.split("http").length - 1 > 2) return json({ ok: true });
 
+  // Formdaki her soru bildirimde gorunsun, bos birakilan da bilgidir.
+  const order = Array.isArray(data.field_order) && data.field_order.length
+    ? data.field_order
+    : Object.keys(data);
+  const seen = new Set();
   const fields = [];
-  for (const [k, v] of Object.entries(data)) {
-    if (INTERNAL_FIELDS.has(k) || k === "website" || k.startsWith("_") || k.startsWith("cf-")) continue;
-    const val = Array.isArray(v) ? v.join(", ") : str(v).slice(0, 5000);
-    if (val) fields.push([k, val]);
-  }
+  const push = (k) => {
+    if (seen.has(k) || INTERNAL_FIELDS.has(k) || k === "website" || k.startsWith("_") || k.startsWith("cf-")) return;
+    seen.add(k);
+    const v = data[k];
+    fields.push([k, Array.isArray(v) ? v.join(", ") : str(v).slice(0, 5000)]);
+  };
+  order.forEach(push);
+  Object.keys(data).forEach(push);
   const subject = (env("FORM_SUBJECT") || "New inquiry from emke.app") + ": " + (name || email);
 
   const viaResend = await sendViaResend({ subject, fields, replyTo: email });
@@ -120,7 +128,9 @@ async function sendViaResend({ subject, fields, replyTo }) {
       ([k, v]) =>
         `<tr><td style="padding:7px 16px 7px 0;color:#6b7280;font-size:13px;vertical-align:top;white-space:nowrap">${esc(
           label(k)
-        )}</td><td style="padding:7px 0;color:#111827;white-space:pre-wrap">${esc(v)}</td></tr>`
+        )}</td><td style="padding:7px 0;white-space:pre-wrap;color:${v ? "#111827" : "#9ca3af"}">${
+          v ? esc(v) : "not given"
+        }</td></tr>`
     )
     .join("");
 
@@ -135,7 +145,7 @@ async function sendViaResend({ subject, fields, replyTo }) {
         subject,
         text:
           "Someone filled in the contact form on emke.app.\n\n" +
-          fields.map(([k, v]) => `${label(k)}: ${v}`).join("\n") +
+          fields.map(([k, v]) => `${label(k)}: ${v || "not given"}`).join("\n") +
           "\n\nReply to this email and your answer goes straight to them.\n",
         html:
           `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.7;max-width:640px;color:#111827">` +
