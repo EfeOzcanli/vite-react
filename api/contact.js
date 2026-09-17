@@ -22,7 +22,11 @@ const CALL_TIMEOUT_MS = 8000;
 const MIN_ELAPSED_MS = 4000;
 const MAX_ELAPSED_MS = 6 * 60 * 60 * 1000;
 const MIN_MESSAGE = 20;
-const INTERNAL_FIELDS = new Set(["turnstile_token", "elapsed_ms", "website-url", "website_url"]);
+const INTERNAL_FIELDS = new Set([
+  "turnstile_token", "elapsed_ms", "website-url", "website_url",
+  // Turnstile widget kendi gizli inputunu forma koyuyor; token bildirim mailine sizmasin.
+  "cf-turnstile-response",
+]);
 
 export default async function handler(request) {
   if (request.method === "GET") {
@@ -90,7 +94,7 @@ async function handle(request) {
 
   const fields = [];
   for (const [k, v] of Object.entries(data)) {
-    if (INTERNAL_FIELDS.has(k) || k === "website" || k.startsWith("_")) continue;
+    if (INTERNAL_FIELDS.has(k) || k === "website" || k.startsWith("_") || k.startsWith("cf-")) continue;
     const val = Array.isArray(v) ? v.join(", ") : str(v).slice(0, 5000);
     if (val) fields.push([k, val]);
   }
@@ -114,9 +118,9 @@ async function sendViaResend({ subject, fields, replyTo }) {
   const rows = fields
     .map(
       ([k, v]) =>
-        `<tr><td style="padding:6px 14px 6px 0;color:#6b7280;font-size:12px;vertical-align:top;white-space:nowrap">${esc(
-          k
-        )}</td><td style="padding:6px 0;color:#0a1229;white-space:pre-wrap">${esc(v)}</td></tr>`
+        `<tr><td style="padding:7px 16px 7px 0;color:#6b7280;font-size:13px;vertical-align:top;white-space:nowrap">${esc(
+          label(k)
+        )}</td><td style="padding:7px 0;color:#111827;white-space:pre-wrap">${esc(v)}</td></tr>`
     )
     .join("");
 
@@ -129,10 +133,15 @@ async function sendViaResend({ subject, fields, replyTo }) {
         to: [to],
         reply_to: replyTo,
         subject,
-        text: fields.map(([k, v]) => `${k}: ${v}`).join("\n"),
+        text:
+          "Someone filled in the contact form on emke.app.\n\n" +
+          fields.map(([k, v]) => `${label(k)}: ${v}`).join("\n") +
+          "\n\nReply to this email and your answer goes straight to them.\n",
         html:
-          `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.7;max-width:640px">` +
-          `<table style="border-collapse:collapse;width:100%">${rows}</table></div>`,
+          `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.7;max-width:640px;color:#111827">` +
+          `<p style="margin:0 0 18px"><strong>Someone filled in the contact form on emke.app.</strong></p>` +
+          `<table style="border-collapse:collapse;width:100%">${rows}</table>` +
+          `<p style="margin:22px 0 0;font-size:13px;color:#6b7280">Reply to this email and your answer goes straight to them.</p></div>`,
       }),
     });
     if (r.ok) return { ok: true };
@@ -204,6 +213,12 @@ async function timedFetch(url, init) {
 
 function env(k) {
   return (typeof process !== "undefined" && process.env && process.env[k]) || "";
+}
+
+// selling_on_amazon -> Selling on amazon
+function label(k) {
+  const s = String(k).replace(/[_-]+/g, " ").trim();
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 function str(v) {
