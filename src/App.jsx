@@ -13,6 +13,7 @@ import { posts } from './blog/posts.jsx';
 const CONTACT_EMAIL = "info@emke.app";
 const EFFECTIVE_DATE = "01/30/2026";
 const STEEL_EFFECTIVE_DATE = "09/16/2026";
+const THICKET_EFFECTIVE_DATE = "09/18/2026";
 
 // Trackr Logo - uses image
 const TrackrLogo = ({ className = "w-12 h-12" }) => (
@@ -187,7 +188,7 @@ const PhotoProgressCard = () => (
       </div>
       <div className="mt-4 flex items-center gap-2 bg-green-500/25 rounded-xl p-3 border border-green-500/40">
         <TrendingUp size={18} className="text-green-400" />
-        <span className="text-green-300 text-sm font-semibold">-4 kg transformation</span>
+        <span className="text-green-300 text-sm font-semibold">4 kg lost</span>
       </div>
       <div className="mt-3 flex items-center gap-2 bg-blue-500/15 rounded-xl p-3 border border-blue-500/30">
         <Shield size={16} className="text-blue-400" />
@@ -426,7 +427,7 @@ const HomePage = () => {
               <h2 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-6">Your weight, your photos,<br /><span className="text-zinc-300">perfectly synced.</span></h2>
               <p className="text-xl text-zinc-200 mb-8 leading-relaxed">Every time you take a progress photo, Trackr automatically records your current weight.</p>
               <div className="space-y-4">
-                {['Automatic weight tagging on photos', 'Side-by-side comparison view', 'Premium: Cloud backup for switching phones', 'Export & share your journey'].map((item, i) => (
+                {['Automatic weight tagging on photos', 'Side by side comparison view', 'Premium: Cloud backup for switching phones', 'Export & share your journey'].map((item, i) => (
                   <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-center gap-3 text-zinc-100">
                     <CheckCircle2 size={20} className="text-green-400" /><span className="font-medium">{item}</span>
                   </motion.div>
@@ -482,7 +483,7 @@ const HomePage = () => {
             <ExerciseProgressCard name="OHP" current={65} previous={60} unit="kg" icon={<TrendingUp size={20} />} />
           </div>
           <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-16 bg-gradient-to-br from-zinc-700/80 to-zinc-800/80 backdrop-blur-xl rounded-[32px] border border-white/20 p-8">
-            <div className="flex items-center justify-between mb-8"><div><h3 className="text-2xl font-bold text-white">Weight Journey</h3><p className="text-zinc-300">Your transformation over time</p></div><div className="flex items-center gap-2 px-4 py-2 bg-green-500/25 rounded-full border border-green-500/40"><TrendingUp size={16} className="text-green-400" /><span className="text-green-400 font-bold">-4 kg total</span></div></div>
+            <div className="flex items-center justify-between mb-8"><div><h3 className="text-2xl font-bold text-white">Weight Journey</h3><p className="text-zinc-300">Your transformation over time</p></div><div className="flex items-center gap-2 px-4 py-2 bg-green-500/25 rounded-full border border-green-500/40"><TrendingUp size={16} className="text-green-400" /><span className="text-green-400 font-bold">4 kg lost</span></div></div>
             <WeightTimeline />
           </motion.div>
         </div>
@@ -512,7 +513,7 @@ const HomePage = () => {
               <h2 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">Trackr<span className="text-green-500">.</span></h2>
               <p className="text-xl text-zinc-400 mb-8 leading-relaxed">Track weight, photos, exercises, and your overall score.</p>
               <div className="space-y-4 mb-10">
-                {[{ icon: <Camera size={18} />, text: 'Photo progress with weight sync' }, { icon: <Scale size={18} />, text: 'Smart weight tracking' }, { icon: <Trophy size={18} />, text: 'Overall fitness score' }, { icon: <BarChart3 size={18} />, text: 'Exercise-by-exercise analytics' }].map((item, i) => (
+                {[{ icon: <Camera size={18} />, text: 'Photo progress with weight sync' }, { icon: <Scale size={18} />, text: 'Smart weight tracking' }, { icon: <Trophy size={18} />, text: 'Overall fitness score' }, { icon: <BarChart3 size={18} />, text: 'Exercise by exercise analytics' }].map((item, i) => (
                   <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-center gap-4 text-zinc-300">
                     <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-green-500">{item.icon}</div><span className="font-medium">{item.text}</span>
                   </motion.div>
@@ -567,7 +568,7 @@ const TrackrPage = () => (
         <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/25 border border-green-500/40 rounded-full text-green-400 text-sm font-semibold mb-6"><Trophy size={14} /> Why we built Trackr</span>
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6">120 kg to 72 kg.<br className="hidden md:block" /> One photo at a time.</h2>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">Our founder lost 48 kg by tracking every weigh-in and every progress photo. Trackr is the tool he wished he had the whole way.</p>
+          <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">Our founder lost 48 kg by tracking every weight entry and every progress photo. Trackr is the tool he wished he had the whole way.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
@@ -587,9 +588,9 @@ const TrackrPage = () => (
           <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex">
             <div className="bg-gradient-to-br from-zinc-800/80 to-zinc-900/80 backdrop-blur-xl rounded-[36px] border border-white/15 p-10 flex flex-col justify-center shadow-2xl w-full">
               <div className="flex items-center gap-2 mb-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/15 border border-green-500/30"><TrendingUp size={16} className="text-green-400" /><span className="text-green-400 font-black">−48 kg</span></div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/15 border border-green-500/30"><TrendingUp size={16} className="text-green-400" /><span className="text-green-400 font-black">48 kg lost</span></div>
               </div>
-              <p className="text-2xl md:text-3xl text-white font-semibold leading-snug mb-8">"I went from 120 kg to 72 kg by staying consistent and tracking my progress. Trackr is everything I needed in one place — so you can do it too."</p>
+              <p className="text-2xl md:text-3xl text-white font-semibold leading-snug mb-8">"I went from 120 kg to 72 kg by staying consistent and tracking my progress. Trackr is everything I needed in one place, so you can do it too."</p>
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-full bg-green-500 text-black font-black flex items-center justify-center text-lg">E</div>
                 <div><div className="text-white font-bold">Kerim Efe Ozcanli</div><div className="text-zinc-400 text-sm">Founder, Trackr</div></div>
@@ -665,7 +666,7 @@ const TrackrPage = () => (
           <ExerciseProgressCard name="OHP" current={65} previous={60} unit="kg" icon={<TrendingUp size={20} />} />
         </div>
         <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-gradient-to-br from-zinc-700/80 to-zinc-800/80 backdrop-blur-xl rounded-[32px] border border-white/20 p-8">
-          <div className="flex items-center justify-between mb-8"><div><h3 className="text-2xl font-bold text-white">Weight Journey</h3><p className="text-zinc-300">Track bodyweight</p></div><div className="flex items-center gap-2 px-4 py-2 bg-green-500/25 rounded-full border border-green-500/40"><TrendingUp size={16} className="text-green-400" /><span className="text-green-400 font-bold">-4 kg</span></div></div>
+          <div className="flex items-center justify-between mb-8"><div><h3 className="text-2xl font-bold text-white">Weight Journey</h3><p className="text-zinc-300">Track bodyweight</p></div><div className="flex items-center gap-2 px-4 py-2 bg-green-500/25 rounded-full border border-green-500/40"><TrendingUp size={16} className="text-green-400" /><span className="text-green-400 font-bold">4 kg lost</span></div></div>
           <WeightTimeline />
         </motion.div>
       </div>
@@ -716,12 +717,12 @@ const VisionPage = () => (
 
         <div className="py-8">
           <h3 className="text-3xl font-black text-white mb-6">Where We're Going</h3>
-          <p>Trackr is just the beginning. We're building an ecosystem of minimalist performance tools, each one laser-focused on a single goal. No feature bloat, no unnecessary complexity. Just <span className="text-white font-semibold">clean, private, powerful</span> tools that help you become the best version of yourself.</p>
+          <p>Trackr is just the beginning. We're building an ecosystem of minimalist performance tools, each one focused on a single goal. No feature bloat, no unnecessary complexity. Just <span className="text-white font-semibold">clean, private, powerful</span> tools that help you become the best version of yourself.</p>
         </div>
 
         <GlowingBorder><div className="p-10 rounded-[32px] bg-zinc-900/50 border border-white/5 text-center">
           <p className="text-2xl text-white font-bold mb-4">"Build tools that disappear into the background<br/>and let performance speak."</p>
-          <p className="text-zinc-500">— The EMKE Philosophy</p>
+          <p className="text-zinc-500">The EMKE Philosophy</p>
         </div></GlowingBorder>
 
         <p>Building a <span className="text-white font-semibold">new standard</span> for performance data. <span className="text-green-400">Clean. Private. Powerful.</span></p>
@@ -840,7 +841,7 @@ const ContactPage = () => {
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-xl text-zinc-400 mb-12">Have an app idea? Want to partner with us? We're always open to collaborations.</motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="space-y-6">
           <a href="tel:+17757700677" className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Phone size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">+1 (775) 770-0677</span><span className="text-zinc-500 text-sm">Mon to Fri, 9AM to 6PM PST</span></div></a>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Mail size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">{CONTACT_EMAIL}</span><span className="text-zinc-500 text-sm">We respond within 24-48 business hours</span></div></a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-5 text-white group"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><Mail size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">{CONTACT_EMAIL}</span><span className="text-zinc-500 text-sm">We respond within 24 to 48 business hours</span></div></a>
           <div className="flex items-center gap-5 text-white group cursor-pointer"><div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-colors"><MapPin size={24} /></div><div><span className="text-lg font-semibold group-hover:text-green-400 transition-colors block">Reno, Nevada</span><span className="text-zinc-500 text-sm">Serving users worldwide</span></div></div>
         </motion.div>
         
@@ -866,7 +867,7 @@ const ContactPage = () => {
             <div className="text-center py-12">
               <div className="w-20 h-20 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={40} className="text-green-400" /></div>
               <h3 className="text-3xl font-black text-white mb-4">Message Sent!</h3>
-              <p className="text-zinc-400">Thank you! We'll get back to you within 24-48 business hours.</p>
+              <p className="text-zinc-400">Thank you! We'll get back to you within 24 to 48 business hours.</p>
               <button onClick={() => setSubmitted(false)} className="mt-8 px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-zinc-400 hover:text-white transition-colors">Send Another</button>
             </div>
           ) : (
@@ -880,7 +881,7 @@ const ContactPage = () => {
             <div className="space-y-2"><label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Message</label><textarea rows={5} name="message" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-zinc-600 focus:border-green-500/50 outline-none transition-all resize-none" placeholder="Tell us about your project or idea..." required /></div>
             {error && <p className="text-red-400 text-sm text-center">{error}</p>}
             <button type="submit" disabled={sending} className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center disabled:opacity-60">{sending ? 'Sending...' : 'Send Message'}</button>
-            <p className="text-zinc-500 text-xs text-center">Your message goes directly to our team. We respond within 24-48 business hours.</p>
+            <p className="text-zinc-500 text-xs text-center">Your message goes directly to our team. We respond within 24 to 48 business hours.</p>
           </form>
           )}
         </div></GlowingBorder>
@@ -922,6 +923,19 @@ const AppsPage = () => {
               <p className="text-zinc-500 mb-4">One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time.</p>
               <div className="flex flex-wrap gap-2 mb-6">{['Campaign', 'Roguelite', 'Offline'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
               <span className="inline-flex items-center gap-2 text-amber-500 font-semibold group-hover:gap-4 transition-all">Learn more <ArrowRight size={18} /></span>
+            </div>
+          </div></GlowingBorder>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} onClick={() => navigate('/thicket')} className="cursor-pointer group">
+          <GlowingBorder><div className="p-10 rounded-[40px] bg-zinc-900/50 border border-white/5 h-full overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-[100px] group-hover:bg-green-500/20 transition-all duration-500" />
+            <div className="relative z-10">
+              <div className="w-14 h-14 mb-6 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-500"><Eye size={28} /></div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-500 text-xs font-semibold mb-4"><Timer size={12} />Coming soon</div>
+              <h3 className="text-3xl font-black text-white mb-4">Thicket</h3>
+              <p className="text-zinc-500 mb-4">A stealth game about standing very still. Twenty four mazes, guards who draw their sight on the floor, and tall grass that hides you as long as you hold your breath.</p>
+              <div className="flex flex-wrap gap-2 mb-6">{['Stealth', 'Puzzle', 'Offline'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
+              <span className="inline-flex items-center gap-2 text-green-500 font-semibold group-hover:gap-4 transition-all">Learn more <ArrowRight size={18} /></span>
             </div>
           </div></GlowingBorder>
         </motion.div>
@@ -1032,7 +1046,7 @@ const PrivacyPage = () => (
       <li><strong className="text-white">With Premium Cloud Backup,</strong> your photos are encrypted and stored securely in the cloud if you choose to enable it</li>
       <li>Photos are never shared with other users or third parties</li>
       <li>You can delete your photos at any time from the app</li>
-      <li>Cloud-backed photos are permanently deleted within 30 days of account deletion</li>
+      <li>Photos backed up to the cloud are permanently deleted within 30 days of account deletion</li>
     </ul></div>
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">4. Data Sharing</h3>
@@ -1046,7 +1060,7 @@ const PrivacyPage = () => (
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">5. Data Security</h3>
     <ul className="list-disc pl-6 space-y-2">
       <li>All data transmissions are encrypted using SSL/TLS protocols</li>
-      <li>Cloud-stored data is encrypted at rest using AES-256 encryption</li>
+      <li>Data stored in the cloud is encrypted at rest using AES-256 encryption</li>
       <li>Payment processing is handled securely by Apple App Store and Google Play Store</li>
       <li>Regular security audits and vulnerability assessments</li>
       <li>Access to user data is restricted to authorized personnel only</li>
@@ -1074,8 +1088,8 @@ const PrivacyPage = () => (
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">8. Children's Privacy</h3>
     <p>Trackr is not intended for use by children under 13. We do not knowingly collect personal information from children. If we learn that we have collected data from a child under 13, we will promptly delete it.</p></div>
 
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">9. Third-Party Services</h3>
-    <p>Trackr may contain links to or integrations with third-party services (e.g., Apple Health, Google Fit). We are not responsible for the privacy practices of these external services. Please review their privacy policies.</p></div>
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">9. Third Party Services</h3>
+    <p>Trackr may contain links to or integrations with third party services (e.g., Apple Health, Google Fit). We are not responsible for the privacy practices of these external services. Please review their privacy policies.</p></div>
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">10. Changes to This Policy</h3>
     <p>We may update this Privacy Policy from time to time. We will notify you of material changes through the app or via email. Your continued use of Trackr after changes constitutes acceptance of the updated policy.</p></div>
@@ -1127,6 +1141,80 @@ const SteelSurvivorPrivacyPage = () => (
   </LegalPage>
 );
 
+const THICKET_SHOTS = [
+  { src: '/thicket-grass.jpg', alt: 'Thicket gameplay, a figure hiding in tall grass while a guard\'s cone of sight sweeps past' },
+  { src: '/thicket-hound.jpg', alt: 'Thicket gameplay, a hound with a circle of scent instead of a cone' },
+  { src: '/thicket-levels.jpg', alt: 'Thicket level picker with stars' },
+];
+
+const ThicketPage = () => (
+  <div className="relative min-h-screen"><GridPattern />
+    <section className="pt-40 pb-24 px-6"><div className="max-w-7xl mx-auto">
+      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-500 text-xs font-semibold mb-6">
+          <Timer size={12} />Coming soon to the App Store
+        </div>
+        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">Thicket</h1>
+        <p className="text-xl text-zinc-500 max-w-2xl mx-auto">A game about standing very still. Twenty four mazes, guards who can see you, and tall grass that hides you as long as you hold your breath.</p>
+      </motion.div>
+
+      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24 max-w-4xl mx-auto">
+        {THICKET_SHOTS.map((shot, i) => (
+          <div key={i} className="rounded-[28px] overflow-hidden border border-white/10 bg-zinc-900/50">
+            <img src={shot.src} alt={shot.alt} width="620" height="1347" loading={i === 0 ? 'eager' : 'lazy'} className="w-full h-auto block" />
+          </div>
+        ))}
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {[
+          { icon: <Eye size={28} />, title: 'You see what they see', body: 'Every guard draws his cone of sight on the floor. It stops where walls stop. Stay out of it and he never knows you were there.' },
+          { icon: <Shield size={28} />, title: 'Grass hides you', body: 'Standing in tall grass makes you invisible to eyes, even to a guard looking straight at you. Hold still and he walks right past. Run through it and it stays bent behind you.' },
+          { icon: <Target size={28} />, title: 'No weapons', body: 'You can take a man down from behind, and then you have a body to hide. Or you can walk around him. Every level can be finished without touching anyone.' },
+          { icon: <Trophy size={28} />, title: 'Twenty four levels, three stars each', body: 'Lanterns that light the grass, a messenger who runs for the bell, a hound that finds you by smell, rain that hides your feet and kills your tricks. Offline, no account.' },
+        ].map((f, i) => (
+          <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+            <div className="p-8 rounded-[32px] bg-zinc-900/50 border border-white/5 h-full">
+              <div className="text-green-500 mb-4">{f.icon}</div>
+              <h3 className="text-xl font-bold text-white mb-3">{f.title}</h3>
+              <p className="text-zinc-500 leading-relaxed">{f.body}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="text-center mt-20">
+        <Link to="/thicket/privacy" className="text-zinc-500 hover:text-green-500 transition-colors text-sm font-semibold">Thicket privacy policy</Link>
+      </div>
+    </div></section>
+  </div>
+);
+
+const ThicketPrivacyPage = () => (
+  <LegalPage title="Thicket Privacy Policy" icon={<ShieldCheck size={36} />} date={THICKET_EFFECTIVE_DATE}>
+    <p className="text-white font-semibold text-lg">EMKE Seismic Isolation LLC</p>
+    <p>This policy covers the game Thicket: Stealth Escape. It is separate from the Trackr policy because the game collects nothing at all.</p>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">What the game collects</h3>
+    <p>Nothing. Thicket does not create an account, does not ask for your name, email or location, and does not contain analytics or advertising software. It does not send anything about you or your play to us or to anyone else.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">What stays on your device</h3>
+    <p>Your progress, meaning levels cleared, stars, coins, tools and coats, is stored on your device only, in the app's own storage. Deleting the app deletes it. We cannot see it and cannot restore it for you.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Purchases</h3>
+    <p>Purchases are handled entirely by Apple through the App Store. Apple processes the payment and keeps the purchase record. We receive no payment details and no personal information from Apple; the app only learns which items your Apple ID owns so that it can unlock them and restore them on a new device. Apple's own privacy policy applies to that transaction.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Children</h3>
+    <p>The game has no chat, no user generated content, no way to contact another player, and collects no information from anyone.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Changes</h3>
+    <p>If a future version starts collecting anything, this page will say what and why before that version ships.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Contact</h3>
+    <p>{CONTACT_EMAIL}</p></div>
+  </LegalPage>
+);
+
 const TermsPage = () => (
   <LegalPage title="Terms of Service" icon={<Scale size={36} />}>
     <p className="text-white font-semibold text-lg">EMKE Seismic Isolation LLC</p>
@@ -1158,7 +1246,7 @@ const TermsPage = () => (
       <li>Free features are available without a subscription</li>
       <li>Premium features require a paid subscription (monthly or annual)</li>
       <li>Subscriptions are billed through Apple App Store or Google Play Store</li>
-      <li>Subscriptions auto-renew unless cancelled at least 24 hours before the current period ends</li>
+      <li>Subscriptions renew automatically unless cancelled at least 24 hours before the current period ends</li>
       <li>You can manage subscriptions through your device's app store settings</li>
       <li>Refunds are handled by Apple/Google per their respective refund policies</li>
     </ul></div>
@@ -1252,7 +1340,7 @@ const SupportPage = () => {
         <GlowingBorder><div className="p-8 bg-zinc-900/50 rounded-3xl border border-white/5 mb-12">
           <h2 className="text-white text-xl font-bold mb-4">Need help? Reach out to us directly.</h2>
           <a href={`mailto:${SUPPORT_EMAIL}`} className="inline-flex items-center gap-3 text-green-400 text-lg font-semibold hover:underline mb-3"><Mail size={20} />{SUPPORT_EMAIL}</a>
-          <p className="text-zinc-500">We typically respond within 24-48 hours.</p>
+          <p className="text-zinc-500">We typically respond within 24 to 48 hours.</p>
         </div></GlowingBorder>
       </motion.div>
 
@@ -1271,7 +1359,7 @@ const SupportPage = () => {
         <div>
           <h3 className="text-white text-lg font-bold mb-4">Trackr Pro</h3>
           <div className="space-y-3">
-            <FAQItem question="What is included in Trackr Pro?" answer="Trackr Pro includes unlimited progress photo storage, cloud backup with multi-device sync, advanced body measurement tracking, detailed analytics, and priority support." />
+            <FAQItem question="What is included in Trackr Pro?" answer="Trackr Pro includes unlimited progress photo storage, cloud backup that syncs across devices, advanced body measurement tracking, detailed analytics, and priority support." />
             <FAQItem question="How do I cancel my subscription?" answer="Open Settings on your device, tap your name, then Subscriptions, then Trackr, then Cancel Subscription. You'll keep Pro access until the end of your billing period." />
             <FAQItem question="Can I restore my purchases on a new device?" answer="Yes. Sign in with the same account you used to subscribe and your Pro status will be restored automatically. If it doesn't restore right away, go to Profile, then tap Restore Purchases." />
             <FAQItem question="How does cloud backup work?" answer="Pro users can enable cloud backup in Profile, then Cloud Backup. Your data syncs automatically across all devices signed into the same account." />
@@ -1281,7 +1369,7 @@ const SupportPage = () => {
         <div>
           <h3 className="text-white text-lg font-bold mb-4">Privacy & Account</h3>
           <div className="space-y-3">
-            <FAQItem question="Is my data private?" answer="Yes. We never sell or share your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted with bank-level security." />
+            <FAQItem question="Is my data private?" answer="Yes. We never sell or share your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted at rest with AES-256." />
             <FAQItem question="How do I delete my account?" answer="Go to Profile, then Delete Account. This permanently removes all your data from our servers. This action cannot be undone." />
           </div>
         </div>
@@ -1301,7 +1389,7 @@ const SupportPage = () => {
             <a href={`mailto:${SUPPORT_EMAIL}`} className="flex items-center gap-3 text-zinc-300 hover:text-green-400 transition-colors"><Mail size={18} />{SUPPORT_EMAIL}</a>
             <a href="tel:+17757700677" className="flex items-center gap-3 text-zinc-300 hover:text-green-400 transition-colors"><Phone size={18} />+1 (775) 770-0677</a>
           </div>
-          <p className="text-zinc-500 text-sm mt-4">We typically respond within 24-48 hours.</p>
+          <p className="text-zinc-500 text-sm mt-4">We typically respond within 24 to 48 hours.</p>
           <div className="flex gap-4 mt-8">
             <span onClick={() => navigate('/privacy')} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors text-sm">Privacy Policy</span>
             <span onClick={() => navigate('/terms')} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors text-sm">Terms of Service</span>
@@ -1383,6 +1471,8 @@ export default function EmkeWebsite() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/steelsurvivor" element={<SteelSurvivorPage />} />
               <Route path="/steelsurvivor/privacy" element={<SteelSurvivorPrivacyPage />} />
+              <Route path="/thicket" element={<ThicketPage />} />
+              <Route path="/thicket/privacy" element={<ThicketPrivacyPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/support" element={<SupportPage />} />

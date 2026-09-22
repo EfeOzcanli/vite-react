@@ -34,14 +34,14 @@ export const posts = [
     slug: 'how-to-take-progress-photos',
     title: 'How to Take Progress Photos That Actually Show Change (Trackr Guide)',
     description:
-      'A practical guide on how to take progress photos: lighting, angles, poses, and frequency that make real change visible — plus the mistakes that hide it.',
+      'A practical guide on how to take progress photos: lighting, angles, poses, and frequency that make real change visible, plus the mistakes that hide it.',
     date: '2026-07-08',
     readingMinutes: 8,
     body: (
       <>
         <p>
           Most progress photos fail before the shutter ever clicks. Different lighting, a
-          different mirror, a slightly different angle — and suddenly you can't tell whether
+          different mirror, a slightly different angle, and suddenly you can't tell whether
           you lost fat or just stood closer to the window. Then you compare two photos taken
           four weeks apart, see nothing, and conclude the training isn't working. Often it
           is working. The photos just weren't taken in a way that could show it.
@@ -56,13 +56,13 @@ export const posts = [
         <h2>Why photos beat the scale</h2>
         <p>
           The scale gives you one number, and that number is noisy. Water, glycogen, sodium,
-          what you ate last night, where you are in your cycle — day to day, your weight can
+          what you ate last night, where you are in your cycle. Day to day, your weight can
           swing by a kilogram or more without any real change in body composition. Worse,
           the scale can't tell the difference between losing fat and losing muscle, or
           between gaining muscle and gaining fat.
         </p>
         <p>
-          Photos can. If you're in a recomposition phase — building muscle while losing fat —
+          Photos can. If you're in a recomposition phase (building muscle while losing fat),
           the scale might not move for two months while your body visibly changes shape.
           Waistline tighter, shoulders rounder, the vague outline of an ab. Without photos,
           that entire phase reads as "no progress" and people quit right when things are
@@ -73,9 +73,9 @@ export const posts = [
 
         <h2>The one rule: control every variable except your body</h2>
         <p>
-          A progress photo is a before-and-after experiment, and your body is the only
-          variable you want changing between shots. Everything else — light, angle,
-          distance, clothing, pose, time of day — needs to stay fixed. Every variable you
+          A progress photo is a before and after experiment, and your body is the only
+          variable you want changing between shots. Everything else (light, angle,
+          distance, clothing, pose, time of day) needs to stay fixed. Every variable you
           let drift becomes noise, and after a few weeks the noise is louder than the
           signal.
         </p>
@@ -83,21 +83,21 @@ export const posts = [
         <h3>Lighting: overhead, consistent, never a window</h3>
         <p>
           Lighting is the biggest offender. Photographers manipulate light to create or
-          erase definition all the time — harsh overhead light carves out abs that
-          soft frontal light completely flattens. If your week-one photo was taken in soft
-          morning window light and your week-eight photo under a bathroom bulb, you're
+          erase definition all the time. Harsh overhead light carves out abs that
+          soft frontal light completely flattens. If your week one photo was taken in soft
+          morning window light and your week eight photo under a bathroom bulb, you're
           comparing lighting setups, not bodies.
         </p>
         <p>
           Pick one room with a consistent artificial light source, ideally overhead, and use
-          it every time. Close the curtains so daylight can't interfere — daylight changes
+          it every time. Close the curtains so daylight can't interfere. Daylight changes
           with weather, season, and hour, and you can't control any of those. Artificial
           light is boringly repeatable, which is exactly what you want.
         </p>
 
         <h3>Angle and distance: mark the spot</h3>
         <p>
-          Prop your phone against the same shelf or use a small tripod, at roughly hip-to-
+          Prop your phone against the same shelf or use a small tripod, somewhere between hip and
           chest height, and put a piece of tape on the floor where your feet go. It feels
           excessive until you see what a camera can do: shot from below you look taller and
           leaner; from above, shorter and heavier. Six inches closer to the lens and your
@@ -113,7 +113,7 @@ export const posts = [
 
         <h3>Clothing: same outfit, minimal coverage</h3>
         <p>
-          Wear the same thing in every photo, and keep it minimal — shorts for men, shorts
+          Wear the same thing in every photo, and keep it minimal: shorts for men, shorts
           and a sports bra for women. Loose clothing hides the exact areas you're trying to
           track. And resist upgrading the outfit when you start feeling better about
           yourself; the moment you switch from baggy shorts to fitted ones, your photo
@@ -124,9 +124,9 @@ export const posts = [
         <h3>Time of day: morning, before anything</h3>
         <p>
           Shoot in the morning, after the bathroom, before food or water. This is your
-          least-inflated, most repeatable state. An evening photo after a salty dinner and a
+          least inflated, most repeatable state. An evening photo after a salty dinner and a
           hard workout can look dramatically different from a morning photo of the same
-          body. Morning-fasted is the standard because it's the one condition you can
+          body. Morning and fasted is the standard because it's the one condition you can
           reproduce every single time.
         </p>
 
@@ -137,13 +137,13 @@ export const posts = [
         <ul>
           <li>
             <strong>Front, relaxed.</strong> Arms slightly away from your sides, feet on the
-            tape mark, breathing normally. Not sucked in, not pushed out — just standing.
+            tape mark, breathing normally. Not sucked in, not pushed out. Just standing.
             This is your most honest photo and the hardest one to take, because every
             instinct says to flex or straighten up. Don't.
           </li>
           <li>
             <strong>Side, relaxed.</strong> Turn ninety degrees, arms hanging naturally.
-            This is where fat loss shows first for most people — the stomach profile changes
+            This is where fat loss shows first for most people: the stomach profile changes
             before anything on the front view does.
           </li>
           <li>
@@ -153,8 +153,8 @@ export const posts = [
           </li>
           <li>
             <strong>One flexed shot, if you want it.</strong> Front double biceps or
-            whatever you like — but treat it as a bonus, always in addition to the relaxed
-            set, and flex the same way each time. Flexed-only histories are unreliable
+            whatever you like, but treat it as a bonus, always in addition to the relaxed
+            set, and flex the same way each time. Histories of flexed shots alone are unreliable
             because flexing is a skill that improves with practice, and better flexing looks
             like muscle you didn't gain.
           </li>
@@ -162,7 +162,7 @@ export const posts = [
         <p>
           Keep your posture neutral in every shot: stand tall, shoulders where they normally
           sit, no sucking in the gut. The goal is a repeatable neutral, not your best angle.
-          You're not posting these — you're collecting data.
+          You're not posting these. You're collecting data.
         </p>
 
         <h2>How to take progress photos by yourself</h2>
@@ -183,13 +183,13 @@ export const posts = [
             <strong>Camera at chest height, lens level.</strong> Shooting up from hip height
             stretches your legs and shrinks your torso. Shooting down from eye height does
             the opposite. Chest height with the phone perfectly vertical is the neutral
-            setting, and the phone's built-in level (or grid lines) gets you there in a
+            setting, and the phone's own level (or grid lines) gets you there in a
             second.
           </li>
           <li>
             <strong>Use the timer, not the mirror.</strong> Mirror shots fail twice over: the
             phone hides part of your torso, and bathroom mirrors bring their own lighting and
-            slight distortion. Ten-second timer, or burst mode if your phone has it, so you
+            slight distortion. Ten second timer, or burst mode if your phone has it, so you
             get several frames and keep the one where you are actually standing neutral.
           </li>
           <li>
@@ -218,9 +218,9 @@ export const posts = [
         </p>
         <p>
           Every two weeks hits the balance: enough time for real change to register, frequent
-          enough to build a dense history. Put it on a recurring calendar slot — say, every
-          other Sunday morning — so it becomes automatic rather than a mood-dependent
-          decision. The people with useless photo histories aren't the ones who chose the
+          enough to build a dense history. Put it on a recurring calendar slot (say, every
+          other Sunday morning) so it becomes automatic rather than a
+          decision that depends on your mood. The people with useless photo histories aren't the ones who chose the
           wrong interval; they're the ones who shot whenever they happened to feel lean.
           If keeping any schedule like this has failed you before, the fix is usually the
           routine rather than the willpower, and we wrote a separate guide on{' '}
@@ -233,7 +233,7 @@ export const posts = [
         <h2>Reading your photos: muscle vs. fat, and the right comparisons</h2>
         <p>
           The first skill is patience with the timeline. Never compare this week to last
-          week — compare today to six, eight, twelve weeks ago. Adjacent photos almost
+          week. Compare today to six, eight, twelve weeks ago. Adjacent photos almost
           always look identical; that's normal and means nothing. The comparison that
           matters is the long jump.
         </p>
@@ -244,7 +244,7 @@ export const posts = [
           up as changed silhouette: shoulders wider relative to the waist, legs filling the
           same shorts differently, the back photo getting broader. If your weight is flat
           but the side shot is shrinking while your shoulders look fuller, that's
-          recomposition — the exact outcome the scale is structurally incapable of showing
+          recomposition: the exact outcome the scale is structurally incapable of showing
           you.
         </p>
         <p>
@@ -257,29 +257,29 @@ export const posts = [
         <h2>The psychology: why this works when motivation doesn't</h2>
         <p>
           You see yourself in the mirror every day, which makes you the worst possible judge
-          of your own gradual change. The brain normalizes slow shifts — it's the same
+          of your own gradual change. The brain normalizes slow shifts. It's the same
           reason you don't notice a child growing but a relative who visits twice a year
-          does. Progress photos are that twice-a-year relative, on demand.
+          does. Progress photos are that relative who visits twice a year, on demand.
         </p>
         <p>
-          This matters most in the middle stretch of any fitness effort — weeks six through
-          sixteen, roughly — when novelty has worn off and results feel invisible. That's
-          where most people quit. A side-by-side from week one is often the single strongest
+          This matters most in the middle stretch of any fitness effort (weeks six through
+          sixteen, roughly), when novelty has worn off and results feel invisible. That's
+          where most people quit. A side by side comparison with week one is often the single strongest
           counterargument available, because it's not a feeling or a number; it's your own
-          body, on record. Plenty of people who "saw no results" pull up their week-one
+          body, on record. Plenty of people who "saw no results" pull up their week one
           photo and go quiet.
         </p>
         <p>
           It cuts the other way too, and that's just as valuable. If twelve weeks of photos
-          genuinely show nothing, you don't need more motivation — you need to change the
+          genuinely show nothing, you don't need more motivation. You need to change the
           program or the diet. Photos convert vague frustration into a concrete decision.
         </p>
 
         <h2>Common mistakes that ruin photo histories</h2>
         <ul>
           <li>
-            <strong>Changing the setup mid-journey.</strong> New apartment, new mirror, new
-            lighting — and the history splits into incomparable eras. If you must move,
+            <strong>Changing the setup halfway through.</strong> New apartment, new mirror, new
+            lighting, and the history splits into incomparable eras. If you must move,
             rebuild the setup as closely as possible and note the change.
           </li>
           <li>
@@ -292,7 +292,7 @@ export const posts = [
             to the one person the photos are for.
           </li>
           <li>
-            <strong>Using filters or auto-enhancement.</strong> Turn off beauty modes and
+            <strong>Using filters or auto enhancement.</strong> Turn off beauty modes and
             smart HDR adjustments if you can; they alter contrast and skin rendering
             unpredictably between shots.
           </li>
@@ -308,13 +308,13 @@ export const posts = [
         <p>
           That last mistake is the quiet killer, and it's the reason we built photos
           directly into Trackr. Each weight entry can carry a progress photo, so the photo
-          and the number live on the same timeline — you scroll back through your history
-          and see the week-one shot next to the week-one weight, then watch both move
+          and the number live on the same timeline. You scroll back through your history
+          and see the week one shot next to the week one weight, then watch both move
           together. No digging through the camera roll, no guessing which photo was from
           which month.
         </p>
         <p>
-          Whatever tool you use — Trackr, a dedicated album, a folder on your laptop — the
+          Whatever tool you use (Trackr, a dedicated album, a folder on your laptop), the
           requirement is the same: dated, organized, and viewable side by side. The system
           matters more than the app. And if you are torn between an app and your own
           spreadsheet, we compared{' '}
@@ -331,14 +331,14 @@ export const posts = [
           <li>Tape mark on the floor for your feet</li>
           <li>Same minimal outfit every time</li>
           <li>Morning, fasted, after the bathroom</li>
-          <li>Front, side, and back — relaxed; flexed only as a bonus</li>
+          <li>Front, side, and back, all relaxed; flexed only as a bonus</li>
           <li>Every two weeks, on a scheduled day, good day or bad</li>
           <li>Compare across months, not weeks</li>
           <li>Store them dated and organized, next to your weight data</li>
         </ul>
         <p>
           Ten minutes every other week. That's the entire cost of a photographic record that
-          will, at some point in the next few months, be the thing that keeps you going —
+          will, at some point in the next few months, be the thing that keeps you going,
           or the thing that tells you, clearly and without drama, that it's time to adjust.
           Either way, you'll know. Which is the whole point of tracking anything.
         </p>
@@ -348,7 +348,7 @@ export const posts = [
         <h3>How do you take progress photos by yourself?</h3>
         <p>
           Prop the phone instead of holding it, at chest height, perfectly vertical, on a
-          spot you mark with tape. Use the ten-second timer or burst mode rather than a
+          spot you mark with tape. Use the ten second timer or burst mode rather than a
           mirror, since a mirror hides part of your torso and adds its own lighting. For the
           back shot, set the timer, turn around, and take two or three attempts because you
           cannot see the frame. Shoot one test photo before you undress to check the framing.
@@ -382,7 +382,7 @@ export const posts = [
     faq: [
       {
         q: 'How do you take progress photos by yourself?',
-        a: 'Prop the phone instead of holding it, at chest height, perfectly vertical, on a spot you mark with tape. Use the ten-second timer or burst mode rather than a mirror, since a mirror hides part of your torso and adds its own lighting. For the back shot, set the timer, turn around, and take two or three attempts because you cannot see the frame. Shoot one test photo before you undress to check the framing.',
+        a: 'Prop the phone instead of holding it, at chest height, perfectly vertical, on a spot you mark with tape. Use the ten second timer or burst mode rather than a mirror, since a mirror hides part of your torso and adds its own lighting. For the back shot, set the timer, turn around, and take two or three attempts because you cannot see the frame. Shoot one test photo before you undress to check the framing.',
       },
       {
         q: 'Should I use a mirror or a timer for progress photos?',
@@ -484,7 +484,7 @@ export const posts = [
         </p>
         <p>
           Common leaks are easy to find. Maybe your log asks for ten fields when you only
-          care about one. Maybe your spreadsheet needs a laptop, so gym-day numbers sit in
+          care about one. Maybe your spreadsheet needs a laptop, so numbers from the gym sit in
           your head until they evaporate.
         </p>
         <p>
@@ -504,12 +504,12 @@ export const posts = [
         <p>
           So pick tools that connect the dots for you. This is the exact problem Trackr was
           built around: every progress photo you take gets tagged with your current weight
-          automatically, so the before-and-after record builds itself while you just show
+          automatically, so the before and after record builds itself while you just show
           up.
         </p>
         <p>
           Whatever tool you use, the principle holds. Anything the system can remember for
-          you, it should. Your job is the 30-second entry. The tool's job is everything
+          you, it should. Your job is the 30 second entry. The tool's job is everything
           after.
         </p>
 
@@ -520,7 +520,7 @@ export const posts = [
           nothing is working.
         </p>
         <p>
-          Log daily, judge weekly. Pick one day, Sunday works, and look at the seven-day
+          Log daily, judge weekly. Pick one day, Sunday works, and look at the seven day
           picture instead of any single reading. Weekly averages smooth out the noise and
           show the actual direction. This one change protects more tracking habits than any
           motivational trick, because it separates the act of logging from the emotion of
@@ -534,7 +534,7 @@ export const posts = [
           verdict.
         </p>
         <p>
-          Use the two-day rule: never miss twice in a row. One missed day is a data point.
+          Use the two day rule: never miss twice in a row. One missed day is a data point.
           Two is the start of a new habit, the habit of not tracking.
         </p>
         <p>
@@ -544,7 +544,7 @@ export const posts = [
           accounting exercise about the ones you skipped.
         </p>
 
-        <h2>The 30-day version of this plan</h2>
+        <h2>The 30 day version of this plan</h2>
         <p>Put simply, here is the whole system:</p>
         <ul>
           <li>
@@ -555,7 +555,7 @@ export const posts = [
             <strong>Week 2:</strong> same, plus set your weekly review day.
           </li>
           <li>
-            <strong>Week 3:</strong> expect a missed day. Apply the two-day rule and move
+            <strong>Week 3:</strong> expect a missed day. Apply the two day rule and move
             on.
           </li>
           <li>
@@ -573,8 +573,8 @@ export const posts = [
         <p>
           Research on habit formation puts the range anywhere from three weeks to several
           months, and the honest answer is that it depends on how small the habit is. A
-          20-second weigh-in anchored to your morning routine can feel automatic within a
-          month. A 10-minute logging session rarely becomes automatic at all.
+          20 second weight entry anchored to your morning routine can feel automatic within a
+          month. A 10 minute logging session rarely becomes automatic at all.
         </p>
         <h3>Should I track every day or is a few times a week enough?</h3>
         <p>
@@ -616,7 +616,7 @@ export const posts = [
         </p>
         <p>
           The real question is narrower than "which tool is better." It is: which tool
-          survives daily use, at the gym or half-asleep on the scale, on a day when
+          survives daily use, at the gym or half asleep on the scale, on a day when
           motivation is gone? That is where the two options separate.
         </p>
 
@@ -640,7 +640,7 @@ export const posts = [
         </p>
         <h3>Custom analysis</h3>
         <p>
-          Formulas are a superpower. Want a 7-day rolling average with a custom smoothing
+          Formulas are a superpower. Want a 7 day rolling average with a custom smoothing
           window, or a chart comparing your cut this year against last year? A spreadsheet
           does it exactly your way. Apps give you the views their designers chose. For most
           people those views are enough, but "most people" is not everyone.
@@ -659,7 +659,7 @@ export const posts = [
         <p>
           The whole game of daily tracking is the ten seconds after you step off the scale
           or finish a set. A spreadsheet on your phone means finding the file, waiting for
-          it to load, pinching to zoom into the right cell, and fat-fingering the wrong row.
+          it to load, pinching to zoom into the right cell, and tapping the wrong row by mistake.
           Every one of those steps is a chance to say "I'll do it later." Later is where
           tracking habits go to die.
         </p>
@@ -670,15 +670,15 @@ export const posts = [
           while numbers live in the sheet, and six months later you are scrolling through
           hundreds of pictures trying to remember what you weighed in each one. Trackr
           closes that gap automatically: every progress photo is tagged with your current
-          weight, so the before-and-after pairs build themselves.
+          weight, so the before and after pairs build themselves.
         </p>
         <h3>No feedback loop</h3>
         <p>
           A sheet records. It does not respond. There is no streak telling you that you have
           logged twelve weeks straight, and nothing flags a personal record when your bench
           press finally moves. You can build some of that with formulas, and a few people
-          do. Most never will, and the motivational loop is a bigger part of long-term
-          consistency than it sounds.
+          do. Most never will, and the motivational loop is a bigger part of staying
+          consistent over time than it sounds.
         </p>
 
         <h2>What Trackr actually does</h2>
@@ -690,7 +690,7 @@ export const posts = [
           </li>
           <li>
             <strong>Progress photos tagged with your weight automatically</strong>, for real
-            before-and-after comparisons.
+            before and after comparisons.
           </li>
           <li>
             <strong>Exercise tracking with personal records</strong>, across lifts like
@@ -737,7 +737,7 @@ export const posts = [
         <h3>Can I use Trackr and a spreadsheet together?</h3>
         <p>
           Yes, and it is a sensible setup. Let the app handle the daily grind where friction
-          matters most, then keep a sheet for any custom analysis or non-fitness metrics you
+          matters most, then keep a sheet for any custom analysis or metrics outside fitness you
           care about. The mistake is making the spreadsheet the daily entry point when your
           entries happen away from a desk.
         </p>
@@ -751,7 +751,7 @@ export const posts = [
         </p>
         <h3>Is a spreadsheet enough for tracking weight loss?</h3>
         <p>
-          Honestly, yes, if you use it. A weekly-averaged weight column and a chart cover
+          Honestly, yes, if you use it. A weight column averaged by week and a chart cover
           the analytical side of a cut completely. The reason people fail with spreadsheet
           weight tracking is rarely the tool's math. It is the daily entry friction, and
           that is the one thing you should judge any tracking setup on before anything else.
@@ -835,7 +835,7 @@ export const posts = [
         </p>
         <h3>Nothing to log except the things that change slowly</h3>
         <p>
-          A weigh-in is a few seconds. A photo is a few more. There is no meal to break into
+          Stepping on the scale takes a few seconds. A photo takes a few more. There is no meal to break into
           ingredients, no portion to estimate, no evening where you skip the log because you
           ate out and it is too much effort to reconstruct. The most common way tracking
           dies is a day you cannot be bothered, followed by a week, followed by never
@@ -858,7 +858,7 @@ export const posts = [
           a few weeks of accurate logging is more useful than any trend line.
         </p>
         <p>
-          The catch is the word accurate. Under-reporting on food logs is well documented and
+          The catch is the word accurate. Underreporting on food logs is well documented and
           mostly unintentional. A diary you fill in loosely can be worse than no diary,
           because it produces numbers you then trust.
         </p>
@@ -876,7 +876,7 @@ export const posts = [
         </p>
         <p>
           <strong>Use both if</strong> you want nutrition detail during a focused cut and a
-          long-run visual record that outlives it. They do not overlap much, which is
+          visual record that outlives it. They do not overlap much, which is
           exactly why they sit together comfortably.
         </p>
 
@@ -897,7 +897,7 @@ export const posts = [
         <p>
           Trackr is free to download on iOS and Android, and weight and photo logging work
           on the free tier. Trackr Pro is an optional subscription that adds unlimited photo
-          storage, cloud backup with multi-device sync, detailed analytics, and the Progress
+          storage, cloud backup that syncs across devices, detailed analytics, and the Progress
           Score.
         </p>
         <h3>Which is better for tracking progress photos?</h3>
@@ -924,7 +924,7 @@ export const posts = [
       },
       {
         q: 'Is Trackr free?',
-        a: 'Trackr is free to download on iOS and Android, and weight and photo logging work on the free tier. Trackr Pro is an optional subscription that adds unlimited photo storage, cloud backup with multi-device sync, detailed analytics, and the Progress Score.',
+        a: 'Trackr is free to download on iOS and Android, and weight and photo logging work on the free tier. Trackr Pro is an optional subscription that adds unlimited photo storage, cloud backup that syncs across devices, detailed analytics, and the Progress Score.',
       },
       {
         q: 'Which app is better for tracking progress photos?',
@@ -950,7 +950,7 @@ export const posts = [
 
         <h2>The short answer</h2>
         <p>
-          MacroFactor is a coach. It reads your food logs and your weigh-ins, estimates your
+          MacroFactor is a coach. It reads your food logs and your weight entries, estimates your
           energy expenditure, and adjusts your calorie and macro targets as your body
           responds. That engine is the product, and it needs consistent food logging to run.
         </p>
@@ -987,7 +987,7 @@ export const posts = [
         <h3>It works on the days you log nothing but a number</h3>
         <p>
           A coaching engine that depends on food data degrades when the food data stops. A
-          record does not. A weigh-in and a photo take seconds and still mean something six
+          record does not. A weight entry and a photo take seconds and still mean something six
           months later, even if you logged nothing else that week.
         </p>
         <h3>The visual record is the point, not a side feature</h3>
@@ -1025,7 +1025,7 @@ export const posts = [
           your targets managed for you as your body adapts.
         </p>
         <p>
-          <strong>Use Trackr if</strong> you want a long-run record of your weight, your
+          <strong>Use Trackr if</strong> you want a lasting record of your weight, your
           photos, and your training, without a daily food log as the price of entry.
         </p>
         <p>
@@ -1037,7 +1037,7 @@ export const posts = [
         <h3>Is MacroFactor better than Trackr?</h3>
         <p>
           For nutrition coaching, yes, comfortably. It is built for that and Trackr does not
-          track food at all. For keeping a long-term record of your weight alongside progress
+          track food at all. For keeping a lasting record of your weight alongside progress
           photos, Trackr is the more direct fit.
         </p>
         <h3>Does Trackr adjust my calories like MacroFactor does?</h3>
@@ -1054,7 +1054,7 @@ export const posts = [
         <h3>Which app is better if I keep quitting after a few weeks?</h3>
         <p>
           Look honestly at what you quit. If you quit food logging specifically, an app built
-          around food logging will probably go the same way. A weigh-in and a photo is a much
+          around food logging will probably go the same way. A weight entry and a photo is a much
           smaller daily ask.
         </p>
         <p>
@@ -1066,7 +1066,7 @@ export const posts = [
     faq: [
       {
         q: 'Is MacroFactor better than Trackr?',
-        a: 'For nutrition coaching, yes, comfortably. It is built for that and Trackr does not track food at all. For keeping a long-term record of your weight alongside progress photos, Trackr is the more direct fit.',
+        a: 'For nutrition coaching, yes, comfortably. It is built for that and Trackr does not track food at all. For keeping a lasting record of your weight alongside progress photos, Trackr is the more direct fit.',
       },
       {
         q: 'Does Trackr adjust my calories like MacroFactor does?',
@@ -1078,7 +1078,7 @@ export const posts = [
       },
       {
         q: 'Which app is better if I keep quitting after a few weeks?',
-        a: 'Look at what you quit. If you quit food logging specifically, an app built around food logging will probably go the same way. A weigh-in and a photo is a much smaller daily ask.',
+        a: 'Look at what you quit. If you quit food logging specifically, an app built around food logging will probably go the same way. A weight entry and a photo is a much smaller daily ask.',
       },
     ],
   },
@@ -1111,16 +1111,16 @@ export const posts = [
           days and the week is incomplete; miss a week and most people never reopen the app.
         </p>
         <p>
-          There is also an accuracy trap. Under-reporting on food logs is common and mostly
+          There is also an accuracy trap. Underreporting on food logs is common and mostly
           unintentional, which means a loosely kept diary can be worse than none at all
           because it produces numbers you then trust. A weight trend does not have that
           failure mode. The scale does not care how carefully you estimated anything.
         </p>
 
-        <h2>What actually matters in a weight-only app</h2>
+        <h2>What actually matters in an app that only tracks weight</h2>
         <h3>Trend, not daily numbers</h3>
         <p>
-          Day-to-day weight swings by a kilogram or more from water, sodium, glycogen, and
+          From one day to the next, weight swings by a kilogram or more from water, sodium, glycogen, and
           timing. An app that only shows you today's number will make you miserable. You
           want a smoothed trend line so the signal is visible under the noise.
         </p>
@@ -1129,10 +1129,10 @@ export const posts = [
           This is the feature that separates a record from a spreadsheet. During a
           recomposition phase the scale can sit still for two months while your shape
           clearly changes. Without photos, that reads as failure and people quit exactly when
-          things are working. And if the photo is not linked to the weigh-in, you lose the
+          things are working. And if the photo is not linked to the weight entry, you lose the
           ability to answer the obvious question later: what did I weigh in that picture?
         </p>
-        <h3>Side-by-side comparison across long spans</h3>
+        <h3>Side by side comparison across long spans</h3>
         <p>
           Change over two weeks is invisible. Change over four months is obvious. The app
           needs to let you put two distant photos next to each other easily, or the archive
@@ -1153,7 +1153,7 @@ export const posts = [
 
         <h2>The common options</h2>
         <p>
-          <strong>Happy Scale and Libra</strong> are the classic trend-smoothing weight
+          <strong>Happy Scale and Libra</strong> are the classic trend smoothing weight
           trackers on iOS and Android respectively. Both do the trend maths well. Neither is
           built around photos.
         </p>
@@ -1169,7 +1169,7 @@ export const posts = [
         </p>
         <p>
           <strong>Trackr</strong>, which we build, sits in the gap: weight and progress photo
-          in the same entry, side-by-side comparison in the Timeline, and workouts logged in
+          in the same entry, side by side comparison in the Timeline, and workouts logged in
           the same app. There is no food logging at all, deliberately. Free to download on
           iOS and Android, with an optional Pro subscription for unlimited photo storage,
           cloud backup, detailed analytics, and a 0 to 100 Progress Score.
@@ -1186,7 +1186,7 @@ export const posts = [
         <h2>FAQ</h2>
         <h3>Is there a weight tracking app that does not require logging food?</h3>
         <p>
-          Yes, several. Trend-focused weight trackers and progress-record apps like Trackr
+          Yes, several. Weight trackers that focus on the trend, and progress record apps like Trackr,
           are built for exactly this, with no food diary involved.
         </p>
         <h3>Can I lose weight by only tracking my weight?</h3>
@@ -1217,7 +1217,7 @@ export const posts = [
     faq: [
       {
         q: 'Is there a weight tracking app that does not require logging food?',
-        a: 'Yes, several. Trend-focused weight trackers and progress-record apps like Trackr are built for exactly this, with no food diary involved.',
+        a: 'Yes, several. Weight trackers that focus on the trend, and progress record apps like Trackr, are built for exactly this, with no food diary involved.',
       },
       {
         q: 'Can I lose weight by only tracking my weight?',

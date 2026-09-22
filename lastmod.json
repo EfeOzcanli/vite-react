@@ -1,70 +1,78 @@
 {
   "/": {
-    "hash": "bfb08d0b5297445e",
-    "date": "2026-07-28"
+    "hash": "e1d24f091cd9754b",
+    "date": "2026-09-22"
   },
   "/apps": {
-    "hash": "a217c767584511b7",
-    "date": "2026-09-16"
+    "hash": "9b34bbdf15a8d8a6",
+    "date": "2026-09-22"
   },
   "/trackr": {
-    "hash": "2a7704c0d37906d6",
-    "date": "2026-07-28"
+    "hash": "968e841414fec176",
+    "date": "2026-09-22"
+  },
+  "/thicket": {
+    "hash": "9db3280b02245253",
+    "date": "2026-09-22"
+  },
+  "/thicket/privacy": {
+    "hash": "f188cd5101fa8d4a",
+    "date": "2026-09-22"
   },
   "/vision": {
-    "hash": "17fdf35610470153",
-    "date": "2026-07-28"
+    "hash": "11da9828edc4620e",
+    "date": "2026-09-22"
   },
   "/contact": {
-    "hash": "fb5f9633df9fb76c",
-    "date": "2026-09-17"
+    "hash": "339fa659908ea7f7",
+    "date": "2026-09-22"
   },
   "/support": {
-    "hash": "c2c6d1cecd527e71",
-    "date": "2026-08-19"
+    "hash": "a417d71b0ccfd72e",
+    "date": "2026-09-22"
   },
   "/steelsurvivor": {
-    "hash": "d9066a8fd845fe25",
-    "date": "2026-09-16"
+    "hash": "f2b06cfa3eb394a6",
+    "date": "2026-09-22"
   },
   "/steelsurvivor/privacy": {
-    "hash": "2ae5a36ffd5fcb59",
-    "date": "2026-09-16"
+    "hash": "3d899548733ba7eb",
+    "date": "2026-09-22"
   },
   "/privacy": {
-    "hash": "fe2c988c156d689b",
-    "date": "2026-07-28"
+    "hash": "222f18a543e40951",
+    "date": "2026-09-22"
   },
   "/terms": {
-    "hash": "7dbd8b35f6f65567",
-    "date": "2026-07-28"
+    "hash": "caf799b487999fd8",
+    "date": "2026-09-22"
   },
   "/blog": {
-    "hash": "f7100c399840f3d7",
-    "date": "2026-07-28"
+    "hash": "1879f7f8f854f99f",
+    "date": "2026-09-22"
   },
   "/blog/how-to-take-progress-photos": {
-    "hash": "f81d43668f0b520b",
-    "date": "2026-07-08"
+    "hash": "526e1304b3513faf",
+    "date": "2026-09-22"
   },
   "/blog/how-to-build-a-tracking-habit": {
-    "hash": "52e0eafea129e5e4",
-    "date": "2026-07-10"
+    "hash": "d0e2085c6c374847",
+    "date": "2026-09-22"
   },
   "/blog/trackr-vs-spreadsheet-daily-tracking": {
-    "hash": "4a9469f115760708",
-    "date": "2026-07-10"
+    "hash": "b8e3b3074fe1b1d1",
+    "date": "2026-09-22"
   },
   "/blog/trackr-vs-myfitnesspal": {
-    "hash": "6b0076fb2d96b201",
-    "date": "2026-07-27"
+    "hash": "060b07310598062e",
+    "date": "2026-09-22"
   },
   "/blog/trackr-vs-macrofactor": {
-    "hash": "a01989cc397c32ec",
-    "date": "2026-07-27"
+    "hash": "55f70ae18eeb2d2d",
+    "date": "2026-09-22"
   },
   "/blog/weight-tracking-app-without-calorie-counting": {
-    "hash": "c2368e5359e2d6ee",
-    "date": "2026-07-27"
+    "hash": "7f8857e02dfe7777",
+    "date": "2026-09-22"
   }
 }

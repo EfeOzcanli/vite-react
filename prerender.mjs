@@ -9,7 +9,7 @@ const root = dirname(fileURLToPath(import.meta.url))
 const template = readFileSync(join(root, 'dist/index.html'), 'utf-8')
 const { render, posts } = await import('./dist-ssr/entry-server.js')
 
-const BASE_TITLE = 'EMKE — Track Your Evolution | Apps by EMKE, home of Trackr'
+const BASE_TITLE = 'EMKE: Track Your Evolution | Apps by EMKE, home of Trackr'
 const BASE_DESC =
   'EMKE builds apps for personal progress. Trackr, our first app, records weight with photos, tracks every exercise, and gives you an overall fitness score.'
 
@@ -17,58 +17,69 @@ const routes = [
   { path: '/', title: BASE_TITLE, desc: BASE_DESC },
   {
     path: '/apps',
-    title: 'Our Apps — EMKE',
+    title: 'Our Apps | EMKE',
     desc: 'Explore the EMKE app portfolio. Trackr records weight with photos, tracks every exercise, and gives you an overall fitness score. More apps are on the way.',
   },
   {
     path: '/trackr',
-    title: 'Trackr — Weight, Workout & Progress Tracker | EMKE',
+    title: 'Trackr: Weight, Workout & Progress Tracker | EMKE',
     desc: 'Trackr records your weight with progress photos, logs every exercise and set, and turns it all into one overall fitness score. Available on the App Store.',
   },
   {
+    path: '/thicket',
+    title: 'Thicket: Stealth Escape | EMKE',
+    desc: 'Thicket is a top down stealth game. Twenty four mazes, guards who draw their sight on the floor, and tall grass that hides you as long as you hold your breath. Offline, no account.',
+  },
+  {
+    path: '/thicket/privacy',
+    title: 'Thicket Privacy Policy | EMKE',
+    desc: 'Privacy policy for the game Thicket: Stealth Escape by EMKE. The game collects nothing.',
+    noindex: true,
+  },
+  {
     path: '/vision',
-    title: 'Our Vision — EMKE',
+    title: 'Our Vision | EMKE',
     desc: 'Why EMKE exists: apps that make personal progress visible. Track your evolution in fitness and beyond, one data point at a time.',
   },
   {
     path: '/contact',
-    title: 'Contact — EMKE',
-    desc: 'Get in touch with the EMKE team. Questions, feedback, or partnership ideas — reach us at info@emke.app.',
+    title: 'Contact | EMKE',
+    desc: 'Get in touch with the EMKE team. Questions, feedback, or partnership ideas: reach us at info@emke.app.',
   },
   {
     path: '/support',
-    title: 'Support — EMKE',
+    title: 'Support | EMKE',
     desc: 'Need help with Trackr or another EMKE app? Find answers and contact support at info@emke.app.',
   },
   {
     path: '/steelsurvivor',
-    title: 'Steel Survivor: Tank War — Tank Roguelite by EMKE',
+    title: 'Steel Survivor: Tank War | Tank Roguelite by EMKE',
     desc: 'One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time. Coming soon to the App Store.',
   },
   {
     path: '/steelsurvivor/privacy',
-    title: 'Steel Survivor Privacy Policy — EMKE',
+    title: 'Steel Survivor Privacy Policy | EMKE',
     desc: 'What Steel Survivor: Tank War records and what it does not. No accounts, no ads, no advertising identifier, no tracking.',
   },
   {
     path: '/privacy',
-    title: 'Privacy Policy — EMKE',
+    title: 'Privacy Policy | EMKE',
     desc: 'How EMKE apps collect, use, and protect your data. Read the full privacy policy for Trackr and other EMKE apps.',
   },
   {
     path: '/terms',
-    title: 'Terms of Service — EMKE',
+    title: 'Terms of Service | EMKE',
     desc: 'The terms of service for using Trackr and other EMKE apps.',
   },
   {
     path: '/blog',
-    title: 'Blog — EMKE',
-    desc: 'Notes on tracking progress, training smarter, and building better habits — from the team behind Trackr.',
+    title: 'Blog | EMKE',
+    desc: 'Notes on tracking progress, training smarter, and building better habits, from the team behind Trackr.',
     noindex: posts.length === 0,
   },
   ...posts.map((p) => ({
     path: `/blog/${p.slug}`,
-    title: `${p.title} — EMKE Blog`,
+    title: `${p.title} | EMKE Blog`,
     desc: p.description,
     lastmod: p.date,
     post: p,
@@ -145,11 +156,11 @@ const trackrApp = {
   author: { '@id': ORG_ID },
   featureList: [
     'Weight entries automatically paired with progress photos',
-    'Side-by-side progress photo comparison over time',
+    'Side by side progress photo comparison over time',
     'Workout logging down to the individual set',
     'One overall fitness score combining weight and training',
     'Body measurement tracking',
-    'Cloud backup with multi-device sync (Trackr Pro)',
+    'Cloud backup that syncs across devices (Trackr Pro)',
   ],
   offers: {
     '@type': 'Offer',
@@ -165,11 +176,11 @@ const supportFaq = [
   ['How do I track my weight?', "Tap the '+' button on the home screen, enter your weight, and optionally add a photo. Your entry will appear on your timeline and charts immediately."],
   ['How do I take progress photos?', 'When adding a new entry, tap the camera icon to take a photo or choose one from your gallery. You can compare your photos side by side in the Timeline tab.'],
   ['How do I change the language?', 'Go to Profile, then Language, and select your preferred language. Trackr is available in English, Spanish, Turkish, German, and French.'],
-  ['What is included in Trackr Pro?', 'Trackr Pro includes unlimited progress photo storage, cloud backup with multi-device sync, advanced body measurement tracking, detailed analytics, and priority support.'],
+  ['What is included in Trackr Pro?', 'Trackr Pro includes unlimited progress photo storage, cloud backup that syncs across devices, advanced body measurement tracking, detailed analytics, and priority support.'],
   ['How do I cancel my subscription?', "Open Settings on your device, tap your name, then Subscriptions, then Trackr, then Cancel Subscription. You'll keep Pro access until the end of your billing period."],
   ['Can I restore my purchases on a new device?', "Yes. Sign in with the same account you used to subscribe and your Pro status will be restored automatically. If it doesn't restore right away, go to Profile, then tap Restore Purchases."],
   ['How does cloud backup work?', 'Pro users can enable cloud backup in Profile, then Cloud Backup. Your data syncs automatically across all devices signed into the same account.'],
-  ['Is my data private?', 'Yes. We never sell or share your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted with bank-level security.'],
+  ['Is my data private?', 'Yes. We never sell or share your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted at rest with AES-256.'],
   ['How do I delete my account?', 'Go to Profile, then Delete Account. This permanently removes all your data from our servers. This action cannot be undone.'],
   ['The app is not working properly. What should I do?', 'Try closing and reopening the app. If the issue persists, make sure you have the latest version installed. If you still need help, email support@emke.app with a description of the problem.'],
 ]
@@ -245,8 +256,8 @@ for (const route of routes) {
     .replace(`<title>${BASE_TITLE}</title>`, `<title>${esc(route.title).replace(/&quot;/g, '"')}</title>`)
     .replace(`<link rel="canonical" href="https://www.emke.app/" />`, `<link rel="canonical" href="${url}" />`)
     .replace(`<meta property="og:url" content="https://www.emke.app/" />`, `<meta property="og:url" content="${url}" />`)
-    .replace(`<meta property="og:title" content="EMKE — Track Your Evolution" />`, `<meta property="og:title" content="${esc(route.title)}" />`)
-    .replace(`<meta name="twitter:title" content="EMKE — Track Your Evolution" />`, `<meta name="twitter:title" content="${esc(route.title)}" />`)
+    .replace(`<meta property="og:title" content="EMKE: Track Your Evolution" />`, `<meta property="og:title" content="${esc(route.title)}" />`)
+    .replace(`<meta name="twitter:title" content="EMKE: Track Your Evolution" />`, `<meta name="twitter:title" content="${esc(route.title)}" />`)
     .replaceAll(`content="${BASE_DESC}"`, `content="${esc(route.desc)}"`)
     .replace('  </head>', `${ld}  </head>`)
 
