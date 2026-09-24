@@ -20,12 +20,21 @@ const TrackrLogo = ({ className = "w-12 h-12" }) => (
   <img src="/trackr-logo.png" alt="Trackr" className={`${className} object-contain`} />
 );
 
+// Game icons are full bleed, so they sit smaller than the box to match Trackr's padded logo
+const GameIcon = ({ src, alt }) => (
+  <div className="w-14 h-14 mb-6 flex items-center justify-center">
+    <img src={src} alt={alt} width="256" height="256" className="w-11 h-11 rounded-[10px] shadow-lg shadow-black/40" />
+  </div>
+);
+
 // Apple Store Button with accurate logo
 const APP_STORE_URL = "https://apps.apple.com/app/id6759034748";
 const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=app.emkellc.trackr";
 
-const AppStoreButton = ({ className = "" }) => (
-  <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download Trackr on the App Store" className={`flex items-center gap-3 bg-white text-black px-6 py-4 rounded-2xl font-bold hover:bg-zinc-100 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-200 ${className}`}>
+const THICKET_STORE_URL = "https://apps.apple.com/app/id6813253249";
+
+const AppStoreButton = ({ className = "", href = APP_STORE_URL, app = "Trackr" }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Download ${app} on the App Store`} className={`flex items-center gap-3 bg-white text-black px-6 py-4 rounded-2xl font-bold hover:bg-zinc-100 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-200 ${className}`}>
     <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
       <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
     </svg>
@@ -917,7 +926,7 @@ const AppsPage = () => {
           <GlowingBorder><div className="p-10 rounded-[40px] bg-zinc-900/50 border border-white/5 h-full overflow-hidden relative">
             <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-[100px] group-hover:bg-amber-500/20 transition-all duration-500" />
             <div className="relative z-10">
-              <div className="w-14 h-14 mb-6 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500"><Target size={28} /></div>
+              <GameIcon src="/steelsurvivor-icon.png" alt="Steel Survivor" />
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-semibold mb-4"><Timer size={12} />Coming soon</div>
               <h3 className="text-3xl font-black text-white mb-4">Steel Survivor</h3>
               <p className="text-zinc-500 mb-4">One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time.</p>
@@ -930,8 +939,8 @@ const AppsPage = () => {
           <GlowingBorder><div className="p-10 rounded-[40px] bg-zinc-900/50 border border-white/5 h-full overflow-hidden relative">
             <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-[100px] group-hover:bg-green-500/20 transition-all duration-500" />
             <div className="relative z-10">
-              <div className="w-14 h-14 mb-6 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-500"><Eye size={28} /></div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-500 text-xs font-semibold mb-4"><Timer size={12} />Coming soon</div>
+              <GameIcon src="/thicket-icon.png" alt="Thicket" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-500 text-xs font-semibold mb-4"><CheckCircle2 size={12} />Out now on the App Store</div>
               <h3 className="text-3xl font-black text-white mb-4">Thicket</h3>
               <p className="text-zinc-500 mb-4">A stealth game about standing very still. Twenty four mazes, guards who draw their sight on the floor, and tall grass that hides you as long as you hold your breath.</p>
               <div className="flex flex-wrap gap-2 mb-6">{['Stealth', 'Puzzle', 'Offline'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
@@ -1152,10 +1161,11 @@ const ThicketPage = () => (
     <section className="pt-40 pb-24 px-6"><div className="max-w-7xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-500 text-xs font-semibold mb-6">
-          <Timer size={12} />Coming soon to the App Store
+          <CheckCircle2 size={12} />Out now on the App Store
         </div>
         <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">Thicket</h1>
         <p className="text-xl text-zinc-500 max-w-2xl mx-auto">A game about standing very still. Twenty four mazes, guards who can see you, and tall grass that hides you as long as you hold your breath.</p>
+        <div className="flex justify-center mt-8"><AppStoreButton href={THICKET_STORE_URL} app="Thicket" /></div>
       </motion.div>
 
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24 max-w-4xl mx-auto">
