@@ -88,6 +88,12 @@ const routes = [
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 
+// Blog cover image URLs, derived from post.cover.src (base path without extension).
+// Social cards use the 1200x800 JPG; the sitemap points at the largest webp.
+const SITE = 'https://www.emke.app'
+const coverOg = (p) => (p?.cover ? `${SITE}${p.cover.src}-og.jpg` : null)
+const coverLarge = (p) => (p?.cover ? `${SITE}${p.cover.src}-1536.webp` : null)
+
 // Stable entity ids so every page points at the same Organization / WebSite / app node.
 const ORG_ID = 'https://www.emke.app/#organization'
 const SITE_ID = 'https://www.emke.app/#website'
@@ -215,7 +221,7 @@ const jsonLd = (route, url) => {
       '@type': 'BlogPosting',
       headline: p.title,
       description: p.description,
-      image: 'https://www.emke.app/trackr-logo.png',
+      image: coverOg(p) || LOGO,
       datePublished: `${p.date}T09:00:00Z`,
       dateModified: `${p.updated || p.date}T09:00:00Z`,
       inLanguage: 'en',
@@ -249,6 +255,7 @@ for (const route of routes) {
   const url = 'https://www.emke.app' + (route.path === '/' ? '/' : route.path)
 
   const ld = jsonLd(route, url)
+  const og = coverOg(route.post)
 
   let html = template
     .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
@@ -260,6 +267,29 @@ for (const route of routes) {
     .replace(`<meta name="twitter:title" content="EMKE: Track Your Evolution" />`, `<meta name="twitter:title" content="${esc(route.title)}" />`)
     .replaceAll(`content="${BASE_DESC}"`, `content="${esc(route.desc)}"`)
     .replace('  </head>', `${ld}  </head>`)
+
+  if (og) {
+    // Fail the build rather than ship a post whose cover or social card 404s.
+    for (const suffix of ['-800.webp', '-1536.webp', '-og.jpg']) {
+      const f = join(root, 'public', route.post.cover.src + suffix)
+      if (!existsSync(f)) throw new Error(`cover file missing for ${route.path}: public${route.post.cover.src}${suffix} (run ~/Projects/blog-gorsel/emke_gorsel.sh)`)
+    }
+    const alt = esc(route.post.cover.alt)
+    html = html
+      .replace(
+        `<meta property="og:image" content="${LOGO}" />`,
+        `<meta property="og:image" content="${og}" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="800" />\n    <meta property="og:image:alt" content="${alt}" />`
+      )
+      .replace(`<meta name="twitter:image" content="${LOGO}" />`, `<meta name="twitter:image" content="${og}" />\n    <meta name="twitter:image:alt" content="${alt}" />`)
+      .replace(`<meta name="twitter:card" content="summary" />`, `<meta name="twitter:card" content="summary_large_image" />`)
+      .replace(`<meta property="og:type" content="website" />`, `<meta property="og:type" content="article" />`)
+    if (!route.noindex && !html.includes('<meta name="robots"')) {
+      html = html.replace('</title>', '</title>\n    <meta name="robots" content="index, follow, max-image-preview:large" />')
+    }
+    for (const needle of [og, 'summary_large_image', 'max-image-preview:large']) {
+      if (!html.includes(needle)) throw new Error(`cover meta missing on ${route.path}: ${needle}`)
+    }
+  }
 
   const outDir = route.path === '/' ? join(root, 'dist') : join(root, 'dist', route.path.slice(1))
   mkdirSync(outDir, { recursive: true })
@@ -286,12 +316,14 @@ const sitemapEntries = routes
   .filter((r) => !r.noindex)
   .map((r) => {
     const url = 'https://www.emke.app' + (r.path === '/' ? '/' : r.path)
-    return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${r.lastmod}</lastmod>\n  </url>`
+    const img = coverLarge(r.post)
+    const imgTag = img ? `\n    <image:image>\n      <image:loc>${img}</image:loc>\n    </image:image>` : ''
+    return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${r.lastmod}</lastmod>${imgTag}\n  </url>`
   })
   .join('\n')
 writeFileSync(
   join(root, 'dist/sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries}\n</urlset>\n`
 )
 console.log('sitemap.xml written:', routes.filter((r) => !r.noindex).length, 'URLs')
 

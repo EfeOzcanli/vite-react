@@ -1449,6 +1449,21 @@ const BlogPostPage = () => {
           <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mt-6 mb-4">{post.title}</h1>
           <div className="text-sm text-zinc-500">{post.date} · {post.readingMinutes} min read</div>
         </motion.div>
+        {post.cover && (
+          <figure className="mb-12 overflow-hidden rounded-xl border border-white/10 bg-zinc-900 shadow-[0_1px_2px_rgba(0,0,0,0.4),0_8px_24px_-6px_rgba(0,0,0,0.55),0_24px_60px_-18px_rgba(34,197,94,0.14)]">
+            <img
+              src={`${post.cover.src}-1536.webp`}
+              srcSet={`${post.cover.src}-800.webp 800w, ${post.cover.src}-1536.webp 1536w`}
+              sizes="(min-width: 816px) 768px, calc(100vw - 48px)"
+              width="1536"
+              height="1024"
+              alt={post.cover.alt}
+              fetchpriority="high"
+              decoding="async"
+              className="block w-full h-auto"
+            />
+          </figure>
+        )}
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="space-y-6 text-zinc-400 leading-relaxed [&_h2]:text-white [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h3]:text-white [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-8 [&_a]:text-green-400 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6">
           {post.body}
         </motion.div>

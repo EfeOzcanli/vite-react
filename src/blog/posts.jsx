@@ -16,6 +16,11 @@ import { Link } from 'react-router-dom'
 //   description: 'One-two sentences', // meta description + card text
 //   date: '2026-07-10',               // YYYY-MM-DD, also sitemap lastmod
 //   readingMinutes: 6,
+//   cover: {                          // optional; landscape 1536x1024 cover under the title
+//     src: '/img/blog/file-base',     // base path, no extension. Expects <base>-800.webp,
+//     alt: 'What the photo shows',    // <base>-1536.webp and <base>-og.jpg (1200x800) in
+//   },                                // public/img/blog/. Also feeds og:image, twitter:image,
+//                                     // BlogPosting image and the sitemap image entry.
 //   body: (
 //     <>
 //       <p>Paragraphs as JSX. Use h2/h3 for sections.</p>
@@ -37,6 +42,7 @@ export const posts = [
       'A practical guide on how to take progress photos: lighting, angles, poses, and frequency that make real change visible, plus the mistakes that hide it.',
     date: '2026-07-08',
     readingMinutes: 8,
+    cover: { src: '/img/blog/progress-photo-mirror', alt: 'Man taking a progress photo in a full length mirror with his phone in even daylight' },
     body: (
       <>
         <p>
@@ -406,6 +412,7 @@ export const posts = [
       'Most tracking habits die in week two. Here is a practical way to build one that lasts, starting with one metric and entries that take under 30 seconds.',
     date: '2026-07-10',
     readingMinutes: 6,
+    cover: { src: '/img/blog/morning-weigh-in-bathroom-scale', alt: 'Bare feet on a bathroom scale during a morning weigh in, phone in hand' },
     body: (
       <>
         <p>
@@ -605,6 +612,7 @@ export const posts = [
       'An honest comparison of Trackr and spreadsheets for daily fitness tracking. The spreadsheet is genuinely better at some things. Here is where each one wins.',
     date: '2026-07-10',
     readingMinutes: 5,
+    cover: { src: '/img/blog/spreadsheet-laptop-and-phone', alt: 'Laptop with a spreadsheet next to a phone on a kitchen counter' },
     body: (
       <>
         <p>
@@ -772,6 +780,7 @@ export const posts = [
       'MyFitnessPal is built around logging every meal. Trackr is built around your weight and your photos. An honest comparison of which one fits how you actually track.',
     date: '2026-07-27',
     readingMinutes: 6,
+    cover: { src: '/img/blog/home-cooked-meal-and-phone', alt: 'Home cooked meal on a plate with a phone beside it and a food scale behind' },
     body: (
       <>
         <p>
@@ -939,6 +948,7 @@ export const posts = [
       'MacroFactor is a nutrition coach that adapts your targets from your data. Trackr is a record of your weight and your photos. Which one fits depends on whether you will log food.',
     date: '2026-07-27',
     readingMinutes: 6,
+    cover: { src: '/img/blog/gym-bench-phone-after-workout', alt: 'Person checking a phone on a gym bench after a workout' },
     body: (
       <>
         <p>
@@ -1089,6 +1099,7 @@ export const posts = [
       'Most weight apps are food diaries with a scale attached. If you want to track your weight and see your body change without logging meals, here is what actually matters.',
     date: '2026-07-27',
     readingMinutes: 7,
+    cover: { src: '/img/blog/tying-running-shoes-sunrise', alt: 'Person tying running shoes on front steps at sunrise with a phone beside them' },
     body: (
       <>
         <p>
