@@ -932,7 +932,7 @@ const AppsPage = () => {
               <h3 className="text-3xl font-black text-white mb-4">Steel Survivor</h3>
               <p className="text-zinc-500 mb-4">One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time.</p>
               <div className="flex flex-wrap gap-2 mb-6">{['Campaign', 'Roguelite', 'Offline'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
-              <span className="inline-flex items-center gap-2 text-amber-500 font-semibold group-hover:gap-4 transition-all">Learn more <ArrowRight size={18} /></span>
+              <span className="inline-flex items-center gap-2 text-green-500 font-semibold group-hover:gap-4 transition-all">Learn more <ArrowRight size={18} /></span>
             </div>
           </div></GlowingBorder>
         </motion.div>
