@@ -928,7 +928,7 @@ const AppsPage = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-[100px] group-hover:bg-amber-500/20 transition-all duration-500" />
             <div className="relative z-10">
               <GameIcon src="/steelsurvivor-icon.png" alt="Steel Survivor" />
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-semibold mb-4"><CheckCircle2 size={12} />Out now on the App Store</div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-500 text-xs font-semibold mb-4"><CheckCircle2 size={12} />Out now on the App Store</div>
               <h3 className="text-3xl font-black text-white mb-4">Steel Survivor</h3>
               <p className="text-zinc-500 mb-4">One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time.</p>
               <div className="flex flex-wrap gap-2 mb-6">{['Campaign', 'Roguelite', 'Offline'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
@@ -965,7 +965,7 @@ const SteelSurvivorPage = () => (
   <div className="relative min-h-screen"><GridPattern />
     <section className="pt-40 pb-24 px-6"><div className="max-w-7xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-semibold mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-500 text-xs font-semibold mb-6">
           <CheckCircle2 size={12} />Out now on the App Store
         </div>
         <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">Steel Survivor</h1>
