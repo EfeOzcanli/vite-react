@@ -54,7 +54,7 @@ const routes = [
   {
     path: '/steelsurvivor',
     title: 'Steel Survivor: Tank War | Tank Roguelite by EMKE',
-    desc: 'One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time. Coming soon to the App Store.',
+    desc: 'One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time. Out now on the App Store.',
   },
   {
     path: '/steelsurvivor/privacy',

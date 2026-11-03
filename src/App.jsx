@@ -32,6 +32,7 @@ const APP_STORE_URL = "https://apps.apple.com/app/id6759034748";
 const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=app.emkellc.trackr";
 
 const THICKET_STORE_URL = "https://apps.apple.com/app/id6813253249";
+const STEEL_STORE_URL = "https://apps.apple.com/app/id6812870342";
 
 const AppStoreButton = ({ className = "", href = APP_STORE_URL, app = "Trackr" }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Download ${app} on the App Store`} className={`flex items-center gap-3 bg-white text-black px-6 py-4 rounded-2xl font-bold hover:bg-zinc-100 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-200 ${className}`}>
@@ -927,7 +928,7 @@ const AppsPage = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-[100px] group-hover:bg-amber-500/20 transition-all duration-500" />
             <div className="relative z-10">
               <GameIcon src="/steelsurvivor-icon.png" alt="Steel Survivor" />
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-semibold mb-4"><Timer size={12} />Coming soon</div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-semibold mb-4"><CheckCircle2 size={12} />Out now on the App Store</div>
               <h3 className="text-3xl font-black text-white mb-4">Steel Survivor</h3>
               <p className="text-zinc-500 mb-4">One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time.</p>
               <div className="flex flex-wrap gap-2 mb-6">{['Campaign', 'Roguelite', 'Offline'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
@@ -965,10 +966,11 @@ const SteelSurvivorPage = () => (
     <section className="pt-40 pb-24 px-6"><div className="max-w-7xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-semibold mb-6">
-          <Timer size={12} />Coming soon to the App Store
+          <CheckCircle2 size={12} />Out now on the App Store
         </div>
         <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">Steel Survivor</h1>
         <p className="text-xl text-zinc-500 max-w-2xl mx-auto">One tank against a field full of them. Twelve missions, three stars each, and a build you put together one card at a time.</p>
+        <div className="flex justify-center mt-8"><AppStoreButton href={STEEL_STORE_URL} app="Steel Survivor" /></div>
       </motion.div>
 
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24 max-w-4xl mx-auto">
