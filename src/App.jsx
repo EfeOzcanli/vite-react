@@ -1121,7 +1121,7 @@ const PrivacyPage = () => (
     <ul className="list-disc pl-6 space-y-2">
       <li><strong className="text-white">Account data</strong> (profile, entries, workouts, photos in the cloud) is kept while your account exists. When you delete your account a Cloud Function removes your Firebase account, your user record, workouts, backups and photos right away; residual copies in provider backups are gone within 30 days</li>
       <li><strong className="text-white">Cloud Backup data</strong> is deleted 3 days after a subscription or trial ends without renewal. Your local data on the device is not affected</li>
-      <li><strong className="text-white">Usage analytics events</strong> in Mixpanel are kept for up to 24 months. You can ask us to delete your analytics profile sooner and we will do so within 30 days</li>
+      <li><strong className="text-white">Usage analytics events</strong> in Mixpanel are kept for up to 5 years, which is the fixed retention period of the Mixpanel plan we use. You can ask us to delete your analytics data at any time and we will file the deletion request with Mixpanel within 30 days</li>
       <li><strong className="text-white">Subscription records</strong> in RevenueCat are deleted with your account. Apple and Google keep their own purchase records under their own policies</li>
       <li><strong className="text-white">Contact form messages</strong> are kept in our mailbox for 12 months, then deleted</li>
       <li><strong className="text-white">Website analytics</strong> in Google Analytics is kept for up to 14 months</li>
@@ -1237,7 +1237,7 @@ const PrivacyTrPage = () => (
     <ul className="list-disc pl-6 space-y-2">
       <li><strong className="text-white">Hesap verileri</strong> (profil, girişler, antrenmanlar, buluttaki fotoğraflar) hesabın var olduğu sürece saklanır. Hesabını sildiğinde bir Cloud Function Firebase hesabını, kullanıcı kaydını, antrenmanlarını, yedeklerini ve fotoğraflarını hemen siler; sağlayıcı yedeklerindeki kalıntı kopyalar en geç 30 gün içinde yok olur</li>
       <li><strong className="text-white">Bulut Yedekleme verileri</strong> abonelik veya deneme yenilenmeden sona erdiğinde 3 gün sonra silinir. Cihazındaki yerel veriler etkilenmez</li>
-      <li><strong className="text-white">Kullanım analizi olayları</strong> Mixpanel’de en fazla 24 ay saklanır. Analiz profilinin daha erken silinmesini istersen 30 gün içinde sileriz</li>
+      <li><strong className="text-white">Kullanım analizi olayları</strong> Mixpanel’de en fazla 5 yıl saklanır; bu süre kullandığımız Mixpanel planının sabit saklama süresidir. Analiz verilerinin silinmesini istediğinde silme talebini 30 gün içinde Mixpanel’e iletiriz</li>
       <li><strong className="text-white">Abonelik kayıtları</strong> RevenueCat’te hesabınla birlikte silinir. Apple ve Google kendi satın alma kayıtlarını kendi politikalarına göre tutar</li>
       <li><strong className="text-white">İletişim formu mesajları</strong> posta kutumuzda 12 ay saklanır, sonra silinir</li>
       <li><strong className="text-white">Site analitik verileri</strong> Google Analytics’te en fazla 14 ay saklanır</li>
