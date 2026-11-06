@@ -38,7 +38,7 @@
       })();
     </script>
 
-    <!-- Google Consent Mode v2: default denied in EEA + UK + CH, granted elsewhere -->
+    <!-- Google Consent Mode v2: default denied in EEA + UK + CH + TR (KVKK), granted elsewhere -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -48,7 +48,7 @@
         'ad_user_data': 'denied',
         'ad_personalization': 'denied',
         'wait_for_update': 500,
-        'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+        'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH','TR']
       });
       gtag('consent', 'default', {
         'analytics_storage': 'granted',
@@ -135,15 +135,21 @@
       (function () {
         if (localStorage.getItem('cookie_consent')) return;
 
+        // Turkish visitors get the banner in Turkish and a link to the KVKK text.
+        var isTr = /^tr\b/i.test((navigator.language || (navigator.languages && navigator.languages[0]) || ''));
+        var copy = isTr
+          ? { label: 'Çerez onayı', text: 'emke.app\'i geliştirmek için analiz çerezleri kullanıyoruz. <a href="/privacy/tr">Gizlilik politikası ve KVKK aydınlatma metni</a>.', decline: 'Reddet', accept: 'Kabul et' }
+          : { label: 'Cookie consent', text: 'We use cookies for analytics to improve emke.app. See our <a href="/privacy">privacy policy</a>.', decline: 'Decline', accept: 'Accept' };
+
         var banner = document.createElement('div');
         banner.id = 'cookie-banner';
         banner.setAttribute('role', 'dialog');
-        banner.setAttribute('aria-label', 'Cookie consent');
+        banner.setAttribute('aria-label', copy.label);
         banner.innerHTML =
-          '<p>We use cookies for analytics to improve emke.app. See our <a href="/privacy">privacy policy</a>.</p>' +
+          '<p>' + copy.text + '</p>' +
           '<div class="cb-actions">' +
-          '<button id="cb-decline" type="button">Decline</button>' +
-          '<button id="cb-accept" type="button">Accept</button>' +
+          '<button id="cb-decline" type="button">' + copy.decline + '</button>' +
+          '<button id="cb-accept" type="button">' + copy.accept + '</button>' +
           '</div>';
         document.body.appendChild(banner);
 

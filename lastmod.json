@@ -1,78 +1,82 @@
 {
   "/": {
-    "hash": "e1d24f091cd9754b",
-    "date": "2026-09-22"
+    "hash": "946fffdf2c7c96f5",
+    "date": "2026-11-06"
   },
   "/apps": {
-    "hash": "937781f61f160dee",
-    "date": "2026-09-24"
+    "hash": "f518edad81adced2",
+    "date": "2026-11-06"
   },
   "/trackr": {
-    "hash": "968e841414fec176",
-    "date": "2026-09-22"
+    "hash": "1f00fbb57e4bead6",
+    "date": "2026-11-06"
   },
   "/thicket": {
-    "hash": "febf2c4fcbb451f8",
-    "date": "2026-09-24"
+    "hash": "4fd99d3a26d079bd",
+    "date": "2026-11-06"
   },
   "/thicket/privacy": {
-    "hash": "f188cd5101fa8d4a",
-    "date": "2026-09-22"
+    "hash": "1bdb16981a9e5f41",
+    "date": "2026-11-06"
   },
   "/vision": {
-    "hash": "11da9828edc4620e",
-    "date": "2026-09-22"
+    "hash": "3460af332399d9bd",
+    "date": "2026-11-06"
   },
   "/contact": {
-    "hash": "339fa659908ea7f7",
-    "date": "2026-09-22"
+    "hash": "bf4d94deb9cea68b",
+    "date": "2026-11-06"
   },
   "/support": {
-    "hash": "a417d71b0ccfd72e",
-    "date": "2026-09-22"
+    "hash": "0da71ed9c7e6a474",
+    "date": "2026-11-06"
   },
   "/steelsurvivor": {
-    "hash": "f2b06cfa3eb394a6",
-    "date": "2026-09-22"
+    "hash": "41153dbd06354b7b",
+    "date": "2026-11-06"
   },
   "/steelsurvivor/privacy": {
-    "hash": "3d899548733ba7eb",
-    "date": "2026-09-22"
+    "hash": "b0b2e49417983149",
+    "date": "2026-11-06"
   },
   "/privacy": {
-    "hash": "222f18a543e40951",
-    "date": "2026-09-22"
+    "hash": "b57d81510b4d7dff",
+    "date": "2026-11-06"
+  },
+  "/privacy/tr": {
+    "hash": "6c3e2cbf2e50fb51",
+    "date": "2026-11-06"
   },
   "/terms": {
-    "hash": "caf799b487999fd8",
-    "date": "2026-09-22"
+    "hash": "8c516b47cc9e241b",
+    "date": "2026-11-06"
   },
   "/blog": {
-    "hash": "1879f7f8f854f99f",
-    "date": "2026-09-22"
+    "hash": "41e9c9e1969c6519",
+    "date": "2026-11-06"
   },
   "/blog/how-to-take-progress-photos": {
-    "hash": "2fa6bf0af38ed654",
-    "date": "2026-09-26"
+    "hash": "a1ca866c084d2c41",
+    "date": "2026-11-06"
   },
   "/blog/how-to-build-a-tracking-habit": {
-    "hash": "cc90ce3115f292bf",
-    "date": "2026-09-26"
+    "hash": "0cfaec9677830df4",
+    "date": "2026-11-06"
   },
   "/blog/trackr-vs-spreadsheet-daily-tracking": {
-    "hash": "acd5f108bc3065f5",
-    "date": "2026-09-26"
+    "hash": "c27cd6de012c4892",
+    "date": "2026-11-06"
   },
   "/blog/trackr-vs-myfitnesspal": {
-    "hash": "217110ff1fb82503",
-    "date": "2026-09-26"
+    "hash": "870423ffa7a826fd",
+    "date": "2026-11-06"
   },
   "/blog/trackr-vs-macrofactor": {
-    "hash": "01b83e8e5f3915cd",
-    "date": "2026-09-26"
+    "hash": "3f201d136ae753fc",
+    "date": "2026-11-06"
   },
   "/blog/weight-tracking-app-without-calorie-counting": {
-    "hash": "1fc39392283215e6",
-    "date": "2026-09-26"
+    "hash": "8d3a2d795ba3348d",
+    "date": "2026-11-06"
   }
 }

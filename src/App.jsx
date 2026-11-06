@@ -12,7 +12,9 @@ import { posts } from './blog/posts.jsx';
 
 const CONTACT_EMAIL = "info@emke.app";
 const EFFECTIVE_DATE = "01/30/2026";
-const STEEL_EFFECTIVE_DATE = "09/16/2026";
+const PRIVACY_EFFECTIVE_DATE = "November 6, 2026";
+const PRIVACY_EFFECTIVE_DATE_TR = "6 Kasım 2026";
+const STEEL_EFFECTIVE_DATE = "11/06/2026";
 const THICKET_EFFECTIVE_DATE = "09/18/2026";
 
 // Trackr Logo - uses image
@@ -305,7 +307,7 @@ const Footer = () => {
         </div>
         <div>
           <h4 className="text-white font-bold mb-6 text-sm">Legal</h4>
-          <ul className="space-y-3">{['Privacy Policy', 'Terms of Service', 'Support'].map((item, i) => <li key={i}><Link to={['/privacy', '/terms', '/support'][i]} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</Link></li>)}</ul>
+          <ul className="space-y-3">{['Privacy Policy', 'Gizlilik Politikası (TR)', 'Terms of Service', 'Support'].map((item, i) => <li key={i}><Link to={['/privacy', '/privacy/tr', '/terms', '/support'][i]} className="text-zinc-500 hover:text-green-400 cursor-pointer transition-colors">{item}</Link></li>)}</ul>
           <h4 className="text-white font-bold mb-4 mt-8 text-sm">Contact</h4>
           <ul className="space-y-2">
             <li className="text-zinc-500 text-sm">+1 (775) 770-0677</li>
@@ -804,6 +806,12 @@ const ContactPage = () => {
   const loadedAt = useRef(Date.now());
   const tsRef = useRef(null);
   const getTurnstileToken = useTurnstile(tsRef);
+  // Turkish browsers get the privacy notice in Turkish, linking the KVKK text.
+  // Decided after mount so the prerendered HTML and the first client render match.
+  const [isTr, setIsTr] = useState(false);
+  useEffect(() => {
+    try { setIsTr(/^tr\b/i.test(navigator.language || (navigator.languages && navigator.languages[0]) || '')); } catch (_) {}
+  }, []);
 
   const clear = () => setFormData({ name: '', email: '', message: '', website: '' });
 
@@ -892,6 +900,11 @@ const ContactPage = () => {
             {error && <p className="text-red-400 text-sm text-center">{error}</p>}
             <button type="submit" disabled={sending} className="block w-full py-5 bg-green-500 text-black font-bold rounded-2xl hover:bg-green-400 transition-colors text-lg text-center disabled:opacity-60">{sending ? 'Sending...' : 'Send Message'}</button>
             <p className="text-zinc-500 text-xs text-center">Your message goes directly to our team. We respond within 24 to 48 business hours.</p>
+            <p className="text-zinc-500 text-xs text-center">
+              {isTr
+                ? <>Bu formu göndererek adının, e-postanın ve mesajının sana cevap vermek için işlenmesini kabul edersin. Mesajlar 12 ay saklanır. <Link to="/privacy/tr" className="text-green-400 hover:underline">Gizlilik politikası ve KVKK aydınlatma metni</Link>.</>
+                : <>By sending this form you agree that we process your name, email and message to reply to you. Messages are kept for 12 months. <Link to="/privacy" className="text-green-400 hover:underline">Privacy policy</Link>.</>}
+            </p>
           </form>
           )}
         </div></GlowingBorder>
@@ -1005,112 +1018,276 @@ const SteelSurvivorPage = () => (
   </div>
 );
 
-const LegalPage = ({ title, icon, date = EFFECTIVE_DATE, children }) => (
+const LegalPage = ({ title, icon, date = EFFECTIVE_DATE, dateLabel = 'Effective Date', children }) => (
   <div className="relative min-h-screen"><GridPattern />
     <section className="pt-40 pb-32 px-6"><div className="max-w-4xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
         <div className="flex items-center gap-4 mb-6"><div className="text-green-500">{icon}</div><h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">{title}</h1></div>
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-xs font-semibold text-zinc-500">Effective Date: {date}</div>
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-xs font-semibold text-zinc-500">{dateLabel}: {date}</div>
       </motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="space-y-8 text-zinc-400 leading-relaxed">{children}</motion.div>
     </div></section>
   </div>
 );
 
+const PROCESSORS = [
+  { name: 'Google Firebase (Authentication, Firestore, Cloud Storage, Cloud Functions)', where: 'United States', what: 'Accounts and sign in, your cloud data, progress photos when Cloud Backup is on, and the automatic cleanup that runs when you delete your account.' },
+  { name: 'Mixpanel', where: 'United States', what: 'Usage analytics: which features are used and when, tied to a pseudonymous user ID. Your name, email, weight and photos are never sent. You can turn this off in the App.' },
+  { name: 'RevenueCat', where: 'United States', what: 'Subscription status for Trackr Pro, keyed by your user ID. Payment itself is handled by Apple or Google; we never see card numbers.' },
+  { name: 'Apple (Sign in with Apple, App Store, Apple Health on your device)', where: 'United States', what: 'Optional sign in, purchases and refunds. Apple Health data stays on your device unless you turn sync on, and we never receive Health data from Apple.' },
+  { name: 'Google (Google sign in, Google Play)', where: 'United States', what: 'Optional sign in, purchases and refunds on Android.' },
+  { name: 'Vercel', where: 'United States', what: 'Hosting for the Website and the serverless endpoint behind the contact form.' },
+  { name: 'Google Analytics 4', where: 'United States', what: 'Website traffic statistics. Loads only after you accept cookies if you are in the EEA, the UK, Switzerland or Turkey.' },
+  { name: 'Cloudflare Turnstile', where: 'United States', what: 'Bot check on the contact form. Sees connection data such as your IP address to decide whether the sender is a person.' },
+  { name: 'Resend', where: 'United States', what: 'Delivers contact form messages to our inbox at info@emke.app.' },
+];
+
 const PrivacyPage = () => (
-  <LegalPage title="Privacy Policy" icon={<ShieldCheck size={36} />}>
+  <LegalPage title="Privacy Policy" icon={<ShieldCheck size={36} />} date={PRIVACY_EFFECTIVE_DATE}>
+    <p className="text-sm"><Link to="/privacy/tr" className="text-green-400 hover:underline font-semibold">Türkçe sürüm: Gizlilik Politikası ve KVKK Aydınlatma Metni</Link></p>
     <p className="text-white font-semibold text-lg">EMKE Seismic Isolation LLC</p>
-    <p>This Privacy Policy explains how EMKE Seismic Isolation LLC ("we", "us", "our") collects, uses, discloses, and protects your information when you use the Trackr mobile application and related services (the "Service"). By using the Service, you consent to the practices described in this policy.</p>
+    <p>This Privacy Policy explains how EMKE Seismic Isolation LLC ("we", "us", "our") collects, uses, shares and protects your information when you use the Trackr mobile application (the "App") and the emke.app website (the "Website"). Steel Survivor and Thicket have their own, shorter policies, linked from their pages.</p>
 
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">1. Information We Collect</h3>
-    <h4 className="text-green-400 font-semibold">Personal Information You Provide</h4>
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">1. Who is responsible</h3>
+    <p>EMKE Seismic Isolation LLC, Reno, Nevada, United States, is the data controller for the App and the Website. Contact: <strong className="text-green-400">{CONTACT_EMAIL}</strong>.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">2. Information we collect in the App</h3>
+    <h4 className="text-green-400 font-semibold">Information you give us</h4>
     <ul className="list-disc pl-6 space-y-2">
-      <li>Your name, email address, and profile details</li>
-      <li>Body weight entries, exercise logs, sets, reps, and personal records</li>
-      <li>Progress photos (stored locally on your device by default)</li>
-      <li>Any messages or feedback you send to us</li>
-      <li>Subscription and payment details, processed securely through Apple or Google</li>
+      <li>Your name (optional) and email address, and a password that Firebase stores as a hash we cannot read</li>
+      <li>Body weight entries, workouts, sets, reps and personal records, notes and daily goals</li>
+      <li>Progress photos. By default they stay on your device only; with Cloud Backup they are uploaded to Firebase Storage</li>
+      <li>Messages or feedback you send to us</li>
     </ul>
-    <h4 className="text-green-400 font-semibold mt-4">Information Collected Automatically</h4>
+    <h4 className="text-green-400 font-semibold mt-4">Information from Apple or Google sign in</h4>
     <ul className="list-disc pl-6 space-y-2">
-      <li>Device model, operating system, and unique device identifiers</li>
-      <li>Which features you use, session duration, and interaction patterns</li>
-      <li>Crash reports and performance metrics, collected anonymously</li>
-      <li>General location at the country or region level only. We do not collect precise GPS data</li>
-    </ul></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">2. How We Use Your Information</h3>
-    <ul className="list-disc pl-6 space-y-2">
-      <li>To provide, maintain, and improve the Trackr app and its features</li>
-      <li>To track your fitness progress and generate your overall fitness score</li>
-      <li>To sync your data across devices (Premium users with cloud backup enabled)</li>
-      <li>To process subscriptions and manage your account</li>
-      <li>To communicate updates, new features, and support responses</li>
-      <li>To analyze usage patterns and improve app performance</li>
-      <li>To detect, prevent, and address technical issues or abuse</li>
+      <li>The account identifier, name and email that Apple or Google return when you choose to sign in with them. Apple may give us a private relay address instead of your real email</li>
     </ul>
-    <GlowingBorder><div className="p-6 bg-zinc-900/50 rounded-3xl border border-white/5 mt-4"><p className="text-green-400 font-bold">We do not sell, rent, or trade your personal data to third parties. Ever.</p></div></GlowingBorder></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">3. Photo Storage & Privacy</h3>
+    <h4 className="text-green-400 font-semibold mt-4">Information collected automatically</h4>
     <ul className="list-disc pl-6 space-y-2">
-      <li><strong className="text-white">By default,</strong> all progress photos are stored locally on your device only</li>
-      <li><strong className="text-white">With Premium Cloud Backup,</strong> your photos are encrypted and stored securely in the cloud if you choose to enable it</li>
-      <li>Photos are never shared with other users or third parties</li>
-      <li>You can delete your photos at any time from the app</li>
-      <li>Photos backed up to the cloud are permanently deleted within 30 days of account deletion</li>
-    </ul></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">4. Data Sharing</h3>
-    <p>We may share your information only in these limited circumstances:</p>
-    <ul className="list-disc pl-6 space-y-2">
-      <li><strong className="text-white">Service Providers</strong> that help us operate, such as cloud hosting and analytics partners. They are all bound by confidentiality agreements.</li>
-      <li><strong className="text-white">Legal requirements,</strong> when we are required by law, subpoena, or need to protect our rights and user safety</li>
-      <li><strong className="text-white">Business transfers</strong> in connection with a merger, acquisition, or sale of assets. You will always be notified</li>
-    </ul></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">5. Data Security</h3>
-    <ul className="list-disc pl-6 space-y-2">
-      <li>All data transmissions are encrypted using SSL/TLS protocols</li>
-      <li>Data stored in the cloud is encrypted at rest using AES-256 encryption</li>
-      <li>Payment processing is handled securely by Apple App Store and Google Play Store</li>
-      <li>Regular security audits and vulnerability assessments</li>
-      <li>Access to user data is restricted to authorized personnel only</li>
-    </ul></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">6. Data Retention</h3>
-    <ul className="list-disc pl-6 space-y-2">
-      <li>Account data is kept for the duration of your account, plus 90 days after deletion</li>
-      <li>Fitness data stays until you delete it or close your account</li>
-      <li>Anonymized analytics are kept for up to 24 months</li>
-      <li>Payment records are kept for 7 years for legal and tax compliance</li>
-    </ul></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">7. Your Rights</h3>
-    <p>Depending on your jurisdiction, you may have the right to:</p>
-    <ul className="list-disc pl-6 space-y-2">
-      <li><strong className="text-white">Access</strong> and request a copy of your personal data</li>
-      <li><strong className="text-white">Correct</strong> any inaccurate data we hold about you</li>
-      <li><strong className="text-white">Delete</strong> your data entirely (the "right to be forgotten")</li>
-      <li><strong className="text-white">Export</strong> your fitness data in a standard format</li>
-      <li><strong className="text-white">Opt out</strong> of marketing communications at any time</li>
+      <li>Your Firebase user ID, which also serves as your Mixpanel and RevenueCat identifier</li>
+      <li>Device model, operating system version, app version, language and country or region taken from your device settings. We do not collect GPS location</li>
+      <li>Which features you use and when (for example "workout completed" or "entry created"), sent to Mixpanel unless you turn usage data sharing off</li>
+      <li>Subscription status, trial start and purchase events from RevenueCat, Apple and Google. We never receive card numbers or billing addresses</li>
     </ul>
-    <p>To exercise these rights, contact us at <strong className="text-green-400">{CONTACT_EMAIL}</strong> or call <strong className="text-green-400">+1 (775) 770-0677</strong>.</p></div>
+    <p>We do not collect precise location, contacts, browsing history, advertising identifiers or crash reports. The App contains no crash reporting or advertising software.</p></div>
 
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">8. Children's Privacy</h3>
-    <p>Trackr is not intended for use by children under 13. We do not knowingly collect personal information from children. If we learn that we have collected data from a child under 13, we will promptly delete it.</p></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">9. Third Party Services</h3>
-    <p>Trackr may contain links to or integrations with third party services (e.g., Apple Health, Google Fit). We are not responsible for the privacy practices of these external services. Please review their privacy policies.</p></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">10. Changes to This Policy</h3>
-    <p>We may update this Privacy Policy from time to time. We will notify you of material changes through the app or via email. Your continued use of Trackr after changes constitutes acceptance of the updated policy.</p></div>
-
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">11. Contact Us</h3>
-    <p>If you have questions about this Privacy Policy, contact us:</p>
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">3. How we use your information</h3>
     <ul className="list-disc pl-6 space-y-2">
-      <li>📧 Email: {CONTACT_EMAIL}</li>
-      <li>📞 Phone: +1 (775) 770-0677</li>
-      <li>🌐 Website: emke.app</li>
+      <li>To provide the App: store your entries, show charts, calculate your progress and fitness score</li>
+      <li>To sync your data across devices when you turn on Cloud Backup</li>
+      <li>To manage your subscription and restore purchases</li>
+      <li>To answer your support requests</li>
+      <li>To understand which features are used so we can improve the App (usage analytics, optional)</li>
+      <li>To keep the service secure and prevent abuse</li>
+      <li>To meet legal obligations</li>
+    </ul>
+    <GlowingBorder><div className="p-6 bg-zinc-900/50 rounded-3xl border border-white/5 mt-4"><p className="text-green-400 font-bold">We do not sell, rent or trade your personal data, and we do not share it with advertisers or data brokers.</p></div></GlowingBorder></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">4. Service providers and where your data is stored</h3>
+    <p>We run the App and the Website on the services below. Each one processes data only on our instructions, under a data processing agreement, and only to provide its service to us.</p>
+    <ul className="list-disc pl-6 space-y-3">
+      {PROCESSORS.map((p, i) => (
+        <li key={i}><strong className="text-white">{p.name}</strong>, {p.where}. {p.what}</li>
+      ))}
+    </ul>
+    <p><strong className="text-white">All of your data is stored in the United States.</strong> If you use Trackr or the Website from outside the United States, including the European Union, the United Kingdom or Turkey, your data is transferred to and stored in the United States. For users in the EEA and the UK the transfer relies on the providers' standard contractual clauses and, where applicable, the EU-US Data Privacy Framework. For users in Turkey the transfer relies on your explicit consent and on the fact that it is necessary to perform the service you asked for; the details are in the <Link to="/privacy/tr" className="text-green-400 hover:underline">Turkish KVKK text</Link>.</p>
+    <p>Beyond these providers we disclose data only when the law requires it (for example a valid subpoena), to protect our rights and the safety of users, or as part of a merger or sale of the business, in which case you will be told before your data changes hands.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">5. Photo storage</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">By default</strong> progress photos are stored on your device only and never leave it</li>
+      <li><strong className="text-white">With Cloud Backup</strong> (Trackr Pro) photos are uploaded to Firebase Storage in the United States, encrypted in transit and at rest, and readable only by your signed in account</li>
+      <li>Photos are never shared with other users, used for marketing, or used to train any model</li>
+      <li>You can delete any photo in the App at any time. Deleting your account deletes every photo in the cloud</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">6. Your analytics choices</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">In the App:</strong> Profile, then "Share anonymous usage data". It is on by default. Turning it off stops Mixpanel immediately, including on the current session</li>
+      <li><strong className="text-white">On the Website:</strong> the cookie banner. In the EEA, the UK, Switzerland and Turkey analytics cookies stay off until you accept. Everywhere else they are on by default and the banner lets you decline. Your choice is stored in your browser and can be changed by clearing site data</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">7. Security</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>All connections between the App, the Website and our providers use TLS</li>
+      <li>Data in Firebase is encrypted at rest by Google Cloud</li>
+      <li>Firestore and Storage rules allow each account to read and write only its own data</li>
+      <li>Payment details are handled by Apple and Google and never reach us</li>
+      <li>Access to production data is limited to the owner of the company</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">8. How long we keep data</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Account data</strong> (profile, entries, workouts, photos in the cloud) is kept while your account exists. When you delete your account a Cloud Function removes your Firebase account, your user record, workouts, backups and photos right away; residual copies in provider backups are gone within 30 days</li>
+      <li><strong className="text-white">Cloud Backup data</strong> is deleted 3 days after a subscription or trial ends without renewal. Your local data on the device is not affected</li>
+      <li><strong className="text-white">Usage analytics events</strong> in Mixpanel are kept for up to 24 months. You can ask us to delete your analytics profile sooner and we will do so within 30 days</li>
+      <li><strong className="text-white">Subscription records</strong> in RevenueCat are deleted with your account. Apple and Google keep their own purchase records under their own policies</li>
+      <li><strong className="text-white">Contact form messages</strong> are kept in our mailbox for 12 months, then deleted</li>
+      <li><strong className="text-white">Website analytics</strong> in Google Analytics is kept for up to 14 months</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">9. Your rights</h3>
+    <p>Wherever you live, you can:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Access</strong> and receive a copy of your personal data</li>
+      <li><strong className="text-white">Correct</strong> inaccurate data, in the App or by writing to us</li>
+      <li><strong className="text-white">Delete</strong> your account and all data in the App: Profile, then Delete Account. For security you may be asked to sign in again first. If you signed in with Apple, we also revoke your Sign in with Apple tokens</li>
+      <li><strong className="text-white">Export</strong> your entries in CSV from the App, or ask us for a copy</li>
+      <li><strong className="text-white">Object to or restrict</strong> processing based on our legitimate interest, and <strong className="text-white">withdraw consent</strong> at any time (usage analytics, cookies, Cloud Backup, Apple Health sync)</li>
+      <li><strong className="text-white">Complain</strong> to your data protection authority if you are in the EEA or the UK, or to the Personal Data Protection Authority (KVKK) if you are in Turkey</li>
+    </ul>
+    <p>Write to <strong className="text-green-400">{CONTACT_EMAIL}</strong>. We answer within 30 days and may ask you to confirm the email on your account before acting. We do not sell personal information, so there is nothing to opt out of under US state privacy laws.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">10. Children</h3>
+    <p>Trackr is not intended for children under 13 (or under 16 where that is the age of digital consent). We do not knowingly collect personal information from children. If we learn that we have, we delete it promptly.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">11. Apple Health</h3>
+    <p>If you turn on Apple Health sync, the App writes your weight entries and completed workouts into Apple Health on your device. The App does not read Health data back, and nothing from Apple Health is sent to our servers. Apple's privacy policy governs how Health data is stored on your device and in iCloud.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">12. The Website (emke.app)</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Cookies.</strong> Google Analytics 4 sets the _ga and _ga_* cookies to count visits and pages. Your cookie choice is stored in your browser under the key cookie_consent and nowhere else. The Website sets no advertising cookies</li>
+      <li><strong className="text-white">Consent.</strong> Google Consent Mode is set to "denied" by default for visitors in the EEA, the UK, Switzerland and Turkey, so Google Analytics receives nothing until you accept</li>
+      <li><strong className="text-white">Contact form.</strong> When you send the form, your name, email address and message, together with technical anti-spam signals (time spent on the page, a Cloudflare Turnstile token and your IP address), go through our endpoint on Vercel to Resend, which delivers them to info@emke.app. We use them only to reply to you. Messages are kept for 12 months</li>
+      <li><strong className="text-white">Server logs.</strong> Vercel keeps short lived request logs (IP address, user agent, URL) for operating and securing the service</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">13. Changes to this policy</h3>
+    <p>When we change this policy in a meaningful way we update the effective date above and tell you in the App or by email. Continued use after the change means you accept the updated policy.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">14. Contact</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Email: {CONTACT_EMAIL}</li>
+      <li>Phone: +1 (775) 770-0677</li>
+      <li>Post: EMKE Seismic Isolation LLC, Reno, Nevada, United States</li>
+    </ul></div>
+  </LegalPage>
+);
+
+const PROCESSORS_TR = [
+  { name: 'Google Firebase (Authentication, Firestore, Cloud Storage, Cloud Functions)', where: 'ABD', what: 'Hesap ve giriş, bulut verilerin, Bulut Yedekleme açıkken ilerleme fotoğrafların ve hesabını sildiğinde çalışan otomatik temizlik.' },
+  { name: 'Mixpanel', where: 'ABD', what: 'Kullanım analizi: hangi özelliğin ne zaman kullanıldığı, takma ad niteliğindeki kullanıcı kimliğine bağlı. Adın, e-postan, kilon ve fotoğrafların hiç gönderilmez. Uygulamadan kapatabilirsin.' },
+  { name: 'RevenueCat', where: 'ABD', what: 'Trackr Pro abonelik durumu, kullanıcı kimliğine bağlı. Ödemeyi Apple veya Google alır; kart bilgisi bize ulaşmaz.' },
+  { name: 'Apple (Apple ile Giriş, App Store, cihazındaki Apple Sağlık)', where: 'ABD', what: 'İsteğe bağlı giriş, satın alma ve iade. Apple Sağlık verisi sen senkronizasyonu açmadıkça cihazında kalır; Apple’dan bize Sağlık verisi gelmez.' },
+  { name: 'Google (Google ile Giriş, Google Play)', where: 'ABD', what: 'Android’de isteğe bağlı giriş, satın alma ve iade.' },
+  { name: 'Vercel', where: 'ABD', what: 'Sitenin ve iletişim formunun arkasındaki sunucusuz uç noktanın barındırılması.' },
+  { name: 'Google Analytics 4', where: 'ABD', what: 'Site trafik istatistikleri. Türkiye, AEA, Birleşik Krallık ve İsviçre’de yalnızca çerezleri kabul ettikten sonra yüklenir.' },
+  { name: 'Cloudflare Turnstile', where: 'ABD', what: 'İletişim formunda bot kontrolü. Gönderenin insan olup olmadığına karar vermek için IP adresi gibi bağlantı verilerini görür.' },
+  { name: 'Resend', where: 'ABD', what: 'İletişim formu mesajlarını info@emke.app kutumuza iletir.' },
+];
+
+const PrivacyTrPage = () => (
+  <LegalPage title="Gizlilik Politikası ve KVKK Aydınlatma Metni" icon={<ShieldCheck size={36} />} date={PRIVACY_EFFECTIVE_DATE_TR} dateLabel="Yürürlük Tarihi">
+    <p className="text-sm"><Link to="/privacy" className="text-green-400 hover:underline font-semibold">English version: Privacy Policy</Link></p>
+    <p className="text-white font-semibold text-lg">EMKE Seismic Isolation LLC</p>
+    <p>Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) 10. maddesi uyarınca hazırlanmıştır ve Trackr mobil uygulaması ("Uygulama") ile emke.app sitesi ("Site") üzerinden işlenen kişisel verilerini açıklar. İngilizce politika ile aynı içeriği taşır; iki metin arasında fark olursa Türkiye’deki kullanıcılar için bu metin esas alınır.</p>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">1. Veri Sorumlusu</h3>
+    <p>EMKE Seismic Isolation LLC, Reno, Nevada, Amerika Birleşik Devletleri. E-posta: <strong className="text-green-400">{CONTACT_EMAIL}</strong>. Şirket Türkiye’de yerleşik değildir; KVKK kapsamındaki tüm başvurular bu e-posta adresi üzerinden alınır.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">2. İşlenen Kişisel Veriler</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Kimlik:</strong> ad (isteğe bağlı)</li>
+      <li><strong className="text-white">İletişim:</strong> e-posta adresi; Apple ile girişte Apple’ın verdiği gizli aktarma adresi olabilir</li>
+      <li><strong className="text-white">Hesap bilgileri:</strong> Firebase kullanıcı kimliği, şifrenin bizim okuyamadığımız özeti, Apple veya Google hesap kimliği</li>
+      <li><strong className="text-white">Sağlık ve fitness verileri (özel nitelikli):</strong> kilo girişleri, antrenmanlar, set, tekrar ve rekorlar, notlar, günlük hedefler</li>
+      <li><strong className="text-white">Görsel veriler:</strong> ilerleme fotoğrafları; varsayılan olarak yalnızca cihazında, Bulut Yedekleme açıksa Firebase Storage’da</li>
+      <li><strong className="text-white">Cihaz ve işlem güvenliği:</strong> cihaz modeli, işletim sistemi sürümü, uygulama sürümü, dil, cihaz ayarlarından alınan ülke veya bölge. GPS konumu toplanmaz</li>
+      <li><strong className="text-white">Kullanım verileri:</strong> hangi özelliğin ne zaman kullanıldığı (Mixpanel); Uygulamadan kapatılabilir</li>
+      <li><strong className="text-white">Abonelik ve satın alma:</strong> abonelik durumu, deneme başlangıcı ve satın alma olayları (RevenueCat, Apple, Google); kart bilgisi veya fatura adresi bize ulaşmaz</li>
+      <li><strong className="text-white">Site:</strong> analitik çerez verileri, iletişim formunda ad, e-posta, mesaj ve bot kontrolü için sayfada geçirilen süre, Turnstile belirteci ve IP adresi</li>
+      <li><strong className="text-white">Destek yazışmaları:</strong> bize gönderdiğin mesajlar ve geri bildirimler</li>
+    </ul>
+    <p>Hassas konum, rehber, tarama geçmişi, reklam kimliği ve çökme raporu toplanmaz. Uygulamada çökme raporlama veya reklam yazılımı yoktur.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">3. İşleme Amaçları</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Uygulamanın sunulması: girişlerin saklanması, grafikler, ilerleme ve fitness puanının hesaplanması</li>
+      <li>Bulut Yedekleme açıkken verilerin cihazlar arasında senkronizasyonu</li>
+      <li>Abonelik yönetimi ve satın almaların geri yüklenmesi</li>
+      <li>Destek taleplerinin cevaplanması</li>
+      <li>Hangi özelliklerin kullanıldığının anlaşılması ve Uygulamanın iyileştirilmesi (isteğe bağlı kullanım analizi)</li>
+      <li>Hizmetin güvenliği ve kötüye kullanımın önlenmesi</li>
+      <li>Hukuki yükümlülüklerin yerine getirilmesi</li>
+    </ul>
+    <GlowingBorder><div className="p-6 bg-zinc-900/50 rounded-3xl border border-white/5 mt-4"><p className="text-green-400 font-bold">Kişisel verilerin satılmaz, kiralanmaz, reklam verenlerle veya veri aracılarıyla paylaşılmaz.</p></div></GlowingBorder></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">4. Hukuki Sebepler (KVKK m.5 ve m.6)</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Sözleşmenin kurulması ve ifası (m.5/2-c):</strong> hesap, girişler, senkronizasyon, abonelik yönetimi, destek</li>
+      <li><strong className="text-white">Hukuki yükümlülük (m.5/2-ç):</strong> yasal taleplerin karşılanması</li>
+      <li><strong className="text-white">Meşru menfaat (m.5/2-f):</strong> güvenlik, kötüye kullanımın önlenmesi; kullanım analizi için ayrıca Uygulamada kapatma seçeneği sunulur</li>
+      <li><strong className="text-white">Açık rıza (m.5/1, m.6/2 ve m.9):</strong> kilo ve antrenman gibi sağlık verilerinin işlenmesi, fotoğrafların buluta yedeklenmesi, Apple Sağlık senkronizasyonu, Sitede analitik çerezler ve verilerin yurt dışına aktarılması. Açık rızanı dilediğin an geri alabilirsin; sağlık verileri için en kesin yol hesabını silmektir</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">5. Toplama Yöntemi</h3>
+    <p>Veriler, Uygulama içindeki formlar ve girişler, Apple veya Google ile giriş, Uygulamanın ve cihazın otomatik olarak ürettiği teknik kayıtlar, Sitedeki çerezler ve iletişim formu aracılığıyla; tamamen veya kısmen otomatik yollarla elektronik ortamda toplanır.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">6. Aktarım ve Yurt Dışına Aktarım (m.8 ve m.9)</h3>
+    <p>Uygulama ve Site aşağıdaki hizmet sağlayıcılar üzerinde çalışır. Her biri verileri yalnızca bizim talimatımızla, veri işleme sözleşmesi kapsamında ve yalnızca bize hizmet sunmak için işler.</p>
+    <ul className="list-disc pl-6 space-y-3">
+      {PROCESSORS_TR.map((p, i) => (
+        <li key={i}><strong className="text-white">{p.name}</strong>, {p.where}. {p.what}</li>
+      ))}
+    </ul>
+    <p><strong className="text-white">Veri sorumlusu ABD’de yerleşiktir ve tüm veriler ABD’de saklanır.</strong> Uygulamayı veya Siteyi Türkiye’den kullandığında kişisel verilerin ABD’ye aktarılır. Bu aktarım KVKK m.9 kapsamında açık rızana ve talep ettiğin hizmetin ifası için zorunlu olmasına dayanır. Bunun dışında veriler yalnızca hukuken zorunlu olduğunda yetkili kamu kurum ve kuruluşlarına, haklarımızı ve kullanıcıların güvenliğini korumak için ya da şirketin devri halinde (önceden bilgilendirilerek) aktarılır.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">7. Saklama Süreleri</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Hesap verileri</strong> (profil, girişler, antrenmanlar, buluttaki fotoğraflar) hesabın var olduğu sürece saklanır. Hesabını sildiğinde bir Cloud Function Firebase hesabını, kullanıcı kaydını, antrenmanlarını, yedeklerini ve fotoğraflarını hemen siler; sağlayıcı yedeklerindeki kalıntı kopyalar en geç 30 gün içinde yok olur</li>
+      <li><strong className="text-white">Bulut Yedekleme verileri</strong> abonelik veya deneme yenilenmeden sona erdiğinde 3 gün sonra silinir. Cihazındaki yerel veriler etkilenmez</li>
+      <li><strong className="text-white">Kullanım analizi olayları</strong> Mixpanel’de en fazla 24 ay saklanır. Analiz profilinin daha erken silinmesini istersen 30 gün içinde sileriz</li>
+      <li><strong className="text-white">Abonelik kayıtları</strong> RevenueCat’te hesabınla birlikte silinir. Apple ve Google kendi satın alma kayıtlarını kendi politikalarına göre tutar</li>
+      <li><strong className="text-white">İletişim formu mesajları</strong> posta kutumuzda 12 ay saklanır, sonra silinir</li>
+      <li><strong className="text-white">Site analitik verileri</strong> Google Analytics’te en fazla 14 ay saklanır</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">8. Haklarınız (KVKK m.11)</h3>
+    <p>Veri sorumlusuna başvurarak:</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>Kişisel verilerinin işlenip işlenmediğini öğrenme ve işlenmişse buna ilişkin bilgi talep etme</li>
+      <li>İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+      <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme</li>
+      <li>Eksik veya yanlış işlenmişse düzeltilmesini isteme</li>
+      <li>KVKK m.7’deki şartlar çerçevesinde silinmesini veya yok edilmesini isteme</li>
+      <li>Düzeltme, silme ve yok etme işlemlerinin verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme</li>
+      <li>Münhasıran otomatik sistemlerle analiz edilmesi sonucu aleyhine bir sonucun ortaya çıkmasına itiraz etme</li>
+      <li>Kanuna aykırı işleme nedeniyle zarara uğraman halinde zararın giderilmesini talep etme</li>
+    </ul>
+    <p><strong className="text-white">Başvuru yolu:</strong> <strong className="text-green-400">{CONTACT_EMAIL}</strong> adresine, konu satırına "KVKK Başvurusu" yazarak, hesabında kayıtlı e-posta adresinden yazabilirsin. Başvurular Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ uyarınca en geç 30 gün içinde ücretsiz olarak cevaplanır; kimliğini doğrulamak için hesabındaki e-postayı teyit etmeni isteyebiliriz. Başvurun reddedilir, cevap yetersiz kalır veya süresinde cevaplanmazsa Kişisel Verileri Koruma Kurulu’na şikâyet hakkın vardır.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">9. Hesap Silme</h3>
+    <p>Uygulamada Profil, ardından Hesabı Sil adımını izle ve onay adımlarını tamamla. Güvenlik için yeniden giriş yapman istenebilir. Apple ile giriş yaptıysan hesabın silinirken Apple ile Giriş belirteçlerin de iptal edilir. Silme işlemi Firebase hesabını, tüm girişlerini, antrenmanlarını, yedeklerini ve buluttaki fotoğraflarını kaldırır ve geri alınamaz. Uygulamaya erişemiyorsan aynı talebi {CONTACT_EMAIL} adresine yazarak yapabilirsin; 30 gün içinde yerine getirilir.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">10. Kullanım Analizi Tercihi</h3>
+    <p>Uygulamada Profil, ardından "Anonim kullanım verisi paylaş" anahtarı. Varsayılan olarak açıktır. Kapattığında Mixpanel’e veri gönderimi o anda durur. Sitede çerez tercihin tarayıcında saklanır; Türkiye’den gelen ziyaretçiler için analitik çerezler sen kabul etmeden açılmaz.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">11. Fotoğraflar ve Güvenlik</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>İlerleme fotoğrafları varsayılan olarak yalnızca cihazındadır. Bulut Yedekleme (Trackr Pro) açıkken ABD’deki Firebase Storage’a aktarılır, aktarımda ve beklemede şifrelenir ve yalnızca kendi hesabın tarafından okunabilir</li>
+      <li>Fotoğraflar başka kullanıcılarla paylaşılmaz, pazarlamada veya herhangi bir modelin eğitiminde kullanılmaz</li>
+      <li>Uygulama, Site ve sağlayıcılar arasındaki tüm bağlantılar TLS ile şifrelenir; Firebase’deki veriler Google Cloud tarafından beklemede şifrelenir</li>
+      <li>Firestore ve Storage kuralları her hesabın yalnızca kendi verisine erişmesine izin verir; üretim verisine erişim şirket sahibiyle sınırlıdır</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">12. Çocuklar</h3>
+    <p>Trackr 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek kişisel veri toplamayız; öğrendiğimiz takdirde derhal sileriz.</p></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">13. Site (emke.app) ve Çerezler</h3>
+    <ul className="list-disc pl-6 space-y-2">
+      <li><strong className="text-white">Çerezler:</strong> Google Analytics 4, ziyaret ve sayfa sayımı için _ga ve _ga_* çerezlerini kullanır. Çerez tercihin tarayıcında cookie_consent anahtarıyla saklanır. Sitede reklam çerezi yoktur</li>
+      <li><strong className="text-white">Onay:</strong> Türkiye, AEA, Birleşik Krallık ve İsviçre’den gelen ziyaretçiler için Google Consent Mode varsayılan olarak "reddedildi" durumundadır; kabul etmeden Google Analytics’e hiçbir veri gitmez</li>
+      <li><strong className="text-white">İletişim formu:</strong> gönderdiğin ad, e-posta ve mesaj, bot kontrolü sinyalleriyle (sayfada geçirilen süre, Cloudflare Turnstile belirteci, IP adresi) birlikte Vercel’deki uç noktamız üzerinden Resend’e ve oradan info@emke.app adresine iletilir. Yalnızca sana cevap vermek için kullanılır ve 12 ay saklanır</li>
+      <li><strong className="text-white">Sunucu kayıtları:</strong> Vercel, hizmetin işletilmesi ve güvenliği için kısa süreli istek kayıtları (IP adresi, tarayıcı bilgisi, URL) tutar</li>
+    </ul></div>
+
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">14. Değişiklikler ve İletişim</h3>
+    <p>Bu metinde önemli bir değişiklik yaptığımızda yukarıdaki yürürlük tarihini güncelleriz ve Uygulama içinden veya e-postayla bildiririz.</p>
+    <ul className="list-disc pl-6 space-y-2">
+      <li>E-posta: {CONTACT_EMAIL}</li>
+      <li>Telefon: +1 (775) 770-0677</li>
+      <li>Adres: EMKE Seismic Isolation LLC, Reno, Nevada, ABD</li>
     </ul></div>
   </LegalPage>
 );
@@ -1135,8 +1312,8 @@ const SteelSurvivorPrivacyPage = () => (
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">What we do with it</h3>
     <p>We count how many people come back the day after they install, and where in the game people stop playing. That is the only use. The data is not sold, not shared with advertisers, and not given to any third party analytics company. There is no advertising network in this version of the game.</p></div>
 
-    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Where it is stored</h3>
-    <p>On our own server, hosted on Cloudflare. Nobody outside EMKE Seismic Isolation LLC has access to it.</p></div>
+    <div className="space-y-4"><h3 className="text-white text-lg font-bold">Where it is stored, and for how long</h3>
+    <p>On our own server, hosted on Cloudflare. Nobody outside EMKE Seismic Isolation LLC has access to it. Event data is kept for 24 months and then deleted. Records tied to a device are deleted on request within 30 days.</p></div>
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">Purchases</h3>
     <p>Purchases are handled entirely by Apple. We never see your payment details. We only record that a purchase of a given product happened, so that we can tell which items people want.</p></div>
@@ -1145,7 +1322,7 @@ const SteelSurvivorPrivacyPage = () => (
     <p>The game has no chat, no user generated content, and no way to contact another player.</p></div>
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">Your choices</h3>
-    <p>Deleting the app removes the identifier the game generated, and a reinstall creates a new one. If you would like the records associated with your device removed, write to us at {CONTACT_EMAIL} and we will delete them.</p></div>
+    <p>Deleting the app removes the identifier the game generated, and a reinstall creates a new one. If you would like the records associated with your device removed, write to us at {CONTACT_EMAIL} and we will delete them within 30 days.</p></div>
 
     <div className="space-y-4"><h3 className="text-white text-lg font-bold">Contact</h3>
     <p>{CONTACT_EMAIL}</p></div>
@@ -1381,7 +1558,7 @@ const SupportPage = () => {
         <div>
           <h3 className="text-white text-lg font-bold mb-4">Privacy & Account</h3>
           <div className="space-y-3">
-            <FAQItem question="Is my data private?" answer="Yes. We never sell or share your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted at rest with AES-256." />
+            <FAQItem question="Is my data private?" answer="Yes. We never sell your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted at rest by Google Cloud. You can turn off usage analytics in Profile." />
             <FAQItem question="How do I delete my account?" answer="Go to Profile, then Delete Account. This permanently removes all your data from our servers. This action cannot be undone." />
           </div>
         </div>
@@ -1501,6 +1678,7 @@ export default function EmkeWebsite() {
               <Route path="/thicket" element={<ThicketPage />} />
               <Route path="/thicket/privacy" element={<ThicketPrivacyPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/privacy/tr" element={<PrivacyTrPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/support" element={<SupportPage />} />
               <Route path="/blog" element={<BlogPage />} />

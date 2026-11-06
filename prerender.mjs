@@ -67,6 +67,12 @@ const routes = [
     desc: 'How EMKE apps collect, use, and protect your data. Read the full privacy policy for Trackr and other EMKE apps.',
   },
   {
+    path: '/privacy/tr',
+    lang: 'tr',
+    title: 'Gizlilik Politikası ve KVKK Aydınlatma Metni | EMKE',
+    desc: 'EMKE uygulamalarının (Trackr) ve emke.app sitesinin kişisel verileri nasıl işlediğini anlatan Türkçe gizlilik politikası ve KVKK aydınlatma metni.',
+  },
+  {
     path: '/terms',
     title: 'Terms of Service | EMKE',
     desc: 'The terms of service for using Trackr and other EMKE apps.',
@@ -186,7 +192,7 @@ const supportFaq = [
   ['How do I cancel my subscription?', "Open Settings on your device, tap your name, then Subscriptions, then Trackr, then Cancel Subscription. You'll keep Pro access until the end of your billing period."],
   ['Can I restore my purchases on a new device?', "Yes. Sign in with the same account you used to subscribe and your Pro status will be restored automatically. If it doesn't restore right away, go to Profile, then tap Restore Purchases."],
   ['How does cloud backup work?', 'Pro users can enable cloud backup in Profile, then Cloud Backup. Your data syncs automatically across all devices signed into the same account.'],
-  ['Is my data private?', 'Yes. We never sell or share your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted at rest with AES-256.'],
+  ['Is my data private?', 'Yes. We never sell your personal data. Progress photos are stored locally on your device by default. Cloud data is encrypted at rest by Google Cloud. You can turn off usage analytics in Profile.'],
   ['How do I delete my account?', 'Go to Profile, then Delete Account. This permanently removes all your data from our servers. This action cannot be undone.'],
   ['The app is not working properly. What should I do?', 'Try closing and reopening the app. If the issue persists, make sure you have the latest version installed. If you still need help, email support@emke.app with a description of the problem.'],
 ]
@@ -267,6 +273,7 @@ for (const route of routes) {
     .replace(`<meta name="twitter:title" content="EMKE: Track Your Evolution" />`, `<meta name="twitter:title" content="${esc(route.title)}" />`)
     .replaceAll(`content="${BASE_DESC}"`, `content="${esc(route.desc)}"`)
     .replace('  </head>', `${ld}  </head>`)
+  if (route.lang) html = html.replace('<html lang="en">', `<html lang="${route.lang}">`)
 
   if (og) {
     // Fail the build rather than ship a post whose cover or social card 404s.

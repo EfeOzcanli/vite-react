@@ -38,6 +38,10 @@
       "destination": "/privacy/index.html"
     },
     {
+      "source": "/privacy/tr",
+      "destination": "/privacy/tr/index.html"
+    },
+    {
       "source": "/terms",
       "destination": "/terms/index.html"
     },
