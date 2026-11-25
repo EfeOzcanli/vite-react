@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useInView } from 'framer-motion';
 import { posts } from './blog/posts.jsx';
+import BridgepinPage from './Bridgepin.jsx';
 
 const CONTACT_EMAIL = "info@emke.app";
 const EFFECTIVE_DATE = "01/30/2026";
@@ -287,15 +288,16 @@ const Navbar = () => {
 
 const Footer = () => {
   const navigate = useNavigate();
+  const onBridgepin = useLocation().pathname.startsWith('/bridgepin');
   return (
   <footer className="relative bg-black border-t border-white/5 pt-24 pb-12 px-6 overflow-hidden">
     <FloatingOrb size={600} className="-bottom-64 left-1/2 -translate-x-1/2" />
     <div className="max-w-7xl mx-auto relative z-10">
-      <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-24">
+      {!onBridgepin && <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-24">
         <h2 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">Ready to evolve<span className="text-green-500">?</span></h2>
         <p className="text-xl text-zinc-500 mb-10 max-w-xl mx-auto">Start tracking your progress with precision.</p>
         <MagneticButton onClick={() => navigate('/trackr')} className="px-10 py-5 bg-green-500 text-black font-bold rounded-full text-lg hover:bg-green-400 transition-colors inline-flex items-center gap-3">Get Started <ArrowRight size={20} /></MagneticButton>
-      </motion.div>
+      </motion.div>}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-1 md:col-span-2">
           <span className="text-3xl font-black tracking-tight text-white">emke<span className="text-green-500">.</span></span>
@@ -959,6 +961,19 @@ const AppsPage = () => {
               <p className="text-zinc-500 mb-4">A stealth game about standing very still. Twenty four mazes, guards who draw their sight on the floor, and tall grass that hides you as long as you hold your breath.</p>
               <div className="flex flex-wrap gap-2 mb-6">{['Stealth', 'Puzzle', 'Offline'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
               <span className="inline-flex items-center gap-2 text-green-500 font-semibold group-hover:gap-4 transition-all">Learn more <ArrowRight size={18} /></span>
+            </div>
+          </div></GlowingBorder>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} onClick={() => navigate('/bridgepin')} className="cursor-pointer group">
+          <GlowingBorder><div className="p-10 rounded-[40px] bg-zinc-900/50 border border-white/5 h-full overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-[100px] group-hover:bg-teal-500/20 transition-all duration-500" />
+            <div className="relative z-10">
+              <GameIcon src="/bridgepin-icon.png" alt="Bridgepin" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-500 text-xs font-semibold mb-4"><Timer size={12} />In Shopify App Store review</div>
+              <h3 className="text-3xl font-black text-white mb-4">Bridgepin</h3>
+              <p className="text-zinc-500 mb-4">A Shopify app for music gear stores. It keeps your Shopify stock and your Reverb listings matched and brings Reverb orders into Shopify.</p>
+              <div className="flex flex-wrap gap-2 mb-6">{['Shopify app', 'Reverb sync', 'Stock and orders'].map((tag, i) => <span key={i} className="px-3 py-1 bg-white/5 rounded-full text-zinc-400 text-xs">{tag}</span>)}</div>
+              <Link to="/bridgepin" className="inline-flex items-center gap-2 text-green-500 font-semibold group-hover:gap-4 transition-all">Learn more <ArrowRight size={18} /></Link>
             </div>
           </div></GlowingBorder>
         </motion.div>
@@ -1675,6 +1690,7 @@ export default function EmkeWebsite() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/steelsurvivor" element={<SteelSurvivorPage />} />
               <Route path="/steelsurvivor/privacy" element={<SteelSurvivorPrivacyPage />} />
+              <Route path="/bridgepin" element={<BridgepinPage />} />
               <Route path="/thicket" element={<ThicketPage />} />
               <Route path="/thicket/privacy" element={<ThicketPrivacyPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />

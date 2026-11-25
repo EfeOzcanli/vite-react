@@ -4,6 +4,7 @@ import { StaticRouter } from 'react-router-dom/server'
 import App from './App.jsx'
 
 export { posts } from './blog/posts.jsx'
+export { BRIDGEPIN_FAQ } from './Bridgepin.jsx'
 
 export function render(url) {
   return renderToString(

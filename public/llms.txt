@@ -9,6 +9,7 @@ The company was started by Kerim Efe Ozcanli, who lost 48 kg (120 kg to 72 kg) t
 ## Products
 
 - [Trackr](https://www.emke.app/trackr): Weight, workout and progress tracker for iOS and Android. Weight entries are automatically paired with progress photos, workouts are logged set by set, and everything rolls up into one fitness score. Free, with an optional Trackr Pro subscription.
+- [Bridgepin: Reverb Sync](https://www.emke.app/bridgepin): A Shopify app for music gear stores. It links Shopify products to Reverb listings by SKU, keeps stock matched in both directions, imports Reverb orders into Shopify, and sends tracking numbers back. One plan, $39 a month with a 14 day free trial. In Shopify App Store review as of November 2026.
 - [All EMKE apps](https://www.emke.app/apps): The current app portfolio. Trackr is the first; further single-purpose tools are in development.
 
 ## Download

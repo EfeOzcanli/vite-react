@@ -4,12 +4,16 @@
     "date": "2026-11-06"
   },
   "/apps": {
-    "hash": "f518edad81adced2",
-    "date": "2026-11-06"
+    "hash": "e9a7e45a29914c67",
+    "date": "2026-11-25"
   },
   "/trackr": {
     "hash": "1f00fbb57e4bead6",
     "date": "2026-11-06"
+  },
+  "/bridgepin": {
+    "hash": "8ba628ad3eeaea65",
+    "date": "2026-11-25"
   },
   "/thicket": {
     "hash": "4fd99d3a26d079bd",
@@ -40,12 +44,12 @@
     "date": "2026-11-06"
   },
   "/privacy": {
-    "hash": "b57d81510b4d7dff",
-    "date": "2026-11-06"
+    "hash": "b3cb46554b9b2372",
+    "date": "2026-11-25"
   },
   "/privacy/tr": {
-    "hash": "6c3e2cbf2e50fb51",
-    "date": "2026-11-06"
+    "hash": "63b8bc5edf96a55a",
+    "date": "2026-11-25"
   },
   "/terms": {
     "hash": "8c516b47cc9e241b",

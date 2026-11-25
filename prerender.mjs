@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url'
 
 const root = dirname(fileURLToPath(import.meta.url))
 const template = readFileSync(join(root, 'dist/index.html'), 'utf-8')
-const { render, posts } = await import('./dist-ssr/entry-server.js')
+const { render, posts, BRIDGEPIN_FAQ } = await import('./dist-ssr/entry-server.js')
 
 const BASE_TITLE = 'EMKE: Track Your Evolution | Apps by EMKE, home of Trackr'
 const BASE_DESC =
@@ -24,6 +24,11 @@ const routes = [
     path: '/trackr',
     title: 'Trackr: Weight, Workout & Progress Tracker | EMKE',
     desc: 'Trackr records your weight with progress photos, logs every exercise and set, and turns it all into one overall fitness score. Available on the App Store.',
+  },
+  {
+    path: '/bridgepin',
+    title: 'Bridgepin: Reverb Sync for Shopify Stores | EMKE',
+    desc: 'Bridgepin is a Shopify app that keeps store stock and Reverb listings matched by SKU, imports Reverb orders into Shopify, and sends tracking back. $39 a month, 14 days free.',
   },
   {
     path: '/thicket',
@@ -214,6 +219,38 @@ const jsonLd = (route, url) => {
 
   if (route.path === '/' || route.path === '/trackr' || route.path === '/apps') {
     graph.push(route.path === '/trackr' ? { ...trackrApp, mainEntityOfPage: { '@type': 'WebPage', '@id': url } } : trackrApp)
+  }
+  if (route.path === '/bridgepin') {
+    graph.push({
+      '@type': 'SoftwareApplication',
+      '@id': url + '#app',
+      name: 'Bridgepin: Reverb Sync',
+      applicationCategory: 'BusinessApplication',
+      applicationSubCategory: 'Shopify app, marketplace inventory and order sync',
+      operatingSystem: 'Web (Shopify admin)',
+      url,
+      image: 'https://www.emke.app/bridgepin-icon.png',
+      description:
+        'Bridgepin links Shopify products to Reverb listings by SKU, keeps stock matched in both directions, imports Reverb orders into Shopify, and sends tracking numbers back to Reverb.',
+      publisher: { '@id': ORG_ID },
+      author: { '@id': ORG_ID },
+      featureList: [
+        'Two way stock sync between Shopify and Reverb',
+        'Reverb orders imported as Shopify orders',
+        'Tracking numbers sent back to Reverb',
+        'Reverb draft listings created from Shopify products',
+        'Optional price rule between store price and Reverb price',
+        'Sync log with automatic retries',
+      ],
+      offers: {
+        '@type': 'Offer',
+        price: '39.00',
+        priceCurrency: 'USD',
+        description: 'One plan, billed every 30 days through Shopify, with a 14 day free trial.',
+      },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    })
+    graph.push(faqPage(url + '#faq', BRIDGEPIN_FAQ))
   }
   if (route.path === '/support') {
     graph.push(faqPage(url + '#faq', supportFaq))
